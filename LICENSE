@@ -1,0 +1,15 @@
+# Dual Open License / Podwójna Otwarta Licencja
+
+**Egalitarian Complexity Translator (ECT / ETZ)** is published under a dual open license so that both software builders and human/AI knowledge architects can reuse, verify, and extend it without lock-in:
+
+1. **Software, validators, ingestion pipelines, and web viewer code** (`web/`, `pipeline/`, `validator/`, `audits/*.py`, `.github/`):
+   Licensed under the **MIT License** — see [`LICENSE-CODE-MIT`](./LICENSE-CODE-MIT).
+
+2. **Open Semantic Zoom Protocol specifications, documentation, and translated Complexity Capsules** (`spec/`, `capsules/`, `MANIFESTO.md`, `AGENTS.md`, `audits/*.md`):
+   Licensed under **Creative Commons Attribution 4.0 International (CC BY 4.0)** — see [`LICENSE-CONTENT-CC-BY-4.0`](./LICENSE-CONTENT-CC-BY-4.0).
+
+## Upstream Credits & Provenance
+
+Capsules ingested from external open research preserve full upstream provenance and licenses:
+- **Lean 4 RH/GRH formalization**: Levent Alpöge (with Claude), November 2026 (`leanprover-community/riemann-hypothesis`, baseline commit `40e56bab026552e089d7afcfeff08d2defb9c005`).
+- **Architectural IR & Audit Ledger**: Bartosz Naskręcki (`nasqret/riemann-rev` and `nasqret/riemann-proof-atlas`), 0BSD License.

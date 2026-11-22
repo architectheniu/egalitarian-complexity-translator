@@ -1,0 +1,49 @@
+{
+  "capsule_id": "rh-2026-alpoege",
+  "generated_at": "2026-11-22T12:42:33.146691+00:00",
+  "formal_core_ir_sha256": "b9aebe093ec1f214ded690d590684d1ace3c97da01f6ef79b551add6b72f39c5",
+  "upstream_sources": {
+    "riemann_rev_model": {
+      "url": "https://raw.githubusercontent.com/nasqret/riemann-rev/main/data/model.json",
+      "sha256": "8c85bd83b65afa31e330392acd81124397815d6d072a51dca19633936c4af544",
+      "bytes": 331881
+    },
+    "proof_atlas_subjects": {
+      "url": "https://raw.githubusercontent.com/nasqret/riemann-proof-atlas/main/evidence/subjects.json",
+      "sha256": "b934c917cfef3ff85a5610b3ecdedc78a1fa6e93ef7f5e4ca1cd0f88122236ae",
+      "bytes": 30124
+    },
+    "challenge_lean": {
+      "url": "https://raw.githubusercontent.com/leanprover-community/riemann-hypothesis/main/src/Challenge.lean",
+      "sha256": "a3cebbf30be6b9268a0ed413c9bbc256dfa9f4bfa04f1a75f144d135da5e21a5",
+      "bytes": 1222
+    },
+    "main_lean": {
+      "url": "https://raw.githubusercontent.com/leanprover-community/riemann-hypothesis/main/src/Main.lean",
+      "sha256": "f7daf90c24b7bf6ed08a3fd819ae5d6782f810e6a5962b5c0bfed4bba9939095",
+      "bytes": 430
+    },
+    "statements_lean": {
+      "url": "https://raw.githubusercontent.com/leanprover-community/riemann-hypothesis/main/src/Statements.lean",
+      "sha256": "ba93d397b36983e0bcd34c74d992be76d064a3f1a7b8e18ca6c6f9d71771957b",
+      "bytes": 826
+    }
+  },
+  "credits": [
+    {
+      "role": "Original Lean 4 formalization of RH & Dirichlet GRH (2026-11-20)",
+      "authors": "Levent Alpöge with Claude (Anthropic)",
+      "url": "https://alpo.ge/remark.pdf"
+    },
+    {
+      "role": "Verification & Comparator setup",
+      "authors": "Lean FRO, Mathlib community, Andrew Sutherland, Simon DeDeo, et al.",
+      "url": "https://github.com/leanprover-community/riemann-hypothesis"
+    },
+    {
+      "role": "Architectural IR, Proof Guide & Proof Atlas (0BSD)",
+      "authors": "Bartosz Naskręcki (nasqret)",
+      "url": "https://github.com/nasqret/riemann-rev"
+    }
+  ]
+}

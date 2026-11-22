@@ -1,0 +1,299 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://architectheniu.github.io/egalitarian-complexity-translator/spec/ect-capsule.schema.json",
+  "title": "ECT Complexity Capsule (OSZP 1.0)",
+  "type": "object",
+  "required": [
+    "@context",
+    "@type",
+    "schema_version",
+    "protocol",
+    "id",
+    "metadata",
+    "formal_core_ir",
+    "lenses"
+  ],
+  "properties": {
+    "@context": { "type": "object" },
+    "@type": { "const": "ect:ComplexityCapsule" },
+    "schema_version": { "const": "ect-capsule/1.0" },
+    "protocol": { "const": "OSZP-1.0" },
+    "id": { "type": "string", "minLength": 2 },
+    "metadata": {
+      "type": "object",
+      "required": ["title", "subtitle", "domain", "created_at", "license"],
+      "properties": {
+        "title": { "$ref": "#/$defs/localizedString" },
+        "subtitle": { "$ref": "#/$defs/localizedString" },
+        "domain": { "type": "string", "minLength": 2 },
+        "created_at": { "type": "string", "minLength": 8 },
+        "license": { "type": "string", "minLength": 2 },
+        "authors": { "type": "array", "items": { "type": "string" } },
+        "source_credits": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "formal_core_ir": {
+      "type": "object",
+      "required": [
+        "schema",
+        "pins",
+        "epistemic_status",
+        "strata",
+        "components",
+        "interfaces",
+        "cuts"
+      ],
+      "properties": {
+        "schema": { "type": "string" },
+        "pins": {
+          "type": "object",
+          "required": ["mirror", "mirror_commit", "toolchain"],
+          "properties": {
+            "mirror": { "type": "string", "minLength": 3 },
+            "mirror_commit": { "type": "string", "minLength": 4 },
+            "toolchain": { "type": "string", "minLength": 2 }
+          },
+          "additionalProperties": true
+        },
+        "epistemic_status": {
+          "type": "object",
+          "required": ["headline", "machine_verification", "human_review", "axioms"],
+          "properties": {
+            "headline": { "type": "string", "minLength": 3 },
+            "machine_verification": { "type": "string", "minLength": 3 },
+            "human_review": { "type": "string", "minLength": 3 },
+            "axioms": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+          },
+          "additionalProperties": true
+        },
+        "strata": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["id", "order", "color"],
+            "properties": {
+              "id": { "type": "string" },
+              "order": { "type": "integer", "minimum": 0 },
+              "color": { "type": "string" }
+            },
+            "additionalProperties": true
+          }
+        },
+        "components": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["id", "n", "stratum", "title_raw", "gist_raw"],
+            "properties": {
+              "id": { "type": "string" },
+              "n": { "type": "integer", "minimum": 1 },
+              "stratum": { "type": "string" },
+              "title_raw": { "type": "string" },
+              "gist_raw": { "type": "string" }
+            },
+            "additionalProperties": true
+          }
+        },
+        "interfaces": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["id", "from", "to", "label_raw"],
+            "properties": {
+              "id": { "type": "string" },
+              "from": { "type": "string" },
+              "to": { "type": "string" },
+              "label_raw": { "type": "string" }
+            },
+            "additionalProperties": true
+          }
+        },
+        "cuts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "title_raw"],
+            "properties": {
+              "id": { "type": "string" },
+              "title_raw": { "type": "string" }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "lenses": {
+      "type": "object",
+      "required": ["languages", "levels", "level_meta", "strata", "components", "cuts", "interfaces", "itineraries"],
+      "properties": {
+        "languages": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "levels": {
+          "type": "array",
+          "const": ["L0", "L1", "L2", "L3", "L4"]
+        },
+        "level_meta": {
+          "type": "object",
+          "required": ["L0", "L1", "L2", "L3", "L4"],
+          "additionalProperties": false,
+          "patternProperties": {
+            "^L[0-4]$": {
+              "type": "object",
+              "required": ["label", "audience", "description"],
+              "properties": {
+                "label": { "$ref": "#/$defs/localizedString" },
+                "audience": { "$ref": "#/$defs/localizedString" },
+                "description": { "$ref": "#/$defs/localizedString" }
+              }
+            }
+          }
+        },
+        "strata": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": ["L0", "L1", "L2", "L3", "L4"],
+              "patternProperties": {
+                "^L[0-4]$": {
+                  "type": "object",
+                  "required": ["title", "summary"],
+                  "properties": {
+                    "title": { "type": "string", "minLength": 2 },
+                    "summary": { "type": "string", "minLength": 8 }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "components": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": ["L0", "L1", "L2", "L3", "L4"],
+              "patternProperties": {
+                "^L[0-4]$": { "$ref": "#/$defs/componentZoomLens" }
+              }
+            }
+          }
+        },
+        "cuts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": ["L0", "L1", "L2", "L3", "L4"],
+              "patternProperties": {
+                "^L[0-4]$": { "$ref": "#/$defs/cutZoomLens" }
+              }
+            }
+          }
+        },
+        "interfaces": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": ["L0", "L1", "L2", "L3", "L4"],
+              "patternProperties": {
+                "^L[0-4]$": { "type": "string", "minLength": 2 }
+              }
+            }
+          }
+        },
+        "itineraries": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["id", "component_path"],
+            "properties": {
+              "id": { "type": "string" },
+              "component_path": {
+                "type": "array",
+                "items": { "type": "string" },
+                "minItems": 2
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "localizedString": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "lossMeter": {
+      "type": "object",
+      "required": [
+        "fidelity_score",
+        "compression_ratio",
+        "topology_status",
+        "what_is_omitted",
+        "where_metaphor_breaks"
+      ],
+      "properties": {
+        "fidelity_score": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "compression_ratio": { "type": "string", "minLength": 2 },
+        "topology_status": {
+          "enum": ["lossy_analogy", "faithful_projection", "exact_isomorphism"]
+        },
+        "what_is_omitted": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 3 }
+        },
+        "where_metaphor_breaks": { "type": "string", "minLength": 12 }
+      },
+      "additionalProperties": false
+    },
+    "componentZoomLens": {
+      "type": "object",
+      "required": [
+        "title",
+        "headline",
+        "explanation",
+        "key_insight",
+        "analogy_anchor",
+        "loss_meter"
+      ],
+      "properties": {
+        "title": { "type": "string", "minLength": 2 },
+        "headline": { "type": "string", "minLength": 5 },
+        "explanation": { "type": "string", "minLength": 15 },
+        "key_insight": { "type": "string", "minLength": 5 },
+        "analogy_anchor": { "type": "string", "minLength": 3 },
+        "loss_meter": { "$ref": "#/$defs/lossMeter" }
+      },
+      "additionalProperties": true
+    },
+    "cutZoomLens": {
+      "type": "object",
+      "required": ["title", "statement", "intuition", "loss_meter"],
+      "properties": {
+        "title": { "type": "string", "minLength": 2 },
+        "statement": { "type": "string", "minLength": 5 },
+        "intuition": { "type": "string", "minLength": 10 },
+        "loss_meter": { "$ref": "#/$defs/lossMeter" }
+      },
+      "additionalProperties": true
+    }
+  }
+}
