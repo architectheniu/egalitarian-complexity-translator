@@ -59,6 +59,8 @@ Ludzie najsilniej chwytają strukturę, gdy relacje przestrzenne, ruch przyczyno
 | Kontrakt dla modeli AI | [AGENTS.pl.md](AGENTS.pl.md) | [AGENTS.md](AGENTS.md) |
 | Specyfikacja protokołu OSZP | [spec/OSZP-SPEC.pl.md](spec/OSZP-SPEC.pl.md) | [spec/OSZP-SPEC.md](spec/OSZP-SPEC.md) |
 | 8 Praw Zachowania Topologii | [spec/TOPOLOGY-LAWS.pl.md](spec/TOPOLOGY-LAWS.pl.md) | [spec/TOPOLOGY-LAWS.md](spec/TOPOLOGY-LAWS.md) |
+| Architektura Techniczna | [docs/ARCHITECTURE.pl.md](docs/ARCHITECTURE.pl.md) | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
+| Audyt Krzyżowy Modeli AI | [audits/CROSS-MODEL-REPORT.pl.md](audits/CROSS-MODEL-REPORT.pl.md) | [audits/CROSS-MODEL-REPORT.md](audits/CROSS-MODEL-REPORT.md) |
 | Schemat JSON (`ect-capsule/1.0`) | [spec/ect-capsule.schema.json](spec/ect-capsule.schema.json) | *(schemat maszynowy)* |
 
 ---

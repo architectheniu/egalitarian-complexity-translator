@@ -59,6 +59,8 @@ Humans think best when structural relationships, cause-and-effect motion, sound,
 | AI Contract (Silicon Egalitarianism) | [AGENTS.md](AGENTS.md) | [AGENTS.pl.md](AGENTS.pl.md) |
 | OSZP Protocol Specification | [spec/OSZP-SPEC.md](spec/OSZP-SPEC.md) | [spec/OSZP-SPEC.pl.md](spec/OSZP-SPEC.pl.md) |
 | 8 Topology Preservation Laws | [spec/TOPOLOGY-LAWS.md](spec/TOPOLOGY-LAWS.md) | [spec/TOPOLOGY-LAWS.pl.md](spec/TOPOLOGY-LAWS.pl.md) |
+| Technical Architecture | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | [docs/ARCHITECTURE.pl.md](docs/ARCHITECTURE.pl.md) |
+| Cross-Model Silicon Audit | [audits/CROSS-MODEL-REPORT.md](audits/CROSS-MODEL-REPORT.md) | [audits/CROSS-MODEL-REPORT.pl.md](audits/CROSS-MODEL-REPORT.pl.md) |
 | JSON Schema (`ect-capsule/1.0`) | [spec/ect-capsule.schema.json](spec/ect-capsule.schema.json) | *(machine schema)* |
 
 ---

@@ -1,0 +1,1264 @@
+{
+  "statistic": {
+    "en": {
+      "L0": {
+        "title": "The Prime-Drum Noise Meter",
+        "headline": "Subtract the beat you expect, and listen only to the wobble that remains.",
+        "explanation": "Imagine a huge drum that is struck at special moments, the prime moments, and a metronome that ticks the steady beat we expect. The meter plays the drum and the metronome together so that the expected beat cancels out completely, leaving only the wobble. It also listens to the same drum through a few coloured filters and adds those wobbles with small, equal, never-negative shares. Later parts of the machine must show that this wobble stays quiet.",
+        "key_insight": "We don't measure the primes themselves. We measure how far they drift from the expected rhythm, and that drift is the thing that has to stay small.",
+        "analogy_anchor": "A drum played against a metronome, heard through a set of coloured filters",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "The von Mangoldt weights (prime powers count with weight log p)",
+            "The Dirichlet characters behind the 'coloured filters', and the exact weight 1/(3o+1)",
+            "The ramp smoothing and the Mellin transform passed on to the residue layer",
+            "The exact first-moment constant −1−γ"
+          ],
+          "where_metaphor_breaks": "Primes are positions on the number line, not moments in time. The 'filters' are complex-valued characters, not sound colours. And 'quiet' does not mean silent: the target is a power bound of size about √x, not zero."
+        }
+      },
+      "L1": {
+        "title": "A Centered Error Signal with Positive Mixing",
+        "headline": "Main terms cancel exactly, so the only thing left is error, and every twisted error enters with a non-negative weight.",
+        "explanation": "The statistic is built so that its main terms cancel exactly, which means any size it has comes purely from the error signal of the primes. Several twisted versions over a cyclic family of characters are added with positive weights, so one member's error cannot be hidden by another member's opposite error. The requirement has to hold on whole windows of scales, and the loss exponents must stay fixed while the precision parameter ε shrinks. One anchor is proved without assuming RH: the average error, its first moment, settles to the exact constant −1−γ, which fixes the coefficient of the linear centering term.",
+        "key_insight": "Exact centering combined with positive weights turns 'the primes are well-behaved' into one measurable quantity that cannot cancel against itself.",
+        "analogy_anchor": "A balance scale zeroed exactly at the expected weight, carrying several pans that are all loaded in the same direction",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The explicit formula for G_P = Gζ + Σ wt·Re(gχ)",
+            "The definition of tied families and the predicate EFamC",
+            "The Mellin/Laurent mechanism that computes the constant −1−γ",
+            "The role of the Siegel–Walfisz bound as the dominating function"
+          ],
+          "where_metaphor_breaks": "'Cannot hide by cancellation' holds only at the level of the outer non-negative weights. Each twisted term Re(gχ) can itself be negative, and only the bound from the comparison layer keeps the total under control."
+        }
+      },
+      "L2": {
+        "title": "Contract of the Statistic G_P and the Window Requirement",
+        "headline": "Input: the level Λ. Output: G_P(y) and the window predicate that the comparison layer must satisfy.",
+        "explanation": "G_P(y) = Gζ(y) + Σ_{ψ∈Nt} wt(ψ)·Re(gχ(ψ.χ, y)), and on a cyclic level every nontrivial primitive inducing character has weight 1/(3o+1). ChebyshevInequalityAtWindowScale(λ, Λ) requires constants eD, eL and ε₁ > 0 such that every 0 < ε < ε₁ admits a tied family with whole windows of width λ satisfying the Chebyshev inequality. The exponents are uniform in ε, while the family may vary with ε. The first-moment anchor is ∫₁^U (ψ(t)−t)/t² dt → −1−γ as U → ∞, and the statistic is passed to the residue layer through a Mellin transform (MellinRamp).",
+        "key_insight": "The order of quantifiers matters: eD and eL are fixed before ε, and only the family Fm may depend on ε.",
+        "analogy_anchor": "A software interface: a fixed loss budget (eD, eL) and a family implementation that may change with each precision setting ε",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The internal definitions of gChi, Gz and the ramp smoothing",
+            "The structure of Fam/core and the predicate ChebyshevInequalityOnFamilyWindows",
+            "The proof steps for the constant −1−γ (Mellin, dominated convergence, Laurent)"
+          ],
+          "where_metaphor_breaks": "The 'interface' description hides the fact that the window predicate is an existential statement about families. It does not construct any family; the families come from upstream layers."
+        }
+      },
+      "L3": {
+        "title": "The Ramp-Weighted von Mangoldt Sum and the First Moment −1−γ",
+        "headline": "A Mellin identity for σ > 1, a Siegel–Walfisz remainder bound and the Laurent expansion of ζ′/ζ at s = 1 give an unconditional constant.",
+        "explanation": "For real σ > 1: σ∫₁^∞ rem(t)·t^{−(σ+1)} dt = −(ζ′/ζ(σ) + 1/(σ−1)) − 1. This follows from LSeries(Λ) = −ζ′/ζ and ∫₁^∞ t^{−σ} dt = 1/(σ−1). The Siegel–Walfisz bound (sw_bound) gives rem = O(t/log² t), which allows dominated convergence to σ = 1 (core_tendsto). The Laurent expansion ζ′/ζ(s) + 1/(s−1) → γ (zeta_logderiv_limit, via g = (s−1)ζ(s) with g(1) = 1 and g′(1) = γ) then gives ∫₁^∞ (ψ(t)−t)/t² dt = −1−γ.",
+        "key_insight": "The constant −1−γ comes from the finite part of the logarithmic derivative of ζ at the pole, without any assumption about zeros. That is why it can calibrate the centering without circular reasoning.",
+        "analogy_anchor": "Abelian summation: matching the σ → 1⁺ limit of a Mellin transform with an improper integral",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The exact form of the Siegel–Walfisz constants (c, C) and the step exp(−c√log t) ≤ 24/(c⁴ log² t)",
+            "The measurability and integrability lemmas (F_measurable, core_integrable)",
+            "The full structure of the Mellin ramp passed through the interface to residues"
+          ],
+          "where_metaphor_breaks": "The first-moment computation concerns only the trivial character modulo 1, the singleton zeta family. It does not bound G_P on windows; that bound comes from the comparison layer."
+        }
+      },
+      "L4": {
+        "title": "Lean Anchors of the Statistic Component",
+        "headline": "Eight declarations at commit 40e56bab026552e089d7afcfeff08d2defb9c005; psi_zero_integral_constant has tier 'checked'.",
+        "explanation": "Formalism.HC.Level.Gm (ExplicitFormulaErrorOfHostConditions.lean:38) and Formalism.HC.ChebyshevInequalityAtWindowScale (TopWin.lean:30–32) are definitions. Formalism.HermitianLattices.GL2a2.PsiZeroConst (PrimeCountAsymptoticInProgressions.lean:18–20) is proved by psi_zero_integral_constant (PsiZeroIntegral.lean:530–531, tier checked), which calls psiZeroConst_main (423–521). That proof relies on sw_bound (279–301), core_tendsto (157–176) and zeta_logderiv_limit (216–277), all with tier covered. Build: Lean 4.33.1, standard axioms propext, Classical.choice and Quot.sound.",
+        "key_insight": "At this level, a declaration name plus a pinned commit is the claim. Nothing beyond the listed statements is asserted.",
+        "analogy_anchor": "src/Formalism/GL3MeanSquares/HookFormulaTorsion/PsiZeroIntegral.lean#L530-L531 @ 40e56ba",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Specification Boundary: the formal statement is only as faithful as the Mathlib definitions it uses (riemannZeta, vonMangoldt, eulerMascheroniConstant, LSeries) and as trustworthy as the Lean kernel and its independent replays. Whether Gm and the window predicate correctly express the intended mathematical statistic is a matter for human mathematical review, which is still ongoing."
+        }
+      }
+    },
+    "pl": {
+      "L0": {
+        "title": "Miernik szumu pierwszego bębna",
+        "headline": "Odejmij rytm, którego się spodziewasz, i słuchaj tylko drżenia, które zostaje.",
+        "explanation": "Wyobraź sobie wielki bęben, w który uderza się w specjalnych chwilach, chwilach pierwszych, i metronom wybijający spokojny, oczekiwany rytm. Miernik gra bęben i metronom razem, tak że oczekiwany rytm całkowicie się znosi i zostaje samo drżenie. Ten sam bęben słucha też przez kilka kolorowych filtrów i dodaje ich drżenia małymi, równymi, nigdy ujemnymi porcjami. Dalsze części maszyny muszą wykazać, że to drżenie pozostaje ciche.",
+        "key_insight": "Nie mierzymy samych liczb pierwszych. Mierzymy, jak bardzo odbiegają od oczekiwanego rytmu, i właśnie to odchylenie musi pozostać małe.",
+        "analogy_anchor": "Bęben grany razem z metronomem i słuchany przez zestaw kolorowych filtrów",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "Wagi von Mangoldta (potęgi liczb pierwszych liczą się z wagą log p)",
+            "Charaktery Dirichleta kryjące się za „kolorowymi filtrami” i dokładna waga 1/(3o+1)",
+            "Wygładzenie rampą i transformata Mellina przekazywana warstwie residuów",
+            "Dokładna stała pierwszego momentu −1−γ"
+          ],
+          "where_metaphor_breaks": "Liczby pierwsze to miejsca na osi liczbowej, a nie chwile w czasie. „Filtry” to charaktery o wartościach zespolonych, a nie barwy dźwięku. „Cicho” nie znaczy „bezgłośnie”: celem jest ograniczenie potęgowe rzędu około √x, a nie zero."
+        }
+      },
+      "L1": {
+        "title": "Wycentrowany sygnał błędu z dodatnim mieszaniem",
+        "headline": "Wyrazy główne znoszą się dokładnie, więc zostaje sam błąd, a każdy skręcony błąd wchodzi z nieujemną wagą.",
+        "explanation": "Statystykę zbudowano tak, że jej wyrazy główne znoszą się dokładnie, więc cała jej wielkość pochodzi wyłącznie z sygnału błędu liczb pierwszych. Kilka skręconych wersji po cyklicznej rodzinie charakterów dodaje się z dodatnimi wagami, więc błędu jednego członka nie da się ukryć przeciwnym błędem drugiego. Wymaganie musi zachodzić na całych oknach skal, a wykładniki strat muszą być stałe, gdy parametr precyzji ε maleje. Jedna kotwica jest udowodniona bez zakładania RH: średni błąd, czyli jego pierwszy moment, ustala się na dokładnej stałej −1−γ, co wyznacza współczynnik liniowego wyrazu centrującego.",
+        "key_insight": "Dokładne centrowanie razem z dodatnimi wagami zamienia „liczby pierwsze zachowują się dobrze” w jedną mierzalną wielkość, która nie może się sama znieść.",
+        "analogy_anchor": "Waga szalkowa wyzerowana dokładnie na oczekiwanym ciężarze, z kilkoma szalkami obciążanymi w tę samą stronę",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Jawny wzór G_P = Gζ + Σ wt·Re(gχ)",
+            "Definicja rodzin związanych (tied) i predykat EFamC",
+            "Mechanizm Mellina i Laurenta, który wylicza stałą −1−γ",
+            "Rola ograniczenia Siegela–Walfisza jako funkcji dominującej"
+          ],
+          "where_metaphor_breaks": "„Nie da się ukryć przez znoszenie” dotyczy tylko zewnętrznych, nieujemnych wag. Każdy skręcony wyraz Re(gχ) może sam być ujemny, a całość trzyma w ryzach dopiero ograniczenie z warstwy porównania."
+        }
+      },
+      "L2": {
+        "title": "Kontrakt statystyki G_P i wymaganie okienkowe",
+        "headline": "Wejście: poziom Λ. Wyjście: G_P(y) i predykat okienkowy, który musi spełnić warstwa porównania.",
+        "explanation": "G_P(y) = Gζ(y) + Σ_{ψ∈Nt} wt(ψ)·Re(gχ(ψ.χ, y)), a na poziomie cyklicznym każdy nietrywialny prymitywny charakter indukujący ma wagę 1/(3o+1). ChebyshevInequalityAtWindowScale(λ, Λ) wymaga stałych eD, eL i ε₁ > 0 takich, że dla każdego 0 < ε < ε₁ istnieje rodzina związana z całymi oknami szerokości λ, spełniająca nierówność Czebyszewa. Wykładniki są jednostajne w ε, a rodzina może zależeć od ε. Kotwica pierwszego momentu to ∫₁^U (ψ(t)−t)/t² dt → −1−γ przy U → ∞, a statystyka trafia do warstwy residuów przez transformatę Mellina (MellinRamp).",
+        "key_insight": "Kolejność kwantyfikatorów ma znaczenie: eD i eL są ustalone przed ε, a od ε może zależeć tylko rodzina Fm.",
+        "analogy_anchor": "Interfejs programistyczny: stały budżet strat (eD, eL) i implementacja rodziny, która może się zmieniać przy każdym ustawieniu precyzji ε",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Wewnętrzne definicje gChi, Gz i wygładzenia rampą",
+            "Struktura Fam/core i predykat ChebyshevInequalityOnFamilyWindows",
+            "Kroki dowodu stałej −1−γ (Mellin, zbieżność zmajoryzowana, Laurent)"
+          ],
+          "where_metaphor_breaks": "Opis „interfejsu” ukrywa fakt, że predykat okienkowy jest stwierdzeniem egzystencjalnym o rodzinach. Nie konstruuje żadnej rodziny; rodziny dostarczają warstwy wyżej w grafie."
+        }
+      },
+      "L3": {
+        "title": "Ważona rampą suma von Mangoldta i pierwszy moment −1−γ",
+        "headline": "Tożsamość Mellina dla σ > 1, ograniczenie reszty Siegela–Walfisza i rozwinięcie Laurenta ζ′/ζ w s = 1 dają stałą bezwarunkową.",
+        "explanation": "Dla rzeczywistego σ > 1: σ∫₁^∞ rem(t)·t^{−(σ+1)} dt = −(ζ′/ζ(σ) + 1/(σ−1)) − 1. Wynika to z LSeries(Λ) = −ζ′/ζ oraz ∫₁^∞ t^{−σ} dt = 1/(σ−1). Ograniczenie Siegela–Walfisza (sw_bound) daje rem = O(t/log² t), co pozwala przejść do σ = 1 zbieżnością zmajoryzowaną (core_tendsto). Rozwinięcie Laurenta ζ′/ζ(s) + 1/(s−1) → γ (zeta_logderiv_limit, przez g = (s−1)ζ(s), gdzie g(1) = 1 i g′(1) = γ) daje następnie ∫₁^∞ (ψ(t)−t)/t² dt = −1−γ.",
+        "key_insight": "Stała −1−γ pochodzi z części skończonej pochodnej logarytmicznej ζ w biegunie, bez żadnych założeń o zerach. Dlatego może kalibrować centrowanie bez błędnego koła.",
+        "analogy_anchor": "Sumowanie abelowe: dopasowanie granicy σ → 1⁺ transformaty Mellina do całki niewłaściwej",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Dokładna postać stałych Siegela–Walfisza (c, C) i krok exp(−c√log t) ≤ 24/(c⁴ log² t)",
+            "Lematy o mierzalności i całkowalności (F_measurable, core_integrable)",
+            "Pełna struktura rampy Mellina przekazywanej interfejsem do residuów"
+          ],
+          "where_metaphor_breaks": "Rachunek pierwszego momentu dotyczy tylko trywialnego charakteru modulo 1, czyli jednoelementowej rodziny dzeta. Nie ogranicza G_P na oknach; to ograniczenie daje warstwa porównania."
+        }
+      },
+      "L4": {
+        "title": "Kotwice Lean komponentu statystyki",
+        "headline": "Osiem deklaracji w commicie 40e56bab026552e089d7afcfeff08d2defb9c005; psi_zero_integral_constant ma poziom „checked”.",
+        "explanation": "Formalism.HC.Level.Gm (ExplicitFormulaErrorOfHostConditions.lean:38) i Formalism.HC.ChebyshevInequalityAtWindowScale (TopWin.lean:30–32) to definicje. Formalism.HermitianLattices.GL2a2.PsiZeroConst (PrimeCountAsymptoticInProgressions.lean:18–20) dowodzi psi_zero_integral_constant (PsiZeroIntegral.lean:530–531, poziom checked), które woła psiZeroConst_main (423–521). Ten dowód opiera się na sw_bound (279–301), core_tendsto (157–176) i zeta_logderiv_limit (216–277), wszystkie z poziomem covered. Kompilacja: Lean 4.33.1, standardowe aksjomaty propext, Classical.choice i Quot.sound.",
+        "key_insight": "Na tym poziomie twierdzeniem jest nazwa deklaracji plus przypięty commit. Nic poza wymienionymi zdaniami nie jest tu twierdzone.",
+        "analogy_anchor": "src/Formalism/GL3MeanSquares/HookFormulaTorsion/PsiZeroIntegral.lean#L530-L531 @ 40e56ba",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Granica specyfikacji: zdanie formalne jest tylko tak wierne, jak używane definicje Mathlib (riemannZeta, vonMangoldt, eulerMascheroniConstant, LSeries), i tylko tak wiarygodne, jak jądro Lean i jego niezależne odtworzenia. Czy Gm i predykat okienkowy poprawnie wyrażają zamierzoną statystykę matematyczną, ocenia ludzka recenzja matematyczna, która wciąż trwa."
+        }
+      }
+    }
+  },
+  "residues": {
+    "pl": {
+      "L0": {
+        "title": "Echo, którego nie da się zagłuszyć",
+        "headline": "Każda ukryta cisza w orkiestrze zostawia w sali głośne echo.",
+        "explanation": "Wyobraź sobie salę koncertową, w której gra kilka orkiestr naraz, a każda trzyma swoje skrzypce delikatnie, ale zawsze dodaje dźwięk, nigdy go nie odejmuje. Jeśli w którejś orkiestrze pojawi się ukryta „dziura” w muzyce, sala odpowiada na nią mocnym, wyraźnym echem. Ponieważ wszyscy tylko dokładają głosu, nikt nie może przypadkiem zagrać „przeciw-echa” i tego echa wygasić.",
+        "key_insight": "Gdy wszyscy tylko dodają, żaden ślad nie zniknie przez przypadkowe znoszenie się.",
+        "analogy_anchor": "Sala koncertowa z echem, w której muzycy mogą tylko dokładać dźwięku.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "Transformata Mellina rampy i jej postać n^{-s}/(s(s-1))",
+            "Zbiór zer rodziny L-funkcji Dirichleta, także zer w punktach sprzężonych",
+            "Pojęcie bieguna i residuum w płaszczyźnie zespolonej",
+            "Kontrola wzrostu funkcji pomocniczych (Gchi_growth)"
+          ],
+          "where_metaphor_breaks": "Prawdziwe echo słabnie z odległością, a biegun jest dokładnym punktem osobliwym funkcji zespolonej; „dziura w muzyce” to zero L-funkcji, a nie brak dźwięku."
+        }
+      },
+      "L1": {
+        "title": "Zero zamienia się w alarm, którego nie da się wyciszyć",
+        "headline": "Dodatnie wagi zamieniają każde zero w nieusuwalny sygnał alarmowy.",
+        "explanation": "Statystyka liczb pierwszych rodziny zostaje przetłumaczona na funkcję w nowej „przestrzeni częstotliwości”, gdzie każde zero dowolnego członka rodziny staje się ostrym pikiem — biegunem. Siła tego piku jest sumą wkładów z dodatnimi wagami, więc nie może się wyzerować przez wzajemne znoszenie. To zamyka drogę ucieczki: zero nie może się schować, zawsze zostawia mierzalny ślad przekazywany dalej do kryterium.",
+        "key_insight": "Dodatniość wag to bezpiecznik: zamienia istnienie zera w gwarantowany, niezerowy sygnał.",
+        "analogy_anchor": "System alarmowy, w którym czujniki mogą tylko podnosić poziom alarmu, nigdy go obniżać.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Jawny wzór transformaty rampy n^{-s}/(s(s-1))",
+            "Składanie danych biegunowych osobno dla χ_i i χ_i^{-1} (warunek dopuszczalności)",
+            "Warunki izolacji biegunów i całkowalności w PoleData",
+            "Ograniczenie Re(ρ) > 0 w definicji zbioru zer"
+          ],
+          "where_metaphor_breaks": "Alarm to jedna wielkość, a tu każde zero daje osobny biegun z własnym residuum; „niezerowość” jest twierdzeniem o dodatniości S(ρ), a nie o głośności."
+        }
+      },
+      "L2": {
+        "title": "Producent kontraktu PoleData",
+        "headline": "Wejście: skończona rodzina charakterów; wyjście: transformata Φ z danymi biegunowymi na zbiorze zer.",
+        "explanation": "Interfejs wejściowy (MellinRamp) daje transformatę rampy n^{-s}/(s(s-1)); komponent składa transformaty pojedynczych charakterów χ_i oraz χ_i^{-1} w jedną funkcję Φ dla statystyki gm F. Kontrakt wyjściowy: istnieje Φ spełniające PoleData (gm F) Φ (zeroSet F), gdzie zeroSet to punkty z Re > 0, w których znika L(χ_i, ρ) lub L(χ_i, sprzężenie ρ). Inwariant przekazywany do kryterium to S(ρ) > 0 — residuum każdego bieguna jest niezerowe dzięki dodatnim wagom.",
+        "key_insight": "Komponent nie dowodzi braku zer; gwarantuje jedynie, że każde zero zostanie przekształcone w wykrywalny biegun z dodatnim residuum.",
+        "analogy_anchor": "Moduł konwersji sygnału: zdarzenia w dziedzinie zer → piki z gwarantowaną amplitudą w dziedzinie transformaty.",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Dokładne pola struktury PoleData (całkowalność, analityczność, bieguny, izolacja)",
+            "Szczegóły lematu poleData_char dla pojedynczego charakteru",
+            "Rola stałych wzrostu z Gchi_growth",
+            "Dowód równoważności symetrii przez sprzężenie (hconj)"
+          ],
+          "where_metaphor_breaks": "Język „modułu konwersji” sugeruje algorytm; w rzeczywistości to twierdzenie egzystencjalne (∃ Φ), bez obliczalnej procedury wyznaczania biegunów."
+        }
+      },
+      "L3": {
+        "title": "Dodatnie residua transformaty Mellina rampy",
+        "headline": "Mellin rampy daje n^{-s}/(s(s-1)); zera L(χ_i, ·) stają się biegunami Φ o residuach, których nie można skasować.",
+        "explanation": "Dla skończonej rodziny F z dopuszczalnością (N_i = 1 lub χ_i ≠ 1, dziedziczoną przez χ_i^{-1}) dowód wybiera z poleData_char funkcje Φ1, Φ2 dla χ_i i χ_i^{-1} wraz z całkowalnością, analitycznością, biegunami i izolacją, a wzrost kontroluje Gchi_growth. Zbiór zer to {ρ : Re ρ > 0, ∃ i, L(χ_i, ρ) = 0 ∨ L(χ_i, ρ̄) = 0}, a symetria sprzężenia (hconj) pozwala złożyć obie połówki. Dodatniość wag rodziny gwarantuje, że współczynnik bieguna S(ρ) > 0, co jest dokładnie przesłanką lokalizowanego twierdzenia Landaua.",
+        "key_insight": "Dodatniość współczynników przenosi argument typu Landaua (dodatnie szeregi Dirichleta) na skończone rodziny charakterów: brak kasowania residuów.",
+        "analogy_anchor": "Klasyczny mechanizm Landaua: osobliwość transformaty o nieujemnych współczynnikach nie może się ukryć.",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Pełny dowód poleData poza liniami 248–259 i lematy pomocnicze",
+            "Formalna definicja gm F oraz wag rodziny CharFamily",
+            "Dokładne oszacowania z Gchi_growth i warunki izolacji"
+          ],
+          "where_metaphor_breaks": "Opis „residuum S(ρ) > 0” streszcza strukturę PoleData; dokładną postać pola pole i krotności biegunów rozstrzyga dopiero deklaracja Lean, nie ten opis."
+        }
+      },
+      "L4": {
+        "title": "Deduction.poleData",
+        "headline": "theorem poleData (F : CharFamily) : ∃ Φ : ℂ → ℂ, PoleData (gm F) Φ (zeroSet F)",
+        "explanation": "Moduł Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.poleData, linie 248–259, commit 40e56bab026552e089d7afcfeff08d2defb9c005, Lean 4.33.1; węzeł „pole”, rodzaj producer, tier checked. Dowód używa classical, poleData_char dla χ_i i χ_i^{-1}, Gchi_growth oraz przepisania zeroSet.eq_1; interfejs wejściowy MellinRamp (MellinRamp.lean#L10-L32), wyjściowy if-10-residues-to-criterion. Zadeklarowane aksjomaty: propext, Classical.choice, Quot.sound.",
+        "key_insight": "Twierdzenie jest egzystencjalne i sprawdzone przez kernel; jest jedynym producentem PoleData dla kryterium okna.",
+        "analogy_anchor": "https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/poleData.lean#L248-L259",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Granica formalizacji: poprawność zależy od zaufania do kernela Lean (i niezależnych re-weryfikatorów), od zgodności definicji Mathlib (DirichletCharacter.LFunction, PoleData) z intencją matematyczną oraz od trwającej ludzkiej recenzji matematycznej; tier „checked” nie zastępuje tej recenzji."
+        }
+      }
+    },
+    "en": {
+      "L0": {
+        "title": "An echo nobody can silence",
+        "headline": "Every hidden silence in the orchestra leaves a loud echo in the hall.",
+        "explanation": "Picture a concert hall where several orchestras play at once, and every musician may only add sound, never take it away. If one orchestra hides a tiny “hole” in its music, the hall answers with a strong, clear echo. Because everyone only adds, nobody can accidentally play an “anti-echo” to cancel it.",
+        "key_insight": "When everyone only adds, no trace can vanish by accidental cancelling.",
+        "analogy_anchor": "A concert hall with echoes, where musicians can only add sound.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "The Mellin transform of a ramp and its form n^{-s}/(s(s-1))",
+            "The zero set of the family of Dirichlet L-functions, including conjugate zeros",
+            "The notion of a pole and a residue in the complex plane",
+            "Growth control of the auxiliary functions (Gchi_growth)"
+          ],
+          "where_metaphor_breaks": "A real echo fades with distance, while a pole is an exact singular point of a complex function; the “hole in the music” is a zero of an L-function, not an absence of sound."
+        }
+      },
+      "L1": {
+        "title": "A zero becomes an alarm that cannot be muted",
+        "headline": "Positive weights turn every zero into an unremovable alarm signal.",
+        "explanation": "The family's prime statistic is translated into a function on a new “frequency space”, where every zero of any family member becomes a sharp spike — a pole. The spike's strength is a sum of contributions with positive weights, so it cannot be cancelled out. This closes an escape route: a zero cannot hide, it always leaves a measurable trace that is passed on to the criterion.",
+        "key_insight": "Positivity of the weights is the safety catch: it turns the existence of a zero into a guaranteed nonzero signal.",
+        "analogy_anchor": "An alarm system whose sensors can only raise the alarm level, never lower it.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The explicit ramp transform n^{-s}/(s(s-1))",
+            "Assembling pole data separately for χ_i and χ_i^{-1} (admissibility condition)",
+            "Isolation and integrability conditions inside PoleData",
+            "The restriction Re(ρ) > 0 in the zero-set definition"
+          ],
+          "where_metaphor_breaks": "An alarm is one quantity, but here each zero yields its own pole with its own residue; “nonzero” is a statement about positivity of S(ρ), not about loudness."
+        }
+      },
+      "L2": {
+        "title": "Producer of the PoleData contract",
+        "headline": "Input: a finite character family; output: a transform Φ with pole data on the zero set.",
+        "explanation": "The input interface (MellinRamp) supplies the ramp transform n^{-s}/(s(s-1)); this component assembles transforms of the individual characters χ_i and χ_i^{-1} into one function Φ for the statistic gm F. Output contract: there exists Φ with PoleData (gm F) Φ (zeroSet F), where zeroSet is the set of points with Re > 0 at which L(χ_i, ρ) or L(χ_i, conj ρ) vanishes. The invariant handed to the criterion is S(ρ) > 0 — every pole's residue is nonzero thanks to positive weights.",
+        "key_insight": "This component does not prove zero-freeness; it only guarantees that every zero is converted into a detectable pole with positive residue.",
+        "analogy_anchor": "A signal-conversion module: events in the zero domain → spikes of guaranteed amplitude in the transform domain.",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The exact fields of the PoleData structure (integrability, analyticity, poles, isolation)",
+            "Details of the per-character lemma poleData_char",
+            "The role of the growth constants from Gchi_growth",
+            "The proof of conjugation symmetry (hconj)"
+          ],
+          "where_metaphor_breaks": "“Conversion module” suggests an algorithm; in fact this is an existence theorem (∃ Φ), with no computable procedure for locating poles."
+        }
+      },
+      "L3": {
+        "title": "Positive residues of the Mellin-transformed ramp",
+        "headline": "The ramp's Mellin transform is n^{-s}/(s(s-1)); zeros of L(χ_i, ·) become poles of Φ whose residues cannot be cancelled.",
+        "explanation": "For a finite family F with admissibility (N_i = 1 or χ_i ≠ 1, inherited by χ_i^{-1}), the proof chooses from poleData_char functions Φ1, Φ2 for χ_i and χ_i^{-1} together with integrability, analyticity, pole and isolation data, while Gchi_growth controls growth. The zero set is {ρ : Re ρ > 0, ∃ i, L(χ_i, ρ) = 0 ∨ L(χ_i, ρ̄) = 0}, and conjugation symmetry (hconj) lets the two halves be combined. Positivity of the family weights guarantees the pole coefficient S(ρ) > 0, exactly the premise of the localized Landau theorem.",
+        "key_insight": "Positive coefficients transfer a Landau-type argument (nonnegative Dirichlet series) to finite character families: residues cannot cancel.",
+        "analogy_anchor": "Landau's classical mechanism: a singularity of a transform with nonnegative coefficients cannot hide.",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The full poleData proof beyond lines 248–259 and its auxiliary lemmas",
+            "The formal definition of gm F and of CharFamily weights",
+            "Exact Gchi_growth bounds and isolation conditions"
+          ],
+          "where_metaphor_breaks": "“Residue S(ρ) > 0” summarizes the PoleData structure; the exact form of the pole field and pole multiplicities are settled only by the Lean declaration, not by this description."
+        }
+      },
+      "L4": {
+        "title": "Deduction.poleData",
+        "headline": "theorem poleData (F : CharFamily) : ∃ Φ : ℂ → ℂ, PoleData (gm F) Φ (zeroSet F)",
+        "explanation": "Module Development.AutomorphicArithmetic.DedekindLFunctions.LandauTheorems.poleData, lines 248–259, commit 40e56bab026552e089d7afcfeff08d2defb9c005, Lean 4.33.1; node “pole”, kind producer, tier checked. The proof uses classical, poleData_char for χ_i and χ_i^{-1}, Gchi_growth and a rewrite by zeroSet.eq_1; input interface MellinRamp (MellinRamp.lean#L10-L32), output if-10-residues-to-criterion. Declared axioms: propext, Classical.choice, Quot.sound.",
+        "key_insight": "The theorem is existential and kernel-checked; it is the sole producer of PoleData for the window criterion.",
+        "analogy_anchor": "https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/poleData.lean#L248-L259",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Formalization Gap: correctness rests on trust in the Lean kernel (and independent re-checkers), on Mathlib definitions (DirichletCharacter.LFunction, PoleData) matching mathematical intent, and on ongoing human mathematical peer review; the “checked” tier does not replace that review."
+        }
+      }
+    }
+  },
+  "criterion": {
+    "pl": {
+      "L0": {
+        "title": "Cichy pokój zdradza, że nie ma bębna",
+        "headline": "Jeśli w późnych godzinach w pokoju jest zawsze cicho, nikt tam nie gra na wielkim bębnie.",
+        "explanation": "Ukryty bęben, gdyby istniał, z czasem grałby coraz głośniej i jego dudnienie musiałoby w końcu przebić się przez ściany. Jeśli więc za każdym razem, gdy zaglądamy bardzo późno — i to przez dłuższą chwilę — hałas jest poniżej pewnego poziomu, to tak głośnego bębna tam nie ma. Nie musimy słuchać przez całą noc, wystarczą coraz późniejsze, wystarczająco długie okienka ciszy.",
+        "key_insight": "Wystarczy sprawdzać ciszę w coraz późniejszych okienkach, by wykluczyć ukryte głośne źródło.",
+        "analogy_anchor": "Nasłuchiwanie bębna zza ściany w późnych godzinach nocy.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "Okna [Y, Y^{1+δ}] i ograniczenie C·y^θ sumy po liczbach pierwszych",
+            "Dane biegunowe z komponentu residues i dodatniość S(ρ)",
+            "Argument wysokich pochodnych w landau_window",
+            "Osobny przypadek Re(s) ≥ 1"
+          ],
+          "where_metaphor_breaks": "„Głośność bębna” to część rzeczywista zera ρ, a nie natężenie dźwięku; ponadto warunek ciszy nie jest tu sprawdzany, lecz zakładany — dostarcza go dalsza część maszyny."
+        }
+      },
+      "L1": {
+        "title": "Lokalne okna zamiast wiecznej obserwacji",
+        "headline": "Jednostronna górna granica w coraz późniejszych oknach wyklucza zera na prawo od θ.",
+        "explanation": "Biegun z dodatnim residuum (z poprzedniego komponentu) wymusza, że statystyka liczb pierwszych musi czasem rosnąć szybciej niż y^θ, jeśli zero leży na prawo od θ. Kryterium odwraca to napięcie: gdy w dowolnie późnych oknach statystyka pozostaje pod pułapem C·y^θ, takie zero nie może istnieć. Kluczowe jest to, że wystarcza granica tylko z góry i tylko w oknach — to „zlokalizowany Landau”.",
+        "key_insight": "Dodatniość zamienia jednostronną, lokalną kontrolę wzrostu w globalny zakaz zer.",
+        "analogy_anchor": "Kontrola przepływu: jeśli w szczytowych okresach rura nigdy nie przekracza pułapu, nie ma ukrytego źródła ciśnienia.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Dokładny kształt okna [Y, Y^{1+δ}] i parametr δ = λ − 1",
+            "Mechanizm wysokich pochodnych i dychotomia najbliższego bieguna",
+            "Przekład poziomu Λ na rodzinę charakterów (level_family)",
+            "Warunki 0 < θ < 1"
+          ],
+          "where_metaphor_breaks": "Rura sugeruje fizyczny przepływ i ciągłą obserwację; tu hipoteza okna jest założeniem logicznym, a wniosek dotyczy położenia zer w płaszczyźnie zespolonej."
+        }
+      },
+      "L2": {
+        "title": "Kontrakt kryterium okna: WindowHyp ⇒ ZeroFree",
+        "headline": "Wejście: PoleData + górna granica w dowolnie późnych oknach; wyjście: ZeroFree F θ dla każdego poziomu.",
+        "explanation": "Parametry: 0 < θ < 1, δ > 0 (na poziomie λ > 1 z δ = λ − 1, C = 1); hipoteza: dla każdego Y₀ istnieje Y ≥ Y₀ z Gm F y ≤ C·y^θ dla y ∈ [Y, Y^{1+δ}]. Łańcuch: formB (poziom → rodzina) → zeroFree_of_rpow_window (granica potęgowa → WindowHyp) → lemmaL (PoleData + rozdział na Re s ≥ 1 i pas) → landau_window (wykluczenie bieguna na prawo od θ). Wyjście if-11 dostarcza kryterium na każdym poziomie do komponentu choreography.",
+        "key_insight": "Komponent jest czysto redukcyjny: nie dowodzi granicy okna, tylko przekształca ją w brak zer.",
+        "analogy_anchor": "Łańcuch reduktorów typu: Level → CharFamily → WindowHyp → PoleData-obstruction → ZeroFree.",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Treść lematów landau_window_key, landau_dichotomy, landau_nearest",
+            "Konwersje windowHyp_of_rpow i windowHypU_of_windowHyp",
+            "Definicje ZeroFree, WindowHyp, WindowHypU i Level.FormB",
+            "Dowód charFamily_LFunction_ne_zero_of_one_le_re"
+          ],
+          "where_metaphor_breaks": "Notacja potoku sugeruje wykonanie sekwencyjne; w rzeczywistości to kompozycja implikacji, a „wyjście” istnieje tylko warunkowo — przy hipotezie okna dostarczonej z zewnątrz."
+        }
+      },
+      "L3": {
+        "title": "Zlokalizowane twierdzenie Landaua w oknach potęgowych",
+        "headline": "Dodatnia rodzina z Gm F y ≤ C·y^θ na dowolnie późnych [Y, Y^{1+δ}] nie ma zer L-funkcji z Re s > θ.",
+        "explanation": "landau_window: przy PoleData g Φ Z i WindowHypU g θ δ, zakładając ρ₀ ∈ Z z Re ρ₀ > θ, landau_window_key daje σ i stałą C; landau_dichotomy (z izolacji) prowadzi albo do najbliższego bieguna (landau_nearest) na pionowej prostej z = σ + iγ, albo do bieguna rzeczywistego β — w obu przypadkach wysokie pochodne Φ wynikające z bieguna o dodatnim residuum przeczą granicy okna. lemmaL składa to z poleData i dla Re s ≥ 1 używa niezależnego braku zer; zeroFree_of_rpow_window przekształca granicę potęgową, a formB stosuje ją do poziomu przez level_family z δ = λ − 1, C = 1.",
+        "key_insight": "Klasyczny Landau wymaga kontroli dla wszystkich x; tutaj dodatniość residuów i wysokie pochodne pozwalają ograniczyć się do okien [Y, Y^{1+δ}].",
+        "analogy_anchor": "Twierdzenie Landaua o osobliwości szeregów Dirichleta o nieujemnych współczynnikach, w wersji lokalnej.",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Pełne dowody landau_window_key i obu gałęzi dychotomii poza liniami 83–95",
+            "Dokładne oszacowania pochodnych i zależność stałych od σ, δ",
+            "Konstrukcja level_family i równości hG, hZ"
+          ],
+          "where_metaphor_breaks": "Opis „wysokie pochodne przeczą granicy okna” streszcza argument; dokładne nierówności i wybór rzędu pochodnych są w Lean, a nie w tym streszczeniu."
+        }
+      },
+      "L4": {
+        "title": "Łańcuch formB → zeroFree_of_rpow_window → lemmaL → landau_window",
+        "headline": "theorem zeroFree_of_rpow_window (F : CharFamily) {θ δ C : ℝ} (hθ : 0 < θ) (hθ1 : θ < 1) (hδ : 0 < δ) (h : …) : ZeroFree F θ",
+        "explanation": "Węzły przy commicie 40e56bab026552e089d7afcfeff08d2defb9c005, Lean 4.33.1: UpperTheory.Comparison₂.formB (PrimitiveCosets/Imports.lean L8–L19, reducer, covered), Deduction.zeroFree_of_rpow_window (LandauTheorems/ZeroFreeOfRpowWindow.lean L11–L14, reducer, checked), Deduction.lemmaL (LandauTheorems/lemmaL.lean L13–L22, reducer, covered), Deduction.landau_window (LandauTheorems/landauWindow.lean L83–L95, reducer, covered). Wejście if-10 (Deduction.poleData), wyjście if-11 do choreography (zeroFree_of_rpow_window). Zadeklarowane aksjomaty: propext, Classical.choice, Quot.sound.",
+        "key_insight": "Wszystkie cztery węzły są reduktorami; kryterium jest implikacją, której przesłankę (granicę okna) musi dostarczyć dalszy etap.",
+        "analogy_anchor": "https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/ZeroFreeOfRpowWindow.lean#L11-L14",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Granica formalizacji: wynik zależy od zaufania do kernela Lean (i niezależnych re-weryfikatorów), od zgodności definicji Mathlib i lokalnych (ZeroFree, WindowHyp, Level.FormB) z intencją matematyczną oraz od trwającej ludzkiej recenzji; tiery „checked” i „covered” są etykietami z IR, a nie werdyktem recenzji, i kryterium samo nie dowodzi żadnej granicy okna."
+        }
+      }
+    },
+    "en": {
+      "L0": {
+        "title": "A quiet room means there is no drum",
+        "headline": "If the room is always quiet late at night, nobody is playing a big drum in there.",
+        "explanation": "A hidden drum, if it existed, would get louder and louder over time, and its booming would eventually have to come through the walls. So if every time we listen very late — and for a good long while — the noise stays below a certain level, such a loud drum is not there. We do not have to listen all night; ever-later, long-enough windows of quiet are enough.",
+        "key_insight": "Checking for quiet in ever-later windows is enough to rule out a hidden loud source.",
+        "analogy_anchor": "Listening for a drum through the wall late at night.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "The windows [Y, Y^{1+δ}] and the bound C·y^θ on the prime sum",
+            "Pole data from the residues component and positivity of S(ρ)",
+            "The high-derivative argument in landau_window",
+            "The separate case Re(s) ≥ 1"
+          ],
+          "where_metaphor_breaks": "The drum's “loudness” is the real part of a zero ρ, not sound intensity; moreover the quiet condition is not checked here but assumed — a later part of the machine must supply it."
+        }
+      },
+      "L1": {
+        "title": "Local windows instead of eternal watching",
+        "headline": "A one-sided upper bound on ever-later windows rules out zeros to the right of θ.",
+        "explanation": "A pole with positive residue (from the previous component) forces the prime statistic to sometimes grow faster than y^θ if a zero lies to the right of θ. The criterion turns this tension around: if the statistic stays under the ceiling C·y^θ in arbitrarily late windows, such a zero cannot exist. The key point is that a bound only from above and only on windows suffices — a “localized Landau”.",
+        "key_insight": "Positivity turns one-sided, local growth control into a global ban on zeros.",
+        "analogy_anchor": "Flow control: if a pipe never exceeds its ceiling during peak periods, there is no hidden pressure source.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The exact window shape [Y, Y^{1+δ}] and the parameter δ = λ − 1",
+            "The high-derivative mechanism and the nearest-pole dichotomy",
+            "Translation of a level Λ into a character family (level_family)",
+            "The conditions 0 < θ < 1"
+          ],
+          "where_metaphor_breaks": "A pipe suggests physical flow and continuous monitoring; here the window hypothesis is a logical assumption and the conclusion concerns where zeros sit in the complex plane."
+        }
+      },
+      "L2": {
+        "title": "The window-criterion contract: WindowHyp ⇒ ZeroFree",
+        "headline": "Input: PoleData + an upper bound on arbitrarily late windows; output: ZeroFree F θ at every level.",
+        "explanation": "Parameters: 0 < θ < 1, δ > 0 (at level λ > 1 with δ = λ − 1, C = 1); hypothesis: for every Y₀ there is Y ≥ Y₀ with Gm F y ≤ C·y^θ for y ∈ [Y, Y^{1+δ}]. Chain: formB (level → family) → zeroFree_of_rpow_window (power bound → WindowHyp) → lemmaL (PoleData + split into Re s ≥ 1 and the strip) → landau_window (exclude a pole right of θ). Output if-11 delivers the criterion at each level to the choreography component.",
+        "key_insight": "This component is purely reductive: it does not prove the window bound, it only converts it into zero-freeness.",
+        "analogy_anchor": "A chain of type reducers: Level → CharFamily → WindowHyp → PoleData obstruction → ZeroFree.",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The content of landau_window_key, landau_dichotomy, landau_nearest",
+            "The conversions windowHyp_of_rpow and windowHypU_of_windowHyp",
+            "Definitions of ZeroFree, WindowHyp, WindowHypU and Level.FormB",
+            "The proof of charFamily_LFunction_ne_zero_of_one_le_re"
+          ],
+          "where_metaphor_breaks": "Pipeline notation suggests sequential execution; in fact this is a composition of implications, and the “output” exists only conditionally — given a window hypothesis supplied from outside."
+        }
+      },
+      "L3": {
+        "title": "A localized Landau theorem on power windows",
+        "headline": "A positive family with Gm F y ≤ C·y^θ on arbitrarily late [Y, Y^{1+δ}] has no L-function zeros with Re s > θ.",
+        "explanation": "landau_window: given PoleData g Φ Z and WindowHypU g θ δ, assuming ρ₀ ∈ Z with Re ρ₀ > θ, landau_window_key yields σ and a constant C; landau_dichotomy (from isolation) leads either to a nearest pole (landau_nearest) on the vertical line z = σ + iγ or to a real pole β — in both cases high derivatives of Φ forced by a positive-residue pole contradict the window bound. lemmaL assembles this with poleData and uses independent nonvanishing for Re s ≥ 1; zeroFree_of_rpow_window converts the power bound, and formB applies it to a level via level_family with δ = λ − 1, C = 1.",
+        "key_insight": "Classical Landau needs control for all x; here positive residues plus high derivatives allow restricting to windows [Y, Y^{1+δ}].",
+        "analogy_anchor": "Landau's theorem on singularities of Dirichlet series with nonnegative coefficients, in localized form.",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Full proofs of landau_window_key and both dichotomy branches beyond lines 83–95",
+            "Exact derivative estimates and dependence of constants on σ, δ",
+            "The construction of level_family and the equalities hG, hZ"
+          ],
+          "where_metaphor_breaks": "“High derivatives contradict the window bound” summarizes the argument; the exact inequalities and choice of derivative order live in Lean, not in this summary."
+        }
+      },
+      "L4": {
+        "title": "Chain formB → zeroFree_of_rpow_window → lemmaL → landau_window",
+        "headline": "theorem zeroFree_of_rpow_window (F : CharFamily) {θ δ C : ℝ} (hθ : 0 < θ) (hθ1 : θ < 1) (hδ : 0 < δ) (h : …) : ZeroFree F θ",
+        "explanation": "Nodes at commit 40e56bab026552e089d7afcfeff08d2defb9c005, Lean 4.33.1: UpperTheory.Comparison₂.formB (PrimitiveCosets/Imports.lean L8–L19, reducer, covered), Deduction.zeroFree_of_rpow_window (LandauTheorems/ZeroFreeOfRpowWindow.lean L11–L14, reducer, checked), Deduction.lemmaL (LandauTheorems/lemmaL.lean L13–L22, reducer, covered), Deduction.landau_window (LandauTheorems/landauWindow.lean L83–L95, reducer, covered). Input if-10 (Deduction.poleData), output if-11 to choreography (zeroFree_of_rpow_window). Declared axioms: propext, Classical.choice, Quot.sound.",
+        "key_insight": "All four nodes are reducers; the criterion is an implication whose premise (the window bound) must be supplied downstream.",
+        "analogy_anchor": "https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/ZeroFreeOfRpowWindow.lean#L11-L14",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Formalization Gap: the result rests on trust in the Lean kernel (and independent re-checkers), on Mathlib and local definitions (ZeroFree, WindowHyp, Level.FormB) matching mathematical intent, and on ongoing human peer review; the “checked”/“covered” tiers are IR labels, not a review verdict, and the criterion itself proves no window bound."
+        }
+      }
+    }
+  },
+  "choreography": {
+    "en": {
+      "L0": {
+        "title": "The order of choices",
+        "headline": "First the rules, then the suspect note, then the microphone.",
+        "explanation": "An orchestra writes down how much hiss each instrument adds before anyone plays. When someone thinks they hear a wrong note above the middle line, the conductor picks a listening window between the middle line and that note, and only then picks a microphone sharp enough for that window. A perfect microphone with zero hiss is never needed, because every choice is made after the note it has to catch.",
+        "key_insight": "What matters is the order: each choice waits for the thing it depends on.",
+        "analogy_anchor": "A conductor who fixes the rules, hears the note, then tunes the microphone",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "The quantifier order (loss exponents, then the zero, then θ, then ε) as a logical statement, not a sequence in time",
+            "The window width λ = 3/2 and the arithmetic window bounds G_P ≤ x^(½+9ε)",
+            "The level structure: primitive characters, their cyclic levels, and the analytic criterion applied at each level"
+          ],
+          "where_metaphor_breaks": "Nobody hears a real wrong note. The proof takes an arbitrary point with real part above ½ and shows there is no zero there. The 'order in time' is really an order of logical quantifiers."
+        }
+      },
+      "L1": {
+        "title": "Choosing in the right order",
+        "headline": "Constants come first, the target second, and the precision last, so the bound never has to hold in the limit.",
+        "explanation": "The bounds coming from arithmetic lose a little: their exponent is ½ plus a fixed multiple of a small slack ε. Given a candidate zero at height β > ½, you place a threshold θ strictly between ½ and β, then shrink ε until the loss stays below θ. The analytic criterion then excludes the zero. Because ε is picked only after the zero, no bound with exactly zero slack is ever needed.",
+        "key_insight": "Picking ε after the zero turns a limit you could never reach into a strict gap you can always fit inside.",
+        "analogy_anchor": "Tightening a tolerance only once you know how much room the target leaves",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The concrete choice θ = ½ + min(Re s − ½, ½)/2 used in the formal proof",
+            "The hypotheses TopG, VWin, Green and the definite-side package, which supply the window bounds",
+            "How the family Fm and its tied-chain structure are extracted for each ε"
+          ],
+          "where_metaphor_breaks": "'Shrinking ε' suggests a continuous process. Formally ε is picked once, by an existence lemma (exists_small_eps). There is no iteration and no limit."
+        }
+      },
+      "L2": {
+        "title": "Parameter choreography as an interface contract",
+        "headline": "Input: window bounds plus a per-level criterion. Output: ZeroFreeAll for primitive characters.",
+        "explanation": "Inputs are the uniform arithmetic window bounds G_P ≤ x^(½+9ε) on windows (from comparison) and an analytic criterion at each level (from criterion). The fixed window width is λ = 3/2 > 1. For each primitive ψ the proof works at its cyclic level: it takes the loss exponents (eD, eL, ε₁), then a point s with Re s > ½, then a margin derived from Re s − ½, then ε small relative to that margin. Output is ZeroFreeAll, which goes to descent.",
+        "key_insight": "Fixed: λ and the loss exponents. Chosen per point: θ and ε. No step needs the case ε = 0.",
+        "analogy_anchor": "A pipeline where the tolerance stage reads its threshold from the measurement stage",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The internal proofs of level_gm_le_on_family_scales and formB, which are consumed here as black boxes",
+            "The structure of Level, KEPT membership and the windows_iff reformulation",
+            "Where Green, VWin and HypsAlt come from; they enter as hypotheses and are not proved in this component"
+          ],
+          "where_metaphor_breaks": "The 'pipeline' is a chain of implications, not running code. The output ZeroFreeAll is conditional on the hypotheses Green, VWin and a nonempty definite-side package, which this component does not discharge."
+        }
+      },
+      "L3": {
+        "title": "Quantifier order: loss exponents, zero, θ, ε",
+        "headline": "Given β > ½, take θ ∈ (½, β), then ε with ½ + 9ε ≤ θ. A Landau-type window criterion rules out the zero.",
+        "explanation": "For each primitive ψ at its cyclic level, TopG (with λ = 3/2 and host supply HostExW from VWin) gives loss exponents eD, eL and ε₁, plus, for every small ε, a tied family Fm satisfying the Chebyshev-type inequality on windows at scale λ. The rpow-window criterion with exponent θ < Re s, via FormB, then gives L(ψ, s) ≠ 0. The bound is only ever used with ε > 0, at an exponent strictly below Re s.",
+        "key_insight": "Strict separation ½ + O(ε) < θ < β, with ε chosen last, is all the criterion needs; the endpoint ε = 0 never comes up.",
+        "analogy_anchor": "The classical move of fitting a strict gap between the error exponent and the real part of the zero",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The exact constant in Lean (eD + eL + 7 in exists_small_eps), compared with the 9ε in the gist",
+            "The proofs of TopG, VWin and the upstream comparison bounds, which are taken as inputs",
+            "The internal statement of ChebyshevInequalityOnWindows and FormBAt"
+          ],
+          "where_metaphor_breaks": "The gist's '½ + 9ε ≤ θ' is a readable summary. The formal proof uses its own combination of loss exponents and θ = ½ + min(Re s − ½, ½)/2, so the constant 9 is not literally the Lean constant."
+        }
+      },
+      "L4": {
+        "title": "Lean anchors: TopPlug, ZeroFreeAllOfTopG, TopWin",
+        "headline": "zero_free_all_of_green_v_win → zeroFreeAll_of_topG (la := 3/2) → zeroFreeOn_of_tiedWin_cyc → zeroFreeOn_of_tiedWin → level_of_tiedWin.",
+        "explanation": "UpperTheory.Top.zero_free_all_of_green_v_win (TopPlug.lean L12–15, tier read) eliminates the Nonempty HypsAlt package and calls UpperTheory.Top.zeroFreeAll_of_topG with la := 3/2 (ZeroFreeAllOfTopG.lean L26–34, tier checked). That calls Formalism.HC.zeroFreeOn_of_tiedWin_cyc (TopWin.lean L90–93) and zeroFreeOn_of_tiedWin (L83–88), which finish in level_of_tiedWin (L68–81, all three tier covered). In level_of_tiedWin, ε comes from exists_small_eps (eD + eL + 7) (half_pos hm0), and hB is applied at θ = 1/2 + min (s.re − 1/2) (1/2) / 2. Pinned at commit 40e56bab026552e089d7afcfeff08d2defb9c005, Lean 4.33.1. The axiom footprint is pinned as propext, Classical.choice and Quot.sound.",
+        "key_insight": "The choice order is checked by the kernel: ε is obtained inside the proof after s, so the code never mentions ε = 0.",
+        "analogy_anchor": "Formalism.HC.level_of_tiedWin, TopWin.lean#L68-L81",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Formalization gap and specification boundary: what is checked is an implication. Green, VWin and Nonempty HypsAlt are binders, not theorems proved here. Two nodes are only tier 'read'. Trust rests on the Lean kernel, any independent replay, and Mathlib's definitions of DirichletCharacter.LFunction. Human mathematical peer review of the whole argument is still ongoing."
+        }
+      }
+    },
+    "pl": {
+      "L0": {
+        "title": "Kolejność wyborów",
+        "headline": "Najpierw zasady, potem podejrzana nuta, na końcu mikrofon.",
+        "explanation": "Orkiestra zapisuje, ile szumu dodaje każdy instrument, zanim ktokolwiek zagra. Gdy ktoś słyszy nutę, która brzmi za wysoko nad środkową linią, dyrygent wybiera okno słuchania między tą linią a nutą i dopiero wtedy dobiera mikrofon, który w tym oknie ją wyłapie. Idealny mikrofon bez szumu nie jest nigdy potrzebny, bo każdy wybór zapada po tym, co ma złapać.",
+        "key_insight": "Liczy się kolejność: każdy wybór czeka na to, od czego zależy.",
+        "analogy_anchor": "Dyrygent, który ustala zasady, słucha nuty, a potem stroi mikrofon",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "Kolejność kwantyfikatorów (wykładniki strat, potem zero, potem θ, potem ε) jako zdanie logiczne, a nie przebieg w czasie",
+            "Szerokość okna λ = 3/2 i arytmetyczne oszacowania G_P ≤ x^(½+9ε) na oknach",
+            "Struktura poziomów: charaktery prymitywne, ich poziomy cykliczne i kryterium analityczne stosowane na każdym poziomie"
+          ],
+          "where_metaphor_breaks": "Nikt nie słyszy prawdziwej fałszywej nuty. Dowód bierze dowolny punkt o części rzeczywistej większej niż ½ i pokazuje, że nie ma tam zera. „Kolejność w czasie” to w istocie kolejność kwantyfikatorów logicznych."
+        }
+      },
+      "L1": {
+        "title": "Wybieranie we właściwej kolejności",
+        "headline": "Najpierw stałe, potem cel, na końcu precyzja, więc oszacowanie nigdy nie musi zachodzić w granicy.",
+        "explanation": "Oszacowania z arytmetyki trochę tracą: ich wykładnik to ½ plus stała wielokrotność małego luzu ε. Dla kandydata na zero na wysokości β > ½ ustawia się próg θ ściśle między ½ a β, a potem zmniejsza ε, aż strata zejdzie poniżej θ. Kryterium analityczne wtedy wyklucza to zero. Ponieważ ε wybiera się dopiero po zerze, oszacowanie z luzem równym zeru nigdy nie jest potrzebne.",
+        "key_insight": "Wybór ε po zerze zamienia nieosiągalną granicę w ścisłą lukę, w której zawsze da się zmieścić.",
+        "analogy_anchor": "Zaciskanie tolerancji dopiero wtedy, gdy wiadomo, ile miejsca zostawia cel",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Konkretny wybór θ = ½ + min(Re s − ½, ½)/2 w dowodzie formalnym",
+            "Hipotezy TopG, VWin, Green i pakiet strony określonej, które dostarczają oszacowań na oknach",
+            "Sposób, w jaki dla każdego ε wydobywa się rodzinę Fm i jej strukturę związanych łańcuchów"
+          ],
+          "where_metaphor_breaks": "„Zmniejszanie ε” sugeruje proces ciągły. Formalnie ε wybiera się raz, lematem istnienia (exists_small_eps). Nie ma tu ani iteracji, ani granicy."
+        }
+      },
+      "L2": {
+        "title": "Choreografia parametrów jako kontrakt interfejsu",
+        "headline": "Wejście: oszacowania na oknach i kryterium na każdym poziomie. Wyjście: ZeroFreeAll dla charakterów prymitywnych.",
+        "explanation": "Wejściami są jednostajne arytmetyczne oszacowania G_P ≤ x^(½+9ε) na oknach (z komponentu comparison) i kryterium analityczne na każdym poziomie (z komponentu criterion). Szerokość okna jest stała: λ = 3/2 > 1. Dla każdego prymitywnego ψ dowód pracuje na jego poziomie cyklicznym: bierze wykładniki strat (eD, eL, ε₁), potem punkt s z Re s > ½, potem margines wyliczony z Re s − ½, a potem ε małe względem tego marginesu. Wyjściem jest ZeroFreeAll, które trafia do komponentu descent.",
+        "key_insight": "Stałe z góry: λ i wykładniki strat. Wybierane dla każdego punktu: θ i ε. Żaden krok nie potrzebuje przypadku ε = 0.",
+        "analogy_anchor": "Potok, w którym etap tolerancji czyta próg z etapu pomiaru",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Wewnętrzne dowody level_gm_le_on_family_scales i formB, używane tu jako czarne skrzynki",
+            "Struktura Level, przynależność do KEPT i przeformułowanie windows_iff",
+            "Skąd biorą się Green, VWin i HypsAlt; wchodzą jako hipotezy i nie są dowodzone w tym komponencie"
+          ],
+          "where_metaphor_breaks": "„Potok” to łańcuch implikacji, nie działający program. Wyjście ZeroFreeAll jest warunkowe: zależy od hipotez Green, VWin i niepustego pakietu strony określonej, których ten komponent nie rozstrzyga."
+        }
+      },
+      "L3": {
+        "title": "Kolejność kwantyfikatorów: wykładniki strat, zero, θ, ε",
+        "headline": "Dla β > ½ bierzemy θ ∈ (½, β), potem ε z ½ + 9ε ≤ θ. Kryterium okienkowe typu Landaua wyklucza zero.",
+        "explanation": "Dla każdego prymitywnego ψ na jego poziomie cyklicznym TopG (z λ = 3/2 i podażą hostów HostExW z VWin) daje wykładniki strat eD, eL i ε₁, a dla każdego małego ε także związaną rodzinę Fm, która spełnia nierówność typu Czebyszewa na oknach w skali λ. Kryterium okna rpow z wykładnikiem θ < Re s, przez FormB, daje wtedy L(ψ, s) ≠ 0. Oszacowanie jest używane wyłącznie przy ε > 0, z wykładnikiem ściśle mniejszym od Re s.",
+        "key_insight": "Kryterium potrzebuje tylko ścisłego rozdzielenia ½ + O(ε) < θ < β, z ε wybieranym na końcu; punkt końcowy ε = 0 w ogóle się nie pojawia.",
+        "analogy_anchor": "Klasyczny ruch: zmieścić ścisłą lukę między wykładnikiem błędu a częścią rzeczywistą zera",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Dokładna stała w Leanie (eD + eL + 7 w exists_small_eps) w porównaniu z 9ε ze streszczenia",
+            "Dowody TopG, VWin i wcześniejszych oszacowań porównawczych, przyjmowanych tu jako wejścia",
+            "Wewnętrzna treść ChebyshevInequalityOnWindows i FormBAt"
+          ],
+          "where_metaphor_breaks": "„½ + 9ε ≤ θ” ze streszczenia to czytelny skrót. Dowód formalny używa własnej kombinacji wykładników strat i θ = ½ + min(Re s − ½, ½)/2, więc stała 9 nie jest dosłownie stałą z Leana."
+        }
+      },
+      "L4": {
+        "title": "Kotwice Lean: TopPlug, ZeroFreeAllOfTopG, TopWin",
+        "headline": "zero_free_all_of_green_v_win → zeroFreeAll_of_topG (la := 3/2) → zeroFreeOn_of_tiedWin_cyc → zeroFreeOn_of_tiedWin → level_of_tiedWin.",
+        "explanation": "UpperTheory.Top.zero_free_all_of_green_v_win (TopPlug.lean L12–15, poziom read) rozpakowuje Nonempty HypsAlt i woła UpperTheory.Top.zeroFreeAll_of_topG z la := 3/2 (ZeroFreeAllOfTopG.lean L26–34, poziom checked). Ten woła Formalism.HC.zeroFreeOn_of_tiedWin_cyc (TopWin.lean L90–93) i zeroFreeOn_of_tiedWin (L83–88), które kończą się w level_of_tiedWin (L68–81, wszystkie trzy na poziomie covered). W level_of_tiedWin ε pochodzi z exists_small_eps (eD + eL + 7) (half_pos hm0), a hB jest stosowane w θ = 1/2 + min (s.re − 1/2) (1/2) / 2. Przypięte do commitu 40e56bab026552e089d7afcfeff08d2defb9c005, Lean 4.33.1. Ślad aksjomatów przypięto jako propext, Classical.choice i Quot.sound.",
+        "key_insight": "Kolejność wyborów sprawdza jądro: ε powstaje w dowodzie po s, więc kod nigdy nie wspomina ε = 0.",
+        "analogy_anchor": "Formalism.HC.level_of_tiedWin, TopWin.lean#L68-L81",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Luka formalizacji i granica specyfikacji: sprawdzona jest implikacja. Green, VWin i Nonempty HypsAlt to argumenty-hipotezy, a nie twierdzenia dowiedzione tutaj. Dwa węzły mają tylko poziom „read”. Zaufanie opiera się na jądrze Leana, ewentualnym niezależnym odtworzeniu i definicjach DirichletCharacter.LFunction w Mathlibie. Ludzka recenzja matematyczna całości wciąż trwa."
+        }
+      }
+    }
+  },
+  "descent": {
+    "en": {
+      "L0": {
+        "title": "Taking off the extra mutes",
+        "headline": "A song with a few extra mutes is silent only if the clean song is.",
+        "explanation": "Some versions of a song are played with a few extra mutes clipped onto certain strings. Each mute softens the sound but can never silence it completely, and there are only a few of them. So if the clean version never falls silent at some spot, the muted version doesn't either, and the other way round.",
+        "key_insight": "Finitely many softeners that never reach zero cannot create silence.",
+        "analogy_anchor": "Clip-on mutes on a few strings of a violin",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "The Euler factors 1 − χ*(p)p^(−s) for the primes dividing the modulus, and the change-of-level formula",
+            "The condition Re s > 0 that keeps each factor away from zero",
+            "The exception for the principal character at s = 1, where there is a pole rather than a zero"
+          ],
+          "where_metaphor_breaks": "Mutes subtract loudness, while Euler factors multiply complex numbers. 'Never silent' holds only in the right half-plane Re s > 0. Outside it the factors can vanish."
+        }
+      },
+      "L1": {
+        "title": "Descent to the conductor",
+        "headline": "Every character inherits zero-freeness from its primitive core.",
+        "explanation": "Every Dirichlet character is a primitive one wearing extra layers, one per prime that divides the modulus but not the conductor. Each layer multiplies the L-function by a factor of the form 1 minus something smaller than 1 in size, so in the right half-plane the factor cannot be zero. Zeros therefore cannot appear or disappear when you pass between a character and its primitive core.",
+        "key_insight": "This step costs nothing analytically: everything hard happens at primitive level, and descent moves the result to all moduli.",
+        "analogy_anchor": "Peeling finitely many transparent layers off a core",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The bound |χ(p)| ≤ 1 together with |p^(−s)| = p^(−Re s) < 1, which drives the nonvanishing",
+            "The disjunction (χ ≠ 1 ∨ s ≠ 1) needed for the change-of-level formula",
+            "That ZeroFreeAll itself comes from choreography and ultimately from the hypotheses Green and VWin"
+          ],
+          "where_metaphor_breaks": "'Transparent' overstates it. The layers change the values of the function; they only never make it vanish. The transfer works in both directions only inside the strip 0 < Re s < 1."
+        }
+      },
+      "L2": {
+        "title": "From primitive to all moduli",
+        "headline": "Input: ZeroFreeAll (primitive, Re s > ½). Output: L(χ, s) ≠ 0 for every N and χ, except the principal pole.",
+        "explanation": "The contract takes ZeroFreeAll for primitive characters, produced by choreography through zeroFreeAll_of_topG. It returns, for every modulus N, every χ mod N and every s with Re s > ½, that L(χ, s) ≠ 0 provided χ ≠ 1 or s ≠ 1. The mechanism has two parts: the change-of-level identity L(χ, s) = L(χ*, s) · ∏_{p | N} (1 − χ*(p)p^(−s)), and the fact that every factor is nonzero when Re s > 0. The output 'every χ, Re s > ½' is handed to reflection.",
+        "key_insight": "Finite product, each factor nonzero for Re s > 0: zero-freeness passes from conductor level to every level unchanged.",
+        "analogy_anchor": "An adapter that widens a guarantee for a canonical form to every equivalent form",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The opposite direction (prim_zero): a zero of χ in 0 < Re s < 1 gives a zero of χ*",
+            "The Mathlib definitions of primitiveCharacter, conductor and changeLevel",
+            "What reflection does next with the half-plane statement, outside this component"
+          ],
+          "where_metaphor_breaks": "The 'adapter' adds no hypotheses, but its input ZeroFreeAll is only as strong as the upstream conditional chain (Green, VWin, HypsAlt). Descent removes no assumptions; it only spreads their consequence to all characters."
+        }
+      },
+      "L3": {
+        "title": "Euler factors under change of level",
+        "headline": "L(χ, s) = L(χ*, s) · ∏_{p | N} (1 − χ*(p)p^(−s)), and every factor is nonzero for Re s > 0.",
+        "explanation": "For χ mod N induced by the primitive χ* of conductor f | N, Mathlib's LFunction_changeLevel gives the identity above whenever χ* ≠ 1 or s ≠ 1. Since |χ*(p)| ≤ 1 and |p^(−s)| = p^(−Re s) < 1 for a prime p and Re s > 0, we have |χ*(p)p^(−s)| < 1, so 1 − χ*(p)p^(−s) ≠ 0. Hence nonvanishing of L(χ*, s) on Re s > ½ gives nonvanishing of L(χ, s). Conversely (prim_zero), a zero of L(χ, s) in 0 < Re s < 1 forces L(χ*, s) = 0.",
+        "key_insight": "The imprimitive factors are units on the open right half-plane, so the zero sets of L(χ, ·) and L(χ*, ·) agree there.",
+        "analogy_anchor": "The standard reduction to primitive characters in the theory of Dirichlet L-functions",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Transferring the condition χ ≠ 1 to χ* via changeLevel_one in the proof of imprimitive",
+            "The Lean-level packaging PChar.of χ and NeZero χ.conductor",
+            "The upstream origin of ZeroFreeAll (TopG, VWin, Green, the definite-side package)"
+          ],
+          "where_metaphor_breaks": "'Zero sets agree' is stated here for 0 < Re s < 1 (prim_zero) and as a one-way transfer on Re s > ½ (imprimitive). The two Lean theorems cover different ranges and directions, not one biconditional on the whole half-plane."
+        }
+      },
+      "L4": {
+        "title": "Lean anchors: ClaimStrip, Imprimitive, TopPlug",
+        "headline": "Claim.factor_ne_zero → Claim.prim_zero; UpperTheory.Top.imprimitive ∘ zero_free_all_of_green_v_win = every_character_of_green_v_win.",
+        "explanation": "Claim.factor_ne_zero (ClaimStrip.lean L7–21, tier covered) proves (1 : ℂ) − ψ p * (p : ℂ) ^ (−s) ≠ 0 for prime p and 0 < s.re. Claim.prim_zero (L23–33, tier covered) uses it to move a zero of χ in 0 < s.re < 1 to χ.primitiveCharacter. UpperTheory.Top.imprimitive (Imprimitive.lean L5–35, tier checked) proves ZeroFreeAll → ∀ N χ s, 1/2 < s.re → (χ ≠ 1 ∨ s ≠ 1) → LFunction χ s ≠ 0. UpperTheory.Top.every_character_of_green_v_win (TopPlug.lean L16–18, tier read) composes it with zero_free_all_of_green_v_win. Pinned at commit 40e56bab026552e089d7afcfeff08d2defb9c005, Lean 4.33.1. The axiom footprint is pinned as propext, Classical.choice and Quot.sound.",
+        "key_insight": "The descent is fully elementary in the kernel. The final statement EveryCharacter is still conditional on the binders hG, hV and h.",
+        "analogy_anchor": "UpperTheory.Top.imprimitive, Imprimitive.lean#L5-L35",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Formalization gap and specification boundary: EveryCharacter is derived under the hypotheses Green, VWin and Nonempty HypsAlt, which are not proved in this component. every_character_of_green_v_win is only tier 'read'. Correctness rests on the Lean kernel and on Mathlib's definitions of DirichletCharacter.LFunction, primitiveCharacter and changeLevel. Human mathematical peer review of the whole argument is still ongoing."
+        }
+      }
+    },
+    "pl": {
+      "L0": {
+        "title": "Zdejmowanie dodatkowych tłumików",
+        "headline": "Piosenka z kilkoma tłumikami milknie tylko wtedy, gdy milknie czysta wersja.",
+        "explanation": "Niektóre wersje piosenki gra się z kilkoma tłumikami przypiętymi do wybranych strun. Każdy tłumik ścisza dźwięk, ale nigdy nie wycisza go do zera, a tłumików jest tylko kilka. Jeśli więc czysta wersja w jakimś miejscu nigdy nie milknie, wersja z tłumikami też nie, i na odwrót.",
+        "key_insight": "Skończenie wiele ściszaczy, z których żaden nie dochodzi do zera, nie stworzy ciszy.",
+        "analogy_anchor": "Tłumiki przypięte do kilku strun skrzypiec",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "Czynniki Eulera 1 − χ*(p)p^(−s) dla liczb pierwszych dzielących moduł oraz wzór na zmianę poziomu",
+            "Warunek Re s > 0, który trzyma każdy czynnik z dala od zera",
+            "Wyjątek dla charakteru głównego w s = 1, gdzie jest biegun, a nie zero"
+          ],
+          "where_metaphor_breaks": "Tłumiki odejmują głośność, a czynniki Eulera mnożą liczby zespolone. „Nigdy nie milknie” zachodzi tylko w prawej półpłaszczyźnie Re s > 0. Poza nią czynniki mogą się zerować."
+        }
+      },
+      "L1": {
+        "title": "Zejście do przewodnika",
+        "headline": "Każdy charakter dziedziczy brak zer po swoim prymitywnym rdzeniu.",
+        "explanation": "Każdy charakter Dirichleta to charakter prymitywny w dodatkowych warstwach, po jednej na każdą liczbę pierwszą, która dzieli moduł, ale nie przewodnik. Każda warstwa mnoży funkcję L przez czynnik postaci 1 minus coś mniejszego od 1 co do modułu, więc w prawej półpłaszczyźnie taki czynnik nie może być zerem. Zera nie mogą więc się pojawić ani zniknąć przy przejściu między charakterem a jego prymitywnym rdzeniem.",
+        "key_insight": "Ten krok nic nie kosztuje analitycznie: cała trudność leży na poziomie prymitywnym, a zejście przenosi wynik na wszystkie moduły.",
+        "analogy_anchor": "Zdejmowanie skończenie wielu przezroczystych warstw z rdzenia",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Oszacowanie |χ(p)| ≤ 1 razem z |p^(−s)| = p^(−Re s) < 1, które daje niezerowość",
+            "Alternatywa (χ ≠ 1 ∨ s ≠ 1) potrzebna we wzorze na zmianę poziomu",
+            "To, że samo ZeroFreeAll pochodzi z choreografii, a ostatecznie z hipotez Green i VWin"
+          ],
+          "where_metaphor_breaks": "„Przezroczyste” to przesada. Warstwy zmieniają wartości funkcji; jedynie nigdy jej nie zerują. Przeniesienie w obie strony działa tylko w pasie 0 < Re s < 1."
+        }
+      },
+      "L2": {
+        "title": "Od prymitywnych do wszystkich modułów",
+        "headline": "Wejście: ZeroFreeAll (prymitywne, Re s > ½). Wyjście: L(χ, s) ≠ 0 dla każdego N i χ, poza biegunem głównym.",
+        "explanation": "Kontrakt przyjmuje ZeroFreeAll dla charakterów prymitywnych, wytworzone w choreografii przez zeroFreeAll_of_topG. Zwraca, dla każdego modułu N, każdego χ mod N i każdego s z Re s > ½, że L(χ, s) ≠ 0, o ile χ ≠ 1 lub s ≠ 1. Mechanizm ma dwie części: tożsamość zmiany poziomu L(χ, s) = L(χ*, s) · ∏_{p | N} (1 − χ*(p)p^(−s)) oraz fakt, że przy Re s > 0 każdy czynnik jest niezerowy. Wyjście „każdy χ, Re s > ½” trafia do komponentu reflection.",
+        "key_insight": "Iloczyn skończony, każdy czynnik niezerowy przy Re s > 0: brak zer przechodzi z poziomu przewodnika na każdy poziom bez zmian.",
+        "analogy_anchor": "Adapter, który rozszerza gwarancję z postaci kanonicznej na każdą postać równoważną",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Kierunek odwrotny (prim_zero): zero χ w 0 < Re s < 1 daje zero χ*",
+            "Definicje primitiveCharacter, conductor i changeLevel w Mathlibie",
+            "To, co reflection robi dalej ze zdaniem o półpłaszczyźnie, poza tym komponentem"
+          ],
+          "where_metaphor_breaks": "„Adapter” nie dodaje hipotez, ale jego wejście ZeroFreeAll jest tylko tak mocne jak wcześniejszy łańcuch warunkowy (Green, VWin, HypsAlt). Zejście nie usuwa żadnych założeń; jedynie rozciąga ich konsekwencję na wszystkie charaktery."
+        }
+      },
+      "L3": {
+        "title": "Czynniki Eulera przy zmianie poziomu",
+        "headline": "L(χ, s) = L(χ*, s) · ∏_{p | N} (1 − χ*(p)p^(−s)), a każdy czynnik jest niezerowy dla Re s > 0.",
+        "explanation": "Dla χ mod N indukowanego przez prymitywne χ* o przewodniku f | N lemat LFunction_changeLevel z Mathliba daje powyższą tożsamość, gdy χ* ≠ 1 lub s ≠ 1. Ponieważ |χ*(p)| ≤ 1 i |p^(−s)| = p^(−Re s) < 1 dla liczby pierwszej p i Re s > 0, mamy |χ*(p)p^(−s)| < 1, więc 1 − χ*(p)p^(−s) ≠ 0. Stąd niezerowość L(χ*, s) na Re s > ½ daje niezerowość L(χ, s). W drugą stronę (prim_zero): zero L(χ, s) w 0 < Re s < 1 wymusza L(χ*, s) = 0.",
+        "key_insight": "Czynniki nieprymitywne są odwracalne na otwartej prawej półpłaszczyźnie, więc zbiory zer L(χ, ·) i L(χ*, ·) się tam pokrywają.",
+        "analogy_anchor": "Standardowa redukcja do charakterów prymitywnych w teorii L-funkcji Dirichleta",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Przeniesienie warunku χ ≠ 1 na χ* przez changeLevel_one w dowodzie imprimitive",
+            "Opakowanie na poziomie Leana: PChar.of χ i NeZero χ.conductor",
+            "Źródło ZeroFreeAll wyżej w łańcuchu (TopG, VWin, Green, pakiet strony określonej)"
+          ],
+          "where_metaphor_breaks": "„Zbiory zer się pokrywają” jest tu podane dla 0 < Re s < 1 (prim_zero) i jako przeniesienie w jedną stronę na Re s > ½ (imprimitive). Dwa twierdzenia Leana obejmują różne zakresy i kierunki, a nie jedną równoważność na całej półpłaszczyźnie."
+        }
+      },
+      "L4": {
+        "title": "Kotwice Lean: ClaimStrip, Imprimitive, TopPlug",
+        "headline": "Claim.factor_ne_zero → Claim.prim_zero; UpperTheory.Top.imprimitive ∘ zero_free_all_of_green_v_win = every_character_of_green_v_win.",
+        "explanation": "Claim.factor_ne_zero (ClaimStrip.lean L7–21, poziom covered) dowodzi (1 : ℂ) − ψ p * (p : ℂ) ^ (−s) ≠ 0 dla liczby pierwszej p i 0 < s.re. Claim.prim_zero (L23–33, poziom covered) używa go, by przenieść zero χ w 0 < s.re < 1 na χ.primitiveCharacter. UpperTheory.Top.imprimitive (Imprimitive.lean L5–35, poziom checked) dowodzi ZeroFreeAll → ∀ N χ s, 1/2 < s.re → (χ ≠ 1 ∨ s ≠ 1) → LFunction χ s ≠ 0. UpperTheory.Top.every_character_of_green_v_win (TopPlug.lean L16–18, poziom read) składa je z zero_free_all_of_green_v_win. Przypięte do commitu 40e56bab026552e089d7afcfeff08d2defb9c005, Lean 4.33.1. Ślad aksjomatów przypięto jako propext, Classical.choice i Quot.sound.",
+        "key_insight": "Zejście jest w jądrze w pełni elementarne. Końcowe zdanie EveryCharacter wciąż zależy od argumentów-hipotez hG, hV i h.",
+        "analogy_anchor": "UpperTheory.Top.imprimitive, Imprimitive.lean#L5-L35",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Luka formalizacji i granica specyfikacji: EveryCharacter wyprowadzono przy hipotezach Green, VWin i Nonempty HypsAlt, których ten komponent nie dowodzi. every_character_of_green_v_win ma tylko poziom „read”. Poprawność opiera się na jądrze Leana i na definicjach DirichletCharacter.LFunction, primitiveCharacter i changeLevel w Mathlibie. Ludzka recenzja matematyczna całości wciąż trwa."
+        }
+      }
+    }
+  },
+  "reflection": {
+    "en": {
+      "L0": {
+        "title": "The Mirror Hall",
+        "headline": "A wrong note on the left always echoes on the right.",
+        "explanation": "Imagine a long hall with a mirror stripe painted down the middle. Whenever a bell rings in a wrong spot on the left side, the mirror makes a matching echo ring on the right side. So if you guard the right half and hear no bell there, the left half must be silent too.",
+        "key_insight": "You only need to guard one half of the hall.",
+        "analogy_anchor": "A hall with a mirror stripe down the middle, where every left-side bell has a right-side echo.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "How the mirror is built (the functional equation with its Gamma, cosine and 2π-power factors)",
+            "Special spots where the mirror is blurry and must be checked separately (the point 1, the point 0, the negative even integers)",
+            "That the echo may ring on a 'partner' bell (the inverse primitive character), not on the same bell"
+          ],
+          "where_metaphor_breaks": "A real mirror copies a sound; here a zero at s is sent to 1−s of a possibly different (inverse, primitive) L-function, and the mirror only works after proving that the multiplying factors cannot vanish themselves."
+        }
+      },
+      "L1": {
+        "title": "Halving the Battlefield",
+        "headline": "Symmetry about the critical line turns a two-sided problem into a one-sided one.",
+        "explanation": "The functional equation is a symmetry about the critical line (real part ½): it ties the value at s to the value at 1−s through factors that provably do not vanish inside the strip. So a zero strictly left of the line forces a zero strictly right of it, and the whole burden collapses onto one claim: no zeros right of ½, for every character. Reflection is the last valve — it carries no hard analysis, it only redirects pressure.",
+        "key_insight": "All real difficulty lives upstream; this layer only converts right-half-plane silence into on-the-line conclusions.",
+        "analogy_anchor": "A pressure valve that routes every left-side leak into the already-sealed right-side chamber.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Why the multiplying factors (Gamma, cosine, powers of 2π, gamma factors of characters) cannot vanish",
+            "Reduction of an imprimitive character to its primitive inducing character before reflecting",
+            "The separate handling of zeta for real part ≤ 0 and ≥ 1"
+          ],
+          "where_metaphor_breaks": "Symmetry suggests both halves are equally hard; in fact reflection is cheap bookkeeping and offers no evidence that the right half-plane is clear — that comes entirely from the upstream descent via UpperTheory.Top.imprimitive."
+        }
+      },
+      "L2": {
+        "title": "Reflection Interface Contract",
+        "headline": "One universally quantified nonvanishing hypothesis in; critical-line statements out.",
+        "explanation": "Input (HalfPlane / UpperTheory.EveryCharacter, from descent): for every N > 0, every χ mod N and every s with Re s > ½, excluding the principal pole, L(s,χ) ≠ 0. Each reducer splits on the trichotomy Re s <, =, > ½: the right case contradicts the input directly, the left case reduces χ to its primitive χ*, reflects to (χ*)⁻¹ at 1−s (where Re(1−s) > ½) and contradicts the input there. Outputs: Claim.Strip, Claim.Zeta and Mathlib's RiemannHypothesis, handed to the endpoints.",
+        "key_insight": "No exponents or parameters are consumed here; the layer is a pure logical reducer with a single dependency.",
+        "analogy_anchor": "A router that forwards every left-half query to a right-half oracle that has already answered 'no zero'.",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Exponent budgets and parameter choreography of the upstream analytic stages (they terminate before this layer)",
+            "The bodies of prim_zero and of Mathlib's completedLFunction_one_sub / riemannZeta_one_sub",
+            "The alternate route UpperTheory.riemannHypothesis_of_everyCharacter, which derives RH from the same hypothesis"
+          ],
+          "where_metaphor_breaks": "Input→output framing hides that the input is a proposition quantified over infinitely many moduli, characters and complex points, not a runtime value that could be sampled or tested."
+        }
+      },
+      "L3": {
+        "title": "Functional Equations and Primitive Reflection",
+        "headline": "Completed L-functions, nonvanishing gamma factors and conductor-preserving inversion move zeros from Re s < ½ to Re s > ½.",
+        "explanation": "For ζ, rh_of_right uses riemannZeta_one_sub, ζ(s) = 2(2π)^{−(1−s)} Γ(1−s) cos(π(1−s)/2) ζ(1−s): for Re s < ½, Γ(1−s) ≠ 0 since Re(1−s) > 0, and cos(π(1−s)/2) = 0 would force s = −2k, excluded by s ≠ 0 or the trivial-zero hypothesis. For Dirichlet χ, critLine and prim_reflect write L = Λ/γ, use gammaFactor_ne_zero (Gammaℝ nonvanishing for Re > 0 in even and odd cases), conductor_inv to keep χ⁻¹ primitive, and IsPrimitive.completedLFunction_one_sub to get L(1−s, χ⁻¹) = 0. Claim.strip reaches arbitrary χ via prim_zero to χ.primitiveCharacter, and Claim.zeta handles Re s ≤ 0 by reflecting completedRiemannZeta into Re ≥ 1, where riemannZeta_ne_zero_of_one_le_re applies without the hypothesis.",
+        "key_insight": "Primitivity is essential: only primitive characters have the clean completed functional equation, so imprimitive zeros in the strip are first transferred to the inducing character.",
+        "analogy_anchor": "The completed L-function Λ(s,χ) and its reflection to Λ(1−s, χ⁻¹).",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The upstream machinery (Stepanov over Z, unitary theta chains, Behrend sets, Row0b, VWinAt, TopG, Mellin ramp, localized Landau) that produces HalfPlane — none of it is used inside this component",
+            "Root numbers and the exact constants of the primitive functional equation, which cancel because only vanishing matters",
+            "Edge-case bookkeeping (NeZero conductor instances, s ≠ 0 and s ≠ 1 derivations) spelled out in the Lean terms"
+          ],
+          "where_metaphor_breaks": "At L3 the omission is proof-level: Mathlib's functional equations are cited, not reproved, and the reader must trust that the domain argument matches Mathlib's definitions of LFunction, gammaFactor and completedLFunction."
+        }
+      },
+      "L4": {
+        "title": "Reflection — Lean Anchors",
+        "headline": "Eight pinned declarations at commit 40e56bab026552e089d7afcfeff08d2defb9c005.",
+        "explanation": "Formalism.VW.rh_of_right (Formalism/GammaFactorNonvanishing/RhOfRight.lean L5–62, tier checked); Formalism.VW.gammaFactor_ne_zero, Formalism.VW.critLine and Formalism.VW.rh_of_every (Formalism/GammaFactorNonvanishing/CritLine.lean L6–9, L11–27, L29–32, tier read); Claim.prim_reflect (L42–57, covered), Claim.strip (L59–73, checked) and Claim.zeta (L75–100, checked) in Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean; alternative UpperTheory.riemannHypothesis_of_everyCharacter (RiemannHypothesisOfEveryCharacter.lean L215–231, read). Inbound interface if-13 UpperTheory.Top.imprimitive (Imprimitive.lean L5–35) supplies every χ, Re s > ½; outbound if-14 Claim.zeta · Claim.strip delivers the critical line. Elaborated under Lean 4.33.1 with the standard axioms propext, Classical.choice, Quot.sound as reported for this capsule.",
+        "key_insight": "The reflection layer is a short chain of reducers whose only external dependency is UpperTheory.EveryCharacter / Claim.HalfPlane.",
+        "analogy_anchor": "src/Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean#L59-L100 @ 40e56bab",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Formalization Gap / Specification Boundary: the kernel certifies that these terms typecheck against Mathlib's definitions of riemannZeta, LFunction, gammaFactor and RiemannHypothesis; it does not certify that those definitions match the classical objects, that the kernels are bug-free, or that the upstream HalfPlane proof has passed human mathematical peer review, which is ongoing. Tiers here are read / checked / covered, not two-kernels."
+        }
+      }
+    },
+    "pl": {
+      "L0": {
+        "title": "Sala z lustrem",
+        "headline": "Fałszywa nuta po lewej zawsze odbija się echem po prawej.",
+        "explanation": "Wyobraź sobie długą salę z lustrzanym pasem namalowanym przez sam środek. Gdy po lewej stronie zadzwoni dzwonek w złym miejscu, lustro sprawia, że identyczne echo zadzwoni po prawej. Jeśli więc pilnujesz prawej połowy i nic tam nie dzwoni, lewa też musi milczeć.",
+        "key_insight": "Wystarczy pilnować jednej połowy sali.",
+        "analogy_anchor": "Sala z lustrzanym pasem pośrodku, w której każdy dzwonek z lewej ma echo z prawej.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "Jak zbudowane jest lustro (równanie funkcyjne z czynnikami gamma, cosinus i potęgą 2π)",
+            "Szczególne miejsca, gdzie lustro jest zamglone i trzeba je sprawdzić osobno (punkt 1, punkt 0, ujemne liczby parzyste)",
+            "Że echo może zabrzmieć w „bliźniaczym” dzwonku (odwrotnym charakterze prymitywnym), a nie w tym samym"
+          ],
+          "where_metaphor_breaks": "Prawdziwe lustro kopiuje dźwięk; tutaj zero w s trafia do punktu 1−s być może innej (odwrotnej, prymitywnej) funkcji L, a lustro działa dopiero po udowodnieniu, że czynniki mnożące same się nie zerują."
+        }
+      },
+      "L1": {
+        "title": "Pół pola bitwy",
+        "headline": "Symetria względem prostej krytycznej zamienia problem dwustronny w jednostronny.",
+        "explanation": "Równanie funkcyjne to symetria względem prostej krytycznej (część rzeczywista ½): wiąże wartość w s z wartością w 1−s przez czynniki, które w pasie na pewno się nie zerują. Dlatego zero ściśle na lewo od prostej wymusza zero ściśle na prawo, a cały ciężar spada na jedno twierdzenie: brak zer na prawo od ½, dla każdego charakteru. Odbicie to ostatni zawór — nie niesie trudnej analizy, tylko przekierowuje ciśnienie.",
+        "key_insight": "Cała prawdziwa trudność leży wyżej; ta warstwa tylko zamienia ciszę w prawej półpłaszczyźnie na wnioski o prostej krytycznej.",
+        "analogy_anchor": "Zawór, który kieruje każdy przeciek z lewej do już uszczelnionej prawej komory.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Dlaczego czynniki mnożące (Gamma, cosinus, potęgi 2π, czynniki gamma charakterów) nie mogą się zerować",
+            "Sprowadzenie charakteru nieprymitywnego do indukującego go charakteru prymitywnego przed odbiciem",
+            "Osobne potraktowanie funkcji zeta dla części rzeczywistej ≤ 0 i ≥ 1"
+          ],
+          "where_metaphor_breaks": "Symetria sugeruje, że obie połowy są równie trudne; w rzeczywistości odbicie to tania księgowość i nie daje żadnego dowodu, że prawa półpłaszczyzna jest czysta — to pochodzi wyłącznie z wcześniejszego zejścia przez UpperTheory.Top.imprimitive."
+        }
+      },
+      "L2": {
+        "title": "Kontrakt interfejsu odbicia",
+        "headline": "Na wejściu jedna uniwersalna hipoteza o braku zer; na wyjściu twierdzenia o prostej krytycznej.",
+        "explanation": "Wejście (HalfPlane / UpperTheory.EveryCharacter, z warstwy descent): dla każdego N > 0, każdego χ mod N i każdego s z Re s > ½, poza biegunem głównym, L(s,χ) ≠ 0. Każdy reduktor dzieli przypadki według trychotomii Re s <, =, > ½: przypadek prawy przeczy wejściu wprost, lewy sprowadza χ do prymitywnego χ*, odbija do (χ*)⁻¹ w 1−s (gdzie Re(1−s) > ½) i tam przeczy wejściu. Wyjścia: Claim.Strip, Claim.Zeta i RiemannHypothesis z Mathlib, przekazywane do warstwy endpoints.",
+        "key_insight": "Tu nie zużywa się żadnych wykładników ani parametrów; warstwa jest czystym reduktorem logicznym z jedną zależnością.",
+        "analogy_anchor": "Router przekazujący każde zapytanie z lewej połowy do wyroczni prawej połowy, która już odpowiedziała „brak zera”.",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Budżety wykładników i choreografia parametrów wcześniejszych etapów analitycznych (kończą się przed tą warstwą)",
+            "Treść prim_zero oraz twierdzeń Mathlib completedLFunction_one_sub / riemannZeta_one_sub",
+            "Alternatywna ścieżka UpperTheory.riemannHypothesis_of_everyCharacter, wyprowadzająca RH z tej samej hipotezy"
+          ],
+          "where_metaphor_breaks": "Ujęcie wejście→wyjście ukrywa, że wejście jest zdaniem kwantyfikowanym po nieskończenie wielu modułach, charakterach i punktach zespolonych, a nie wartością, którą da się próbkować lub przetestować."
+        }
+      },
+      "L3": {
+        "title": "Równania funkcyjne i odbicie prymitywne",
+        "headline": "Uzupełnione funkcje L, niezerowe czynniki gamma i odwracanie zachowujące konduktor przenoszą zera z Re s < ½ do Re s > ½.",
+        "explanation": "Dla ζ rh_of_right używa riemannZeta_one_sub, ζ(s) = 2(2π)^{−(1−s)} Γ(1−s) cos(π(1−s)/2) ζ(1−s): dla Re s < ½ mamy Γ(1−s) ≠ 0, bo Re(1−s) > 0, a cos(π(1−s)/2) = 0 wymusiłoby s = −2k, wykluczone przez s ≠ 0 lub hipotezę o zerach trywialnych. Dla charakterów Dirichleta critLine i prim_reflect zapisują L = Λ/γ, korzystają z gammaFactor_ne_zero (niezerowość Gammaℝ dla Re > 0 w przypadku parzystym i nieparzystym), z conductor_inv, by χ⁻¹ pozostał prymitywny, oraz z IsPrimitive.completedLFunction_one_sub, otrzymując L(1−s, χ⁻¹) = 0. Claim.strip obejmuje dowolne χ przez prim_zero do χ.primitiveCharacter, a Claim.zeta załatwia Re s ≤ 0, odbijając completedRiemannZeta do Re ≥ 1, gdzie riemannZeta_ne_zero_of_one_le_re działa bez hipotezy.",
+        "key_insight": "Prymitywność jest kluczowa: tylko charaktery prymitywne mają czyste uzupełnione równanie funkcyjne, więc zera charakterów nieprymitywnych w pasie najpierw przenosi się na charakter indukujący.",
+        "analogy_anchor": "Uzupełniona funkcja L Λ(s,χ) i jej odbicie do Λ(1−s, χ⁻¹).",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Wcześniejsza maszyneria (Stepanov nad Z, unitarne łańcuchy theta, zbiory Behrenda, Row0b, VWinAt, TopG, rampa Mellina, zlokalizowany Landau), która wytwarza HalfPlane — żadna jej część nie jest używana w tym komponencie",
+            "Liczby pierwiastkowe (root numbers) i dokładne stałe prymitywnego równania funkcyjnego, które znoszą się, bo liczy się tylko zerowanie",
+            "Księgowość przypadków brzegowych (instancje NeZero dla konduktora, wyprowadzenia s ≠ 0 i s ≠ 1) rozpisana w termach Lean"
+          ],
+          "where_metaphor_breaks": "Na L3 pominięcie dotyczy poziomu dowodu: równania funkcyjne z Mathlib są cytowane, nie dowodzone od nowa, a czytelnik musi ufać, że argument dziedzinowy zgadza się z definicjami LFunction, gammaFactor i completedLFunction w Mathlib."
+        }
+      },
+      "L4": {
+        "title": "Odbicie — kotwice Lean",
+        "headline": "Osiem przypiętych deklaracji w commicie 40e56bab026552e089d7afcfeff08d2defb9c005.",
+        "explanation": "Formalism.VW.rh_of_right (Formalism/GammaFactorNonvanishing/RhOfRight.lean L5–62, tier checked); Formalism.VW.gammaFactor_ne_zero, Formalism.VW.critLine i Formalism.VW.rh_of_every (Formalism/GammaFactorNonvanishing/CritLine.lean L6–9, L11–27, L29–32, tier read); Claim.prim_reflect (L42–57, covered), Claim.strip (L59–73, checked) i Claim.zeta (L75–100, checked) w Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean; alternatywa UpperTheory.riemannHypothesis_of_everyCharacter (RiemannHypothesisOfEveryCharacter.lean L215–231, read). Interfejs wejściowy if-13 UpperTheory.Top.imprimitive (Imprimitive.lean L5–35) dostarcza każde χ, Re s > ½; wyjściowy if-14 Claim.zeta · Claim.strip oddaje prostą krytyczną. Elaboracja w Lean 4.33.1 ze standardowymi aksjomatami propext, Classical.choice, Quot.sound, zgodnie z raportem dla tej kapsuły.",
+        "key_insight": "Warstwa odbicia to krótki łańcuch reduktorów, którego jedyną zewnętrzną zależnością jest UpperTheory.EveryCharacter / Claim.HalfPlane.",
+        "analogy_anchor": "src/Development/AutomorphicArithmetic/CharacterBoxes/ClaimStrip.lean#L59-L100 @ 40e56bab",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Luka formalizacji / granica specyfikacji: jądro poświadcza, że te termy typują się względem definicji riemannZeta, LFunction, gammaFactor i RiemannHypothesis w Mathlib; nie poświadcza, że te definicje odpowiadają obiektom klasycznym, że jądra są wolne od błędów, ani że wcześniejszy dowód HalfPlane przeszedł ludzką recenzję matematyczną, która wciąż trwa. Tiery tutaj to read / checked / covered, nie two-kernels."
+        }
+      }
+    }
+  },
+  "endpoints": {
+    "en": {
+      "L0": {
+        "title": "Five Locks on One Door",
+        "headline": "At the end of the treasure hunt, five locks say exactly what was found.",
+        "explanation": "At the end of a long treasure hunt stands a door with five locks, each with a sign saying exactly what it guards. Two locks guard the oldest, most famous secret; the other three guard a whole family of related secrets, one for every possible lock size. The keys were all made in the workshop behind the door — the door itself only checks that each key fits.",
+        "key_insight": "The door adds no new key; it only shows, in plain words, what the keys open.",
+        "analogy_anchor": "A door with five labelled locks at the end of a treasure hunt.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "Who made the keys and how (the entire upstream proof chain, ending in reflection)",
+            "What the secrets say mathematically (zeros of zeta and Dirichlet L-functions lie on the line Re s = ½)",
+            "That two of the locks open with literally the same key (rhOfAll)"
+          ],
+          "where_metaphor_breaks": "A turning lock only shows the key fits that lock's shape; here 'fitting' means a kernel typechecking a proof against Mathlib's statement, and whether the sign on the lock describes the classical secret correctly is a separate, human question."
+        }
+      },
+      "L1": {
+        "title": "The Summit Register",
+        "headline": "Ordinary RH and Dirichlet GRH, written in the exact words the outside world uses.",
+        "explanation": "This component adds no new force; it is the summit log where results are recorded in the official phrasing. Ordinary RH appears in Mathlib's own wording and again in expanded form, while Dirichlet GRH appears three ways: no zeros right of ½, all open-strip zeros on the line, and a primitive-character version. All five are thin aliases onto upstream proof bundles (rhOfAll, allChi, claimAll, critAll).",
+        "key_insight": "Trust concentrates on the statements: if the definitions read right, the endpoints mean what they say.",
+        "analogy_anchor": "A summit logbook with five entries signed by three climbing teams.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "How rhOfAll, allChi, claimAll and critAll are themselves assembled from the reflection layer",
+            "The exclusion conditions (trivial zeros, the pole at s = 1, the principal character)",
+            "The dedicated primitive reflection argument behind critAll"
+          ],
+          "where_metaphor_breaks": "A summit log implies one climb to one peak; here five statements share four proof terms, and the 'peak' is only as meaningful as the Mathlib and Statements.lean definitions it is written against."
+        }
+      },
+      "L2": {
+        "title": "Exported Theorem Contracts",
+        "headline": "Five exports, each typed by a Prop from Mathlib or Statements.lean, with no parameters left.",
+        "explanation": "Main.lean exports RiemannHypothesis (Mathlib), RiemannZetaZerosOnLine (ζ(s) = 0, s not of the form −2(n+1), s ≠ 1 → Re s = ½), DirichletLNonvanishingRightOfHalf (∀ N > 0, χ mod N, Re s > ½, χ ≠ 1 ∨ s ≠ 1 → L(s,χ) ≠ 0), DirichletLZerosOnLine (0 < Re s < 1, L(s,χ) = 0 → Re s = ½) and PrimitiveDirichletLZerosOnLine. The invariant is coverage: quantifiers range over every positive modulus N and every character χ, not a finite sample. This layer is pure interface — inbound if-14 delivers the critical line via Claim.zeta · Claim.strip.",
+        "key_insight": "Everything checkable here is the shape of the statements; the proofs are one-line references.",
+        "analogy_anchor": "A public API header file whose implementations live in other modules.",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The bodies of rhOfAll, allChi, claimAll and critAll",
+            "The exact text of PrimitiveDirichletLZerosOnLine (not excerpted in this capsule)",
+            "An audit of the Statements.lean definitions against classical textbook formulations"
+          ],
+          "where_metaphor_breaks": "API-contract language suggests runtime-checkable guarantees; these are logical propositions over uncountably many s, validated by a type checker, not by test inputs."
+        }
+      },
+      "L3": {
+        "title": "RH and Dirichlet GRH as Stated",
+        "headline": "Nontrivial zeros of ζ and of every Dirichlet L(s,χ) in the open strip lie on Re s = ½.",
+        "explanation": "Ordinary RH: every zero of ζ other than s = −2, −4, … and s = 1 has Re s = ½, stated both as Mathlib's RiemannHypothesis and in expanded form. Dirichlet GRH covers all characters of every positive modulus, including imprimitive and principal ones: L(s,χ) ≠ 0 for Re s > ½ away from the principal pole, and open-strip zeros lie on Re s = ½, with the primitive version proved through a dedicated reflection (critAll). Extra zeros of imprimitive L(s,χ) coming from removed Euler factors lie on Re s = 0, outside the open strip, so the strip statement is consistent with them.",
+        "key_insight": "The right-of-½ nonvanishing export is the strongest form; the strip and zeta statements follow from it by reflection.",
+        "analogy_anchor": "Classical RH plus GRH for Dirichlet L-functions, in Mathlib's formal vocabulary.",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The upstream machinery (Stepanov over Z, unitary theta chains, Behrend sets, Row0b, VWinAt, TopG, Mellin ramp, localized Landau) that the endpoints only inherit",
+            "Corollaries that are not exported (prime-counting error terms, explicit-formula consequences)",
+            "Any extension beyond Dirichlet characters (Dedekind or automorphic L-functions), which is not claimed"
+          ],
+          "where_metaphor_breaks": "Domain vocabulary treats 'RH' as the classical statement; the endpoints prove Mathlib's formalization of it, and equivalence to the textbook statement rests on Mathlib's definitions of riemannZeta and DirichletCharacter.LFunction and on a human reading of Statements.lean."
+        }
+      },
+      "L4": {
+        "title": "Endpoints — Lean Anchors",
+        "headline": "Main.lean L4–L12 at commit 40e56bab026552e089d7afcfeff08d2defb9c005, all five exports tier two-kernels.",
+        "explanation": "riemannHypothesis : RiemannHypothesis := rhOfAll (L4); riemannZeta_eq_zero_re : RiemannZetaZerosOnLine := rhOfAll (L6); LFunction_ne_zero_of_half_lt_re : DirichletLNonvanishingRightOfHalf := allChi (L8); LFunction_eq_zero_re : DirichletLZerosOnLine := claimAll.2.1 (L10); LFunction_eq_zero_re_of_isPrimitive : PrimitiveDirichletLZerosOnLine := critAll (L12). Statement definitions live in Statements.lean L3–4, L6–8, L10–12 (tier read); inbound interface if-14 from reflection is Claim.zeta · Claim.strip (ClaimStrip.lean L59–100). Elaborated under Lean 4.33.1 with the standard axioms propext, Classical.choice, Quot.sound as reported for this capsule.",
+        "key_insight": "Thirteen nodes, five exported theorems, four proof terms — the formal endpoint of the whole DAG.",
+        "analogy_anchor": "src/Main.lean#L4-L12 @ 40e56bab",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Formalization Gap / Specification Boundary: two-kernel replay certifies that these terms typecheck against the stated Props; it does not certify that Mathlib's RiemannHypothesis and the Statements.lean definitions faithfully express the classical conjectures, that the kernels are bug-free, or that the full argument has completed human mathematical peer review, which is ongoing."
+        }
+      }
+    },
+    "pl": {
+      "L0": {
+        "title": "Pięć zamków w jednych drzwiach",
+        "headline": "Na końcu poszukiwania skarbu pięć zamków mówi dokładnie, co znaleziono.",
+        "explanation": "Na końcu długiego poszukiwania skarbu stoją drzwi z pięcioma zamkami, a przy każdym wisi tabliczka mówiąca dokładnie, czego strzeże. Dwa zamki strzegą najstarszej, najsłynniejszej tajemnicy; trzy pozostałe — całej rodziny pokrewnych tajemnic, po jednej na każdy możliwy rozmiar zamka. Wszystkie klucze wykuto w warsztacie za drzwiami — same drzwi sprawdzają tylko, czy klucz pasuje.",
+        "key_insight": "Drzwi nie dodają żadnego nowego klucza; pokazują tylko prostymi słowami, co klucze otwierają.",
+        "analogy_anchor": "Drzwi z pięcioma podpisanymi zamkami na końcu poszukiwania skarbu.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "Kto i jak wykuł klucze (cały wcześniejszy łańcuch dowodu, zakończony odbiciem)",
+            "Co tajemnice mówią matematycznie (zera funkcji zeta i funkcji L Dirichleta leżą na prostej Re s = ½)",
+            "Że dwa zamki otwiera dosłownie ten sam klucz (rhOfAll)"
+          ],
+          "where_metaphor_breaks": "Obracający się zamek pokazuje tylko, że klucz pasuje do kształtu; tutaj „pasowanie” oznacza sprawdzenie typów dowodu przez jądro względem twierdzenia z Mathlib, a to, czy tabliczka trafnie opisuje klasyczną tajemnicę, jest osobnym, ludzkim pytaniem."
+        }
+      },
+      "L1": {
+        "title": "Księga szczytowa",
+        "headline": "Zwykła RH i GRH Dirichleta, zapisane dokładnie słowami, których używa świat.",
+        "explanation": "Ten komponent nie dodaje nowej siły; to księga na szczycie, w której wyniki wpisuje się w oficjalnym brzmieniu. Zwykła RH pojawia się w sformułowaniu samego Mathlib i jeszcze raz w postaci rozwiniętej, a GRH Dirichleta na trzy sposoby: brak zer na prawo od ½, wszystkie zera w otwartym pasie na prostej oraz wersja dla charakterów prymitywnych. Wszystkie pięć to cienkie aliasy na wcześniejsze pakiety dowodowe (rhOfAll, allChi, claimAll, critAll).",
+        "key_insight": "Zaufanie skupia się na sformułowaniach: jeśli definicje brzmią poprawnie, punkty końcowe znaczą to, co mówią.",
+        "analogy_anchor": "Księga szczytowa z pięcioma wpisami podpisanymi przez kilka zespołów wspinaczy.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Jak rhOfAll, allChi, claimAll i critAll powstają z warstwy odbicia",
+            "Warunki wykluczeń (zera trywialne, biegun w s = 1, charakter główny)",
+            "Osobny argument odbicia prymitywnego stojący za critAll"
+          ],
+          "where_metaphor_breaks": "Księga szczytowa sugeruje jedną wspinaczkę na jeden szczyt; tutaj pięć twierdzeń dzieli cztery termy dowodowe, a „szczyt” znaczy tyle, ile definicje z Mathlib i Statements.lean, względem których go zapisano."
+        }
+      },
+      "L2": {
+        "title": "Kontrakty eksportowanych twierdzeń",
+        "headline": "Pięć eksportów, każdy typowany przez Prop z Mathlib lub Statements.lean, bez żadnych pozostałych parametrów.",
+        "explanation": "Main.lean eksportuje RiemannHypothesis (Mathlib), RiemannZetaZerosOnLine (ζ(s) = 0, s nie postaci −2(n+1), s ≠ 1 → Re s = ½), DirichletLNonvanishingRightOfHalf (∀ N > 0, χ mod N, Re s > ½, χ ≠ 1 ∨ s ≠ 1 → L(s,χ) ≠ 0), DirichletLZerosOnLine (0 < Re s < 1, L(s,χ) = 0 → Re s = ½) i PrimitiveDirichletLZerosOnLine. Niezmiennikiem jest pokrycie: kwantyfikatory obejmują każdy dodatni moduł N i każdy charakter χ, a nie skończoną próbkę. Ta warstwa to czysty interfejs — wejściowy if-14 dostarcza prostą krytyczną przez Claim.zeta · Claim.strip.",
+        "key_insight": "Sprawdzić tu można tylko kształt twierdzeń; dowody są jednowierszowymi odwołaniami.",
+        "analogy_anchor": "Publiczny plik nagłówkowy API, którego implementacje żyją w innych modułach.",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Treść rhOfAll, allChi, claimAll i critAll",
+            "Dokładny tekst PrimitiveDirichletLZerosOnLine (nie ma go w wycinkach tej kapsuły)",
+            "Audyt definicji ze Statements.lean względem klasycznych sformułowań podręcznikowych"
+          ],
+          "where_metaphor_breaks": "Język kontraktów API sugeruje gwarancje sprawdzalne w czasie działania; to zdania logiczne o nieprzeliczalnie wielu s, weryfikowane przez sprawdzarkę typów, nie przez dane testowe."
+        }
+      },
+      "L3": {
+        "title": "RH i GRH Dirichleta w brzmieniu formalnym",
+        "headline": "Nietrywialne zera ζ i każdej funkcji L(s,χ) Dirichleta w otwartym pasie leżą na Re s = ½.",
+        "explanation": "Zwykła RH: każde zero ζ inne niż s = −2, −4, … i s = 1 ma Re s = ½, wyrażone zarówno jako RiemannHypothesis z Mathlib, jak i w postaci rozwiniętej. GRH Dirichleta obejmuje wszystkie charaktery każdego dodatniego modułu, także nieprymitywne i główne: L(s,χ) ≠ 0 dla Re s > ½ poza biegunem głównym, a zera w otwartym pasie leżą na Re s = ½, przy czym wersję prymitywną dowodzi osobne odbicie (critAll). Dodatkowe zera nieprymitywnych L(s,χ), pochodzące z usuniętych czynników Eulera, leżą na Re s = 0, poza otwartym pasem, więc twierdzenie o pasie jest z nimi zgodne.",
+        "key_insight": "Eksport o braku zer na prawo od ½ jest postacią najsilniejszą; twierdzenia o pasie i o zecie wynikają z niego przez odbicie.",
+        "analogy_anchor": "Klasyczna RH plus GRH dla funkcji L Dirichleta, w formalnym słowniku Mathlib.",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Wcześniejsza maszyneria (Stepanov nad Z, unitarne łańcuchy theta, zbiory Behrenda, Row0b, VWinAt, TopG, rampa Mellina, zlokalizowany Landau), którą punkty końcowe jedynie dziedziczą",
+            "Wnioski, których się nie eksportuje (składniki błędu w liczeniu liczb pierwszych, konsekwencje wzoru jawnego)",
+            "Jakiekolwiek rozszerzenie poza charaktery Dirichleta (funkcje L Dedekinda lub automorficzne), którego się nie twierdzi"
+          ],
+          "where_metaphor_breaks": "Słownik dziedzinowy traktuje „RH” jako twierdzenie klasyczne; punkty końcowe dowodzą jego formalizacji w Mathlib, a równoważność z wersją podręcznikową opiera się na definicjach riemannZeta i DirichletCharacter.LFunction w Mathlib oraz na ludzkiej lekturze Statements.lean."
+        }
+      },
+      "L4": {
+        "title": "Punkty końcowe — kotwice Lean",
+        "headline": "Main.lean L4–L12 w commicie 40e56bab026552e089d7afcfeff08d2defb9c005, wszystkie pięć eksportów z tierem two-kernels.",
+        "explanation": "riemannHypothesis : RiemannHypothesis := rhOfAll (L4); riemannZeta_eq_zero_re : RiemannZetaZerosOnLine := rhOfAll (L6); LFunction_ne_zero_of_half_lt_re : DirichletLNonvanishingRightOfHalf := allChi (L8); LFunction_eq_zero_re : DirichletLZerosOnLine := claimAll.2.1 (L10); LFunction_eq_zero_re_of_isPrimitive : PrimitiveDirichletLZerosOnLine := critAll (L12). Definicje twierdzeń leżą w Statements.lean L3–4, L6–8, L10–12 (tier read); wejściowy interfejs if-14 z warstwy odbicia to Claim.zeta · Claim.strip (ClaimStrip.lean L59–100). Elaboracja w Lean 4.33.1 ze standardowymi aksjomatami propext, Classical.choice, Quot.sound, zgodnie z raportem dla tej kapsuły.",
+        "key_insight": "Trzynaście węzłów, pięć eksportowanych twierdzeń, cztery termy dowodowe — formalny koniec całego DAG.",
+        "analogy_anchor": "src/Main.lean#L4-L12 @ 40e56bab",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Luka formalizacji / granica specyfikacji: odtworzenie w dwóch jądrach poświadcza, że te termy typują się względem podanych Prop; nie poświadcza, że RiemannHypothesis z Mathlib i definicje ze Statements.lean wiernie wyrażają klasyczne hipotezy, że jądra są wolne od błędów, ani że cały argument zakończył ludzką recenzję matematyczną, która wciąż trwa."
+        }
+      }
+    }
+  }
+}

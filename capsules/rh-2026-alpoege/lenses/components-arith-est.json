@@ -1,0 +1,1288 @@
+{
+  "primes": {
+    "en": {
+      "L0": {
+        "title": "Two Helper Keys and the No-Echo Marbles",
+        "headline": "Before the big machine starts, we pick two special keys and a handful of marbles that can never line up three in a row.",
+        "explanation": "First we look for two special numbers. They work like tuning keys: each one has to sit on exactly the right note, and the hum it makes has to stay quiet instead of building into a roar. Then we pick marbles from the skin of a ball, because a straight stick can touch a ball's skin in at most two places, so no three marbles ever fall in one line. Both the keys and the marbles get handed downstream to a later workshop.",
+        "key_insight": "A ball is round, so three different points on its skin can never lie on one straight line. That roundness is what makes the marble choice safe.",
+        "analogy_anchor": "Marbles glued onto a beach ball. You poke a straight knitting needle through the ball and it always hits at most two of them.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "That the helper 'keys' are prime numbers in prescribed congruence classes",
+            "The square-root-size bounds on prime sums of their quadratic twists",
+            "The base-4Ld number encoding that turns sphere points into single integers",
+            "The exact meaning of 'no three in a line' (the NoRel predicate with coefficients bounded by L)"
+          ],
+          "where_metaphor_breaks": "Real marbles sit in physical space. The real objects are whole numbers, and 'lining up' means satisfying a weighted equation with small whole-number weights, not touching a needle."
+        }
+      },
+      "L1": {
+        "title": "Tuned Probes and a Collision-Free Index Set",
+        "headline": "Two probe primes with controlled noise, plus an index tower designed so that no small weighted coincidence can occur.",
+        "explanation": "The arithmetic layer prepares two kinds of raw material. The first is a pair of auxiliary primes fixed to prescribed residues, whose quadratic twists produce prime sums no larger than square-root size, so they behave like noise rather than signal. The second is a Behrend-type tower: points on a sphere, written as single integers in a base so large that adding them never causes carries, so any coincidence among the integers would have to be a coincidence among the sphere points, and a sphere's curvature rules that out for three distinct points.",
+        "key_insight": "The large base keeps the digits from mixing, so each equation splits into one equation per coordinate. Curvature does the rest: a line meets a sphere in at most two points.",
+        "analogy_anchor": "An odometer with enormously wide digit wheels, so no wheel ever rolls over into its neighbour, reading off points on a perfectly round globe.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The precise form of the NoRel predicate (distinct s₁, s₂, s₃ and weights i, j in [1, L])",
+            "The roles of the parameters S, d, k in Behrend.sphere",
+            "The exact congruence conditions and the analytic form of the square-root prime-sum bound",
+            "How downstream cohomology consumes the pair and the tower (WinPair / hostThickExists)"
+          ],
+          "where_metaphor_breaks": "'Noise versus signal' is only an intuition. Formally the prime-pair condition is a specific inequality on twisted prime sums, and 'no coincidence' is the exact Lean predicate NoRel, not a statistical property."
+        }
+      },
+      "L2": {
+        "title": "Contract: NoRel Image of an Encoded Sphere + Auxiliary Prime Pair",
+        "headline": "Input (L ≥ 1, S, d, k). Output: a finite set of naturals satisfying NoRel at coefficient bound L, delivered with a prime pair to cohomology.",
+        "explanation": "The checked contract `noRel_image` takes L ≥ 1 and sphere parameters (S, d, k), maps Behrend.sphere S d k through Behrend.map (4·L·d), and guarantees NoRel(·, L) for the image. The base 4Ld depends on L, so the coefficient bound has to be fixed before the encoding is chosen. The second output is an auxiliary prime pair with prescribed congruences and square-root (exponent ½) prime-sum bounds for the quadratic twists. Both cross interface if-03 (WinPair / hostThickExists) into the cohomology component.",
+        "key_insight": "This is a strict parameter order: choose L, then set base = 4Ld, then encode. Pick a smaller base and carries can create the relations that NoRel forbids.",
+        "analogy_anchor": "A hash function whose bucket width is sized to the largest coefficient you will ever add, so that arithmetic on hashes is collision-free arithmetic on keys.",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The internal proof steps (sphere_mem_lemma, coordinatewise digit extraction)",
+            "Size and density of the resulting tower as a function of S, d, k",
+            "The Lean statement of the prime-pair existence (QH.pairEx is named in the kicker but not pinned as a node in this capsule)",
+            "Exact constants in the twisted prime-sum bounds"
+          ],
+          "where_metaphor_breaks": "The hash analogy suggests probabilistic collision avoidance. Here the avoidance is deterministic: it is proved for every admissible relation, not most of them, and it relies on the geometry of the sphere, which hashes don't have."
+        }
+      },
+      "L3": {
+        "title": "Behrend Spheres in Base 4Ld and Twist-Controlled Prime Pairs",
+        "headline": "Strict convexity of Euclidean spheres together with carry-free radix encoding gives NoRel(L). Two auxiliary primes have √-bounded twisted prime sums.",
+        "explanation": "Lattice points v on the Behrend sphere (fixed squared norm, bounded coordinates) are encoded as Σᵢ vᵢ(4Ld)ⁱ. Weighted combinations with coefficients ≤ L keep every digit below the base, so a relation among encodings lifts to the same relation coordinatewise in ℤᵈ. On the sphere this would put three distinct points on one affine line, which strict convexity forbids, since a line meets a sphere in at most two points. In parallel, the arithmetic stratum asks for two auxiliary primes in prescribed residue classes whose quadratic-twist prime sums satisfy square-root bounds. The remark (p. 4, entry 19) ties the tower choice to Behrend-type additive-combinatorial sets.",
+        "key_insight": "Behrend's classical idea that spheres contain no 3-term progressions is generalised here to relations with weights i, j ≤ L. The base 4Ld is what makes the lift from ℕ to ℤᵈ exact.",
+        "analogy_anchor": "Behrend's 1946 construction of large 3-AP-free sets, re-tuned for bounded-weight relations.",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The verbatim definition of NoRel and the hypothesis hij/heq as stated in Lean",
+            "The exact definitions of Behrend.sphere and Behrend.map in the module",
+            "The analytic proof and precise statement of the auxiliary prime-pair bounds (not pinned in this capsule)"
+          ],
+          "where_metaphor_breaks": "The 3-AP-free analogy is only approximate. NoRel is a project-specific predicate with weights bounded by L and three distinct elements, and only its Lean definition fixes which relations are excluded."
+        }
+      },
+      "L4": {
+        "title": "Formal Anchor: ThickExists.noRel_image",
+        "headline": "`Formalism.FrobeniusOrbits.ThickExists.noRel_image` (tier: checked) at commit 40e56bab026552e089d7afcfeff08d2defb9c005, lines 85–95.",
+        "explanation": "Declaration: `lemma noRel_image (L S d k : ℕ) (hL : 1 ≤ L) : NoRel ((Behrend.sphere S d k).image (Behrend.map (4 * L * d))) L`, in module `Formalism.FrobeniusOrbits.FrobeniusOrbitsProofs.ThickExists` (Lean 4.33.1). The capsule's declared axiom footprint is the three standard axioms `propext`, `Classical.choice`, `Quot.sound`. The node `paper-behrend` is motivation only (https://alpo.ge/remark.pdf#page=4, entry 19), has no Lean declaration, and leaves through interface if-03 (WinPair / hostThickExists).",
+        "key_insight": "Only `behrend` is a pinned, checked formal node in this component. QH.pairEx and hostThickExists appear as labels in the kicker and the interface, not as pinned nodes here.",
+        "analogy_anchor": "https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Formalism/FrobeniusOrbits/FrobeniusOrbitsProofs/ThickExists.lean#L85-L95",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Formalization Gap / Specification Boundary: the guarantee is only as strong as (1) trust in the Lean kernel and any independent replay, (2) the claim that the project definitions NoRel, Behrend.sphere and Behrend.map, plus the Mathlib Finset machinery, capture the intended mathematics, and (3) ongoing human peer review. The prime-pair claim and the paper's motivation node are not covered by this anchor."
+        }
+      }
+    },
+    "pl": {
+      "L0": {
+        "title": "Dwa pomocnicze klucze i kulki bez echa",
+        "headline": "Zanim ruszy wielka maszyna, wybieramy dwa specjalne klucze i garść kulek, z których żadne trzy nigdy nie staną w jednym rzędzie.",
+        "explanation": "Najpierw szukamy dwóch wyjątkowych liczb. Działają jak klucze do strojenia: każda musi trafić dokładnie w swoją nutę, a jej szum ma zostać cichy i nie może urosnąć w ryk. Potem wybieramy kulki z powierzchni piłki, bo prosty patyk dotknie skóry piłki najwyżej w dwóch miejscach, więc żadne trzy kulki nigdy nie leżą na jednej linii. Klucze i kulki wędrują dalej, do kolejnego warsztatu.",
+        "key_insight": "Piłka jest okrągła, więc trzy różne punkty na jej powierzchni nigdy nie leżą na jednej prostej. To ta okrągłość sprawia, że wybór kulek jest bezpieczny.",
+        "analogy_anchor": "Kulki przyklejone do dmuchanej piłki plażowej. Przebijasz piłkę prostym drutem i zawsze trafiasz najwyżej w dwie.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "To, że pomocnicze „klucze” są liczbami pierwszymi o zadanych kongruencjach",
+            "Ograniczenia rzędu pierwiastka kwadratowego dla sum po liczbach pierwszych ich skręceń kwadratowych",
+            "Kodowanie w podstawie 4Ld, które zamienia punkty sfery w pojedyncze liczby całkowite",
+            "Dokładne znaczenie „żadnych trzech w rzędzie” (predykat NoRel ze współczynnikami ograniczonymi przez L)"
+          ],
+          "where_metaphor_breaks": "Prawdziwe kulki leżą w przestrzeni fizycznej. Rzeczywiste obiekty to liczby całkowite, a „ustawienie w rzędzie” oznacza spełnienie równania z małymi całkowitymi wagami, a nie dotknięcie drutu."
+        }
+      },
+      "L1": {
+        "title": "Nastrojone sondy i zbiór indeksów bez kolizji",
+        "headline": "Dwie pomocnicze liczby pierwsze o kontrolowanym szumie i wieża indeksów zaprojektowana tak, by nie zaszedł żaden mały ważony zbieg okoliczności.",
+        "explanation": "Warstwa arytmetyczna przygotowuje dwa surowce. Pierwszy to para pomocniczych liczb pierwszych o zadanych resztach, których skręcenia kwadratowe dają sumy po liczbach pierwszych nie większe niż rzędu pierwiastka, więc zachowują się jak szum, a nie sygnał. Drugi to wieża typu Behrenda: punkty sfery zapisane jako pojedyncze liczby w podstawie tak dużej, że dodawanie nie wywołuje przeniesień. Każdy zbieg okoliczności między tymi liczbami musiałby więc być zbiegiem między punktami sfery, a krzywizna sfery wyklucza go dla trzech różnych punktów.",
+        "key_insight": "Duża podstawa nie pozwala cyfrom się mieszać, więc każde równanie rozpada się na osobne równanie dla każdej współrzędnej. Resztę załatwia krzywizna: prosta przecina sferę najwyżej w dwóch punktach.",
+        "analogy_anchor": "Licznik kilometrów o ogromnie szerokich kółkach cyfr, w którym żadne kółko nie przeskakuje na sąsiednie, odczytujący punkty na idealnie okrągłym globusie.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Dokładna postać predykatu NoRel (różne s₁, s₂, s₃ oraz wagi i, j z przedziału [1, L])",
+            "Role parametrów S, d, k w Behrend.sphere",
+            "Dokładne warunki kongruencyjne i analityczna postać ograniczenia pierwiastkowego",
+            "Sposób, w jaki kohomologia dalej w łańcuchu zużywa parę i wieżę (WinPair / hostThickExists)"
+          ],
+          "where_metaphor_breaks": "„Szum kontra sygnał” to tylko intuicja. Formalnie warunek na parę liczb pierwszych jest konkretną nierównością dla skręconych sum, a „brak zbiegów” to dokładny predykat NoRel w Leanie, a nie własność statystyczna."
+        }
+      },
+      "L2": {
+        "title": "Kontrakt: obraz zakodowanej sfery z NoRel + pomocnicza para liczb pierwszych",
+        "headline": "Wejście (L ≥ 1, S, d, k). Wyjście: skończony zbiór liczb naturalnych spełniający NoRel przy ograniczeniu współczynników L, przekazany razem z parą liczb pierwszych do kohomologii.",
+        "explanation": "Sprawdzony kontrakt `noRel_image` przyjmuje L ≥ 1 i parametry sfery (S, d, k), przepuszcza Behrend.sphere S d k przez Behrend.map (4·L·d) i gwarantuje NoRel(·, L) dla obrazu. Podstawa 4Ld zależy od L, więc ograniczenie współczynników trzeba ustalić przed wyborem kodowania. Drugim wyjściem jest pomocnicza para liczb pierwszych o zadanych kongruencjach i pierwiastkowych (wykładnik ½) ograniczeniach sum po liczbach pierwszych dla skręceń kwadratowych. Oba wyjścia przechodzą interfejsem if-03 (WinPair / hostThickExists) do komponentu kohomologii.",
+        "key_insight": "Obowiązuje ścisła kolejność parametrów: najpierw L, potem podstawa = 4Ld, potem kodowanie. Przy mniejszej podstawie przeniesienia mogą stworzyć relacje, których NoRel zabrania.",
+        "analogy_anchor": "Funkcja haszująca, której szerokość kubełka dobrano do największego współczynnika, jaki kiedykolwiek dodasz, więc arytmetyka na haszach jest bezkolizyjną arytmetyką na kluczach.",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Wewnętrzne kroki dowodu (sphere_mem_lemma, wyciąganie cyfr współrzędna po współrzędnej)",
+            "Rozmiar i gęstość powstałej wieży w zależności od S, d, k",
+            "Twierdzenie w Leanie o istnieniu pary liczb pierwszych (QH.pairEx występuje w nagłówku, ale nie jest przypiętym węzłem tej kapsuły)",
+            "Dokładne stałe w ograniczeniach skręconych sum"
+          ],
+          "where_metaphor_breaks": "Analogia z haszem sugeruje probabilistyczne unikanie kolizji. Tu unikanie jest deterministyczne: udowodnione dla każdej dopuszczalnej relacji, a nie dla większości, i opiera się na geometrii sfery, której hasze nie mają."
+        }
+      },
+      "L3": {
+        "title": "Sfery Behrenda w podstawie 4Ld i pary liczb pierwszych o kontrolowanych skręceniach",
+        "headline": "Ścisła wypukłość sfery euklidesowej razem z kodowaniem pozycyjnym bez przeniesień daje NoRel(L). Dwie pomocnicze liczby pierwsze mają skręcone sumy ograniczone przez √.",
+        "explanation": "Punkty kratowe v na sferze Behrenda (ustalona norma kwadratowa, ograniczone współrzędne) koduje się jako Σᵢ vᵢ(4Ld)ⁱ. Kombinacje ważone o współczynnikach ≤ L utrzymują każdą cyfrę poniżej podstawy, więc relacja między kodami podnosi się do tej samej relacji współrzędna po współrzędnej w ℤᵈ. Na sferze oznaczałoby to trzy różne punkty na jednej prostej afinicznej, czego zabrania ścisła wypukłość, bo prosta przecina sferę najwyżej w dwóch punktach. Równolegle warstwa arytmetyczna wymaga dwóch pomocniczych liczb pierwszych w zadanych klasach reszt, których skręcenia kwadratowe spełniają ograniczenia pierwiastkowe dla sum po liczbach pierwszych. Notatka autora (s. 4, wpis 19) wiąże wybór wieży ze zbiorami typu Behrenda.",
+        "key_insight": "Klasyczna obserwacja Behrenda, że sfery nie zawierają ciągów arytmetycznych długości 3, zostaje tu uogólniona na relacje z wagami i, j ≤ L. To podstawa 4Ld sprawia, że podniesienie z ℕ do ℤᵈ jest dokładne.",
+        "analogy_anchor": "Konstrukcja Behrenda z 1946 roku dużych zbiorów bez 3-wyrazowych ciągów arytmetycznych, przestrojona na relacje o ograniczonych wagach.",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Dosłowna definicja NoRel i hipotezy hij/heq w brzmieniu z Leana",
+            "Dokładne definicje Behrend.sphere i Behrend.map w module",
+            "Analityczny dowód i precyzyjne brzmienie ograniczeń dla pary liczb pierwszych (nieprzypięte w tej kapsule)"
+          ],
+          "where_metaphor_breaks": "Analogia z brakiem ciągów arytmetycznych jest tylko przybliżona. NoRel to predykat specyficzny dla projektu, z wagami ograniczonymi przez L i trzema różnymi elementami, i dopiero jego definicja w Leanie ustala, które relacje są wykluczone."
+        }
+      },
+      "L4": {
+        "title": "Kotwica formalna: ThickExists.noRel_image",
+        "headline": "`Formalism.FrobeniusOrbits.ThickExists.noRel_image` (tier: checked), commit 40e56bab026552e089d7afcfeff08d2defb9c005, wiersze 85–95.",
+        "explanation": "Deklaracja: `lemma noRel_image (L S d k : ℕ) (hL : 1 ≤ L) : NoRel ((Behrend.sphere S d k).image (Behrend.map (4 * L * d))) L` w module `Formalism.FrobeniusOrbits.FrobeniusOrbitsProofs.ThickExists` (Lean 4.33.1). Deklarowany ślad aksjomatów kapsuły to trzy standardowe aksjomaty: `propext`, `Classical.choice`, `Quot.sound`. Węzeł `paper-behrend` jest wyłącznie motywacją (https://alpo.ge/remark.pdf#page=4, wpis 19), nie ma deklaracji w Leanie i wychodzi interfejsem if-03 (WinPair / hostThickExists).",
+        "key_insight": "W tym komponencie jedynym przypiętym i sprawdzonym węzłem formalnym jest `behrend`. QH.pairEx i hostThickExists pojawiają się tylko jako etykiety w nagłówku i interfejsie, a nie jako przypięte węzły.",
+        "analogy_anchor": "https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Formalism/FrobeniusOrbits/FrobeniusOrbitsProofs/ThickExists.lean#L85-L95",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Luka formalizacji / granica specyfikacji: gwarancja jest tak mocna jak (1) zaufanie do jądra Leana i ewentualnej niezależnej weryfikacji, (2) założenie, że definicje projektu NoRel, Behrend.sphere i Behrend.map oraz maszyneria Finset z Mathlib oddają zamierzoną matematykę, oraz (3) trwający przegląd przez matematyków. Twierdzenie o parze liczb pierwszych i węzeł motywacyjny z artykułu nie są objęte tą kotwicą."
+        }
+      }
+    }
+  },
+  "galois": {
+    "en": {
+      "L0": {
+        "title": "The Twin Song Made of Crystal Turns",
+        "headline": "Every special hidden melody gets a twin, written in a completely different language, that sings the same chord at every door.",
+        "explanation": "Picture a secret melody played in an unusual concert hall. This part of the machine promises that the melody always has a twin, made from the turns of a crystal instead of from sound, and that at every numbered door the two of them strike exactly the same chord. To build the twin, the machine borrows a much bigger choir and starts from a very simple seed song. The twin is then handed to two later workshops.",
+        "key_insight": "Two very different worlds, sound and crystal turns, turn out to carry the same fingerprint at every door. Here, finding that twin is a borrowed promise. It is not built from scratch.",
+        "analogy_anchor": "A song and its sheet music in a foreign alphabet that always agree note for note, whichever page you open.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "That the 'melody' is a regular algebraic polarized cuspidal automorphic representation of GL_a over a CM field",
+            "That the 'twin' is a continuous semisimple ℓ-adic Galois representation",
+            "That the 'matching chord' is Frobenius characteristic polynomials equalling Satake parameters",
+            "The theta-lift and weight-one inputs that the construction depends on"
+          ],
+          "where_metaphor_breaks": "A twin sounds like a copy that can be checked by ear. The real correspondence can only be checked at infinitely many primes through polynomials, and here it is supplied by named theorems, not shown directly."
+        }
+      },
+      "L1": {
+        "title": "The Bridge Between Spectrum and Symmetry",
+        "headline": "A load-bearing import connects automorphic data to arithmetic symmetry, and everything downstream that reads characters or cohomology windows rests on it.",
+        "explanation": "The Galois row is a bridge. On one side are automorphic representations, which are spectral or analytic objects. On the other side are Galois representations, which are symmetries of number fields. The two must agree locally at every good prime. The supply chain has two inputs: a high-rank theta lift that pushes data into large unitary groups, and a weight-one geometric realization that acts as a simple geometric seed. Together they feed a conditional construction whose output is the row.",
+        "key_insight": "This is the main bottleneck of the arithmetic stratum. If the bridge fails, both the character interface and the cohomology-window interface lose their foundation.",
+        "analogy_anchor": "A load-bearing pillar standing on two foundations, a large lift and a small geometric seed, and supporting two separate floors above.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The hypotheses on π (CM field, regularity, algebraicity, polarization through χ)",
+            "The contents of PropsB (continuity, semisimplicity, comparisons, weight and Hodge–Tate relations)",
+            "The weight and dimension conditions of the theta lift (d ≥ d₀, d + m_W(w) ≤ 2λ_{w,k})",
+            "The identity of the downstream consumers everyCharacter_of_row and vwin_of_row"
+          ],
+          "where_metaphor_breaks": "A pillar is either standing or not. The row is a universally quantified existence statement over all CM fields, primes ℓ, ranks a and representations π, and in this capsule it is wired from named theorems whose own proofs are not pinned here."
+        }
+      },
+      "L2": {
+        "title": "Contract: Row0b and Its Producer Wiring",
+        "headline": "Input (E CM, ℓ, ι, a ≥ 1, π, χ). Output ∃ (r, wt, HT) with PropsB. The proof is wired from tLiftK and geoOne_holds.",
+        "explanation": "Row0b quantifies over a CM number field E with algebraic closure Ω, a prime ℓ with ι : Q̄_ℓ ≃ ℂ, a ≥ 1, cuspidal π on GL_a and a Hecke character χ of the maximal real subfield, where π is regular algebraic and (π, χ) is a polarized pair. It returns r : G(E, Ω) → GL_a(Q̄_ℓ), a weight wt ∈ ℤ and Hodge–Tate multisets HT satisfying PropsB. The wiring is: `galoisLocalGlobalStrong_recParameter` := `galoisRepresentations_of_thetaLift tLiftK`, which itself unfolds to `galoisLocalGlobalStrong_of_geometry_lift geoOne_holds up`. The output crosses interfaces if-01 (everyCharacter_of_row) and if-02 (vwin_of_row).",
+        "key_insight": "The producer has no explicit global premise, but only because the premises TLiftK and GeoOne are discharged by named theorems. The real cost sits inside those theorems.",
+        "analogy_anchor": "A dependency-injected service: the interface Row0b is satisfied by a constructor that takes two providers, tLiftK and geoOne_holds.",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The field-by-field definition of PropsB and of the parameters Rc and recT",
+            "The full hypothesis list of TLiftK (Hecke characters χ_X and χ_W, ResEtaPow, HasExp, IsAutRepU)",
+            "The proofs of tLift_holds_k, weight_one_geometric_realization and galoisLocalGlobalStrong_of_geometry_lift"
+          ],
+          "where_metaphor_breaks": "Dependency injection suggests the providers are cheap and interchangeable. Here each provider is a deep mathematical theorem, and the wrappers pinned in the capsule show the wiring, not the depth."
+        }
+      },
+      "L3": {
+        "title": "Row0b via Unitary Theta Chains and Weight-One Geometric Realization",
+        "headline": "Galois representations attached to RAPC π on GL_a/E, obtained by lifting to high-rank unitary groups and realizing geometrically.",
+        "explanation": "Row0b asserts, for regular algebraic polarized cuspidal π on GL_a(𝔸_E) with E CM, a continuous semisimple ℓ-adic r whose Frobenius polynomials match the Satake parameters of π, together with weight and Hodge–Tate data (PropsB). The input TLiftK is a theta correspondence for a unitary dual pair. For a Hermitian space X (J = 1) of dimension n and skew-Hermitian spaces W of dimension d ≥ d₀ with J = δ·1, Hecke characters χ_X and χ_W with prescribed restrictions and exponents m_X, m_W, and an automorphic U of weights λ satisfying d + m_W(w) ≤ 2λ_{w,k}, it produces a lift U′ on the rank-d group. GeoOne supplies a weight-one geometric realization, and the conditional theorem `galoisLocalGlobalStrong_of_geometry_lift` combines both inputs into Row0b recT.",
+        "key_insight": "The strategy is to move π, by a theta lift, to a high rank where geometry is available, then read off the Galois representation geometrically, using weight one as the base case.",
+        "analogy_anchor": "The Kudla–Rallis-style stable-range theta correspondence for unitary dual pairs used as a ramp toward geometric realizations.",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The verbatim conditions ResEtaPow, HasExp, W.GoodK and the exact meaning of IsLift",
+            "The geometric objects behind GeoOne and the proof inside galoisLocalGlobalStrong_of_geometry_lift",
+            "Local–global compatibility at ramified places and the precise Hodge–Tate normalisation in PropsB"
+          ],
+          "where_metaphor_breaks": "The reference to a Kudla–Rallis-style stable range is an interpretive gloss, not part of the formal core. The capsule pins only the Lean statements, and whether the encoded TLiftK and PropsB coincide with the classical theorems is a question for human review."
+        }
+      },
+      "L4": {
+        "title": "Formal Anchor: UpperTheory.GalStar.Row0b and Producers",
+        "headline": "Six pinned nodes at commit 40e56bab026552e089d7afcfeff08d2defb9c005, all tier: read (cited and inspected, not tier: checked).",
+        "explanation": "The pinned nodes are: definition `UpperTheory.GalStar.Row0b` (…TypeConditions.WeightsConjBis L69–73); producer `UpperTheory.Gal.Int.galoisLocalGlobalStrong_recParameter` (…IntegralStructures.RowSrc L6); reducer `UpperTheory.Gal.Int.galoisRepresentations_of_thetaLift` (…GaloisRepresentationsOfThetaLift L6); producer `UpperTheory.TP.K.tLiftK` (…ThetaKernels.TLiftK L4–5); producer `UpperTheory.Gal.Int.Geo.geoOne_holds` (…WeightOneGeometricRealization L11); definition `UpperTheory.TP.TLiftK` (…HalfIndexLattices.TLiftK L12–23). The environment is Lean 4.33.1, the declared axiom footprint is `propext`, `Classical.choice`, `Quot.sound`, and the outgoing interfaces are everyCharacter_of_row (if-01) and vwin_of_row (if-02).",
+        "key_insight": "Every pinned galois node has tier `read`, unlike the `checked` Behrend lemma. The excerpts are one-line wrappers that delegate to tLift_holds_k, weight_one_geometric_realization and galoisLocalGlobalStrong_of_geometry_lift, none of which is pinned here.",
+        "analogy_anchor": "https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TypeConditions/WeightsConjBis.lean#L69-L73",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Formalization Gap / Specification Boundary: (1) trust in the Lean kernel and any independent replay; (2) whether project definitions such as CuspSub, IsRegAlg, PolarizedPair, PropsB, Rc, recT and TLiftK, built on Mathlib's NumberField and IsCMField, faithfully encode the standard mathematical statements; (3) this capsule pins these nodes at tier read, and the delegated deep theorems are unpinned; (4) human mathematical peer review is ongoing."
+        }
+      }
+    },
+    "pl": {
+      "L0": {
+        "title": "Bliźniacza pieśń z obrotów kryształu",
+        "headline": "Każda szczególna ukryta melodia ma bliźniaczkę zapisaną w zupełnie innym języku, która przy każdych drzwiach brzmi tym samym akordem.",
+        "explanation": "Wyobraź sobie tajemniczą melodię graną w niezwykłej sali koncertowej. Ta część maszyny obiecuje, że melodia zawsze ma bliźniaczkę, zrobioną z obrotów kryształu zamiast z dźwięku, i że przy każdych ponumerowanych drzwiach obie wydają dokładnie ten sam akord. Żeby zbudować bliźniaczkę, maszyna pożycza znacznie większy chór i zaczyna od bardzo prostej piosenki-nasionka. Gotowa bliźniaczka trafia potem do dwóch kolejnych warsztatów.",
+        "key_insight": "Dwa bardzo różne światy, dźwięk i obroty kryształu, mają przy każdych drzwiach ten sam odcisk palca. Tutaj znalezienie bliźniaczki to pożyczona obietnica, a nie coś budowanego od zera.",
+        "analogy_anchor": "Piosenka i jej nuty zapisane obcym alfabetem, które zgadzają się nuta w nutę, na jakiejkolwiek stronie je otworzysz.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "To, że „melodia” jest regularną algebraiczną spolaryzowaną kuspidalną reprezentacją automorficzną GL_a nad ciałem CM",
+            "To, że „bliźniaczka” jest ciągłą, półprostą ℓ-adyczną reprezentacją Galois",
+            "To, że „zgodny akord” oznacza równość wielomianów charakterystycznych Frobeniusa i parametrów Satake",
+            "Wejścia z podniesienia theta i wagi jeden, od których zależy konstrukcja"
+          ],
+          "where_metaphor_breaks": "Bliźniaczka brzmi jak kopia, którą da się sprawdzić na ucho. Prawdziwą odpowiedniość można sprawdzić tylko przy nieskończenie wielu liczbach pierwszych, przez wielomiany, a tutaj dostarczają jej nazwane twierdzenia, a nie bezpośredni pokaz."
+        }
+      },
+      "L1": {
+        "title": "Most między widmem a symetrią",
+        "headline": "Nośny import łączy dane automorficzne z symetrią arytmetyczną i opiera się na nim wszystko dalej w łańcuchu, co czyta charaktery lub okna kohomologii.",
+        "explanation": "Rząd Galois jest mostem. Po jednej stronie są reprezentacje automorficzne, czyli obiekty spektralne i analityczne. Po drugiej są reprezentacje Galois, czyli symetrie ciał liczbowych. Obie strony muszą zgadzać się lokalnie przy każdej dobrej liczbie pierwszej. Łańcuch dostaw ma dwa wejścia: podniesienie theta wysokiego rzędu, które przenosi dane do dużych grup unitarnych, oraz geometryczną realizację wagi jeden, która działa jak proste geometryczne nasiono. Razem zasilają warunkową konstrukcję, której wynikiem jest rząd.",
+        "key_insight": "To główne wąskie gardło warstwy arytmetycznej. Jeśli most zawiedzie, zarówno interfejs charakterów, jak i interfejs okien kohomologii tracą fundament.",
+        "analogy_anchor": "Filar nośny stojący na dwóch fundamentach, dużym podniesieniu i małym nasieniu geometrycznym, i podtrzymujący dwa osobne piętra.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Hipotezy o π (ciało CM, regularność, algebraiczność, polaryzacja przez χ)",
+            "Zawartość PropsB (ciągłość, półprostota, porównania, relacje wag i Hodge’a–Tate’a)",
+            "Warunki wymiaru i wag podniesienia theta (d ≥ d₀, d + m_W(w) ≤ 2λ_{w,k})",
+            "Tożsamość odbiorców dalej w łańcuchu: everyCharacter_of_row i vwin_of_row"
+          ],
+          "where_metaphor_breaks": "Filar albo stoi, albo nie. Rząd jest twierdzeniem o istnieniu, kwantyfikowanym po wszystkich ciałach CM, liczbach pierwszych ℓ, rangach a i reprezentacjach π, a w tej kapsule jest złożony z nazwanych twierdzeń, których własne dowody nie są tu przypięte."
+        }
+      },
+      "L2": {
+        "title": "Kontrakt: Row0b i okablowanie jego producentów",
+        "headline": "Wejście (E CM, ℓ, ι, a ≥ 1, π, χ). Wyjście ∃ (r, wt, HT) spełniające PropsB. Dowód jest złożony z tLiftK i geoOne_holds.",
+        "explanation": "Row0b kwantyfikuje po ciele liczbowym CM E z domknięciem algebraicznym Ω, po liczbie pierwszej ℓ z ι : Q̄_ℓ ≃ ℂ, po a ≥ 1, po kuspidalnym π na GL_a i po charakterze Heckego χ maksymalnego podciała rzeczywistego, przy czym π jest regularna i algebraiczna, a (π, χ) tworzy parę spolaryzowaną. Zwraca r : G(E, Ω) → GL_a(Q̄_ℓ), wagę wt ∈ ℤ i multizbiory Hodge’a–Tate’a HT spełniające PropsB. Okablowanie wygląda tak: `galoisLocalGlobalStrong_recParameter` := `galoisRepresentations_of_thetaLift tLiftK`, co z kolei rozwija się do `galoisLocalGlobalStrong_of_geometry_lift geoOne_holds up`. Wynik przechodzi interfejsami if-01 (everyCharacter_of_row) i if-02 (vwin_of_row).",
+        "key_insight": "Producent nie ma jawnej przesłanki globalnej, ale tylko dlatego, że przesłanki TLiftK i GeoOne rozładowują nazwane twierdzenia. Prawdziwy koszt siedzi w tych twierdzeniach.",
+        "analogy_anchor": "Usługa ze wstrzykiwaniem zależności: interfejs Row0b spełnia konstruktor, który przyjmuje dwóch dostawców, tLiftK i geoOne_holds.",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Definicja PropsB pole po polu oraz parametry Rc i recT",
+            "Pełna lista hipotez TLiftK (charaktery Heckego χ_X i χ_W, ResEtaPow, HasExp, IsAutRepU)",
+            "Dowody tLift_holds_k, weight_one_geometric_realization i galoisLocalGlobalStrong_of_geometry_lift"
+          ],
+          "where_metaphor_breaks": "Wstrzykiwanie zależności sugeruje, że dostawcy są tani i wymienni. Tutaj każdy dostawca jest głębokim twierdzeniem matematycznym, a przypięte w kapsule opakowania pokazują okablowanie, a nie głębię."
+        }
+      },
+      "L3": {
+        "title": "Row0b przez unitarne łańcuchy theta i geometryczną realizację wagi jeden",
+        "headline": "Reprezentacje Galois stowarzyszone z RAPC π na GL_a/E, otrzymane przez podniesienie do grup unitarnych wysokiego rzędu i realizację geometryczną.",
+        "explanation": "Row0b orzeka, że dla regularnej algebraicznej spolaryzowanej kuspidalnej π na GL_a(𝔸_E), gdzie E jest ciałem CM, istnieje ciągła, półprosta ℓ-adyczna r, której wielomiany Frobeniusa pokrywają się z parametrami Satake π, razem z danymi wag i Hodge’a–Tate’a (PropsB). Wejście TLiftK to odpowiedniość theta dla unitarnej pary dualnej. Dla przestrzeni hermitowskiej X (J = 1) wymiaru n i przestrzeni skośnie hermitowskich W wymiaru d ≥ d₀ z J = δ·1, dla charakterów Heckego χ_X i χ_W o zadanych obcięciach i wykładnikach m_X, m_W oraz dla automorficznej U o wagach λ spełniających d + m_W(w) ≤ 2λ_{w,k} daje ono podniesienie U′ na grupę rzędu d. GeoOne dostarcza geometryczną realizację wagi jeden, a warunkowe twierdzenie `galoisLocalGlobalStrong_of_geometry_lift` składa oba wejścia w Row0b recT.",
+        "key_insight": "Strategia polega na przeniesieniu π podniesieniem theta do wysokiego rzędu, gdzie dostępna jest geometria, a potem odczytaniu reprezentacji Galois geometrycznie, z wagą jeden jako przypadkiem bazowym.",
+        "analogy_anchor": "Odpowiedniość theta w zakresie stabilnym w stylu Kudli–Rallisa dla unitarnych par dualnych, użyta jako rampa ku realizacjom geometrycznym.",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Dosłowne warunki ResEtaPow, HasExp, W.GoodK i dokładne znaczenie IsLift",
+            "Obiekty geometryczne stojące za GeoOne i dowód wewnątrz galoisLocalGlobalStrong_of_geometry_lift",
+            "Zgodność lokalno-globalna w miejscach rozgałęzionych i dokładna normalizacja Hodge’a–Tate’a w PropsB"
+          ],
+          "where_metaphor_breaks": "Odwołanie do zakresu stabilnego w stylu Kudli–Rallisa jest interpretacyjnym komentarzem, a nie częścią rdzenia formalnego. Kapsuła przypina wyłącznie twierdzenia z Leana, a to, czy zakodowane TLiftK i PropsB pokrywają się z klasycznymi twierdzeniami, rozstrzyga przegląd przez ludzi."
+        }
+      },
+      "L4": {
+        "title": "Kotwica formalna: UpperTheory.GalStar.Row0b i producenci",
+        "headline": "Sześć przypiętych węzłów, commit 40e56bab026552e089d7afcfeff08d2defb9c005, wszystkie z tier: read (cytowane i przejrzane, nie tier: checked).",
+        "explanation": "Przypięte węzły: definicja `UpperTheory.GalStar.Row0b` (…TypeConditions.WeightsConjBis W69–73); producent `UpperTheory.Gal.Int.galoisLocalGlobalStrong_recParameter` (…IntegralStructures.RowSrc W6); reduktor `UpperTheory.Gal.Int.galoisRepresentations_of_thetaLift` (…GaloisRepresentationsOfThetaLift W6); producent `UpperTheory.TP.K.tLiftK` (…ThetaKernels.TLiftK W4–5); producent `UpperTheory.Gal.Int.Geo.geoOne_holds` (…WeightOneGeometricRealization W11); definicja `UpperTheory.TP.TLiftK` (…HalfIndexLattices.TLiftK W12–23). Środowisko to Lean 4.33.1, deklarowany ślad aksjomatów to `propext`, `Classical.choice`, `Quot.sound`, a interfejsy wyjściowe to everyCharacter_of_row (if-01) i vwin_of_row (if-02).",
+        "key_insight": "Każdy przypięty węzeł galois ma tier `read`, w odróżnieniu od sprawdzonego (`checked`) lematu Behrenda. Wycinki to jednowierszowe opakowania delegujące do tLift_holds_k, weight_one_geometric_realization i galoisLocalGlobalStrong_of_geometry_lift, a żadne z nich nie jest tu przypięte.",
+        "analogy_anchor": "https://github.com/Deicyde/riemann-hypothesis/blob/40e56bab026552e089d7afcfeff08d2defb9c005/src/Development/AutomorphicArithmetic/Foundations/GaloisRepresentations/TypeConditions/WeightsConjBis.lean#L69-L73",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Luka formalizacji / granica specyfikacji: (1) zaufanie do jądra Leana i ewentualnej niezależnej weryfikacji; (2) to, czy definicje projektu, takie jak CuspSub, IsRegAlg, PolarizedPair, PropsB, Rc, recT i TLiftK, oparte na NumberField i IsCMField z Mathlib, wiernie kodują standardowe twierdzenia matematyczne; (3) kapsuła przypina te węzły z tier read, a delegowane głębokie twierdzenia nie są przypięte; (4) przegląd przez matematyków wciąż trwa."
+        }
+      }
+    }
+  },
+  "cohomology": {
+    "pl": {
+      "L0": {
+        "title": "Cichy odcinek drogi",
+        "headline": "Na długiej drodze zawsze da się znaleźć odcinek, na którym „duchowych listów” jest mało.",
+        "explanation": "Wyobraź sobie listy, które na każdej małej poczcie wyglądają w porządku, a mimo to nie składają się w jedną całą wiadomość — to „duchowe listy”. Ten element obiecuje, że przy bardzo dalekiej podróży zawsze znajdziesz cały odcinek drogi, od kamienia Y aż do kamienia Y razy Y, na którym takich listów jest mniej niż ustalony sufit. Ten spokojny odcinek oddajemy dalej, „gospodarzom”, którzy na nim budują.",
+        "key_insight": "Nie trzeba ciszy wszędzie; wystarczy jeden długi, gwarantowany cichy odcinek.",
+        "analogy_anchor": "Kierowca na nocnej trasie szuka odcinka bez szumu w radiu, żeby usłyszeć jedną stację.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "Czym naprawdę są lokalnie trywialne klasy kohomologii Galois (grupa Sza) i ich długości",
+            "Ważenie przez logarytmy liczb pierwszych i sumowanie po warstwach e",
+            "Parametry ε < 1/52, Ct = 401, J ≥ 1 i próg X0",
+            "Łańcuch dowodowy: Row0b → dane wejściowe → pakiet rangi N → hipotezy H' → cztery liczniki"
+          ],
+          "where_metaphor_breaks": "„Duchowe listy” sugerują błędy do usunięcia, a klasy Sza to legalne obiekty algebraiczne; „sufit” to konkretna, ogromna granica √exp(x^ε), a nie mała liczba, i dotyczy twistów aż do ⌊x^401⌋, czego obraz drogi nie oddaje."
+        }
+      },
+      "L1": {
+        "title": "Okno, w którym przeszkody są pod kontrolą",
+        "headline": "Sygnał lokalno-globalnych przeszkód jest ograniczony nie w punkcie, ale na całym przedziale [Y, Y²].",
+        "explanation": "Przeszkody kohomologiczne to napięcie między tym, co zgadza się lokalnie przy każdej liczbie pierwszej, a tym, co zgadza się globalnie. Ten element gwarantuje, że dla dużych skal X istnieje okno [Y, Y²] wewnątrz [X^(1/J), √X], w którym zważona suma tych przeszkód nie przekracza budżetu rosnącego wolno względem eksponencjalnej skali. Zasilają go dwa strumienie (wiersz Galois Row0b oraz pary liczb pierwszych), a wynik płynie do warstwy „hosts”.",
+        "key_insight": "Kontrola na całym oknie, a nie w izolowanych punktach, jest tym, czego potrzebuje warstwa w dół grafu.",
+        "analogy_anchor": "Inżynier mostu nie potrzebuje ciszy wiatrowej przez cały rok — potrzebuje gwarantowanego okna pogodowego na montaż przęsła.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Dokładna postać predykatów VAt, PageN i WinPair",
+            "Warunek skończoności długości shaLen przed rzutowaniem na ℕ",
+            "Wewnętrzna redukcja przez lemat K, end0 i liczniki i, ii/iii, v",
+            "Rola charakteru ψ i stałej Ct = 401"
+          ],
+          "where_metaphor_breaks": "„Budżet” i „okno pogodowe” sugerują jedną wielkość fizyczną; w rzeczywistości kwantyfikatory są zagnieżdżone (dla każdego ε i e istnieją J, X0, a potem Y zależne od X, q, d), a ta kolejność ma znaczenie logiczne."
+        }
+      },
+      "L2": {
+        "title": "Kontrakt VWinAt ψ 401",
+        "headline": "Wejścia: Row0b + pary pierwsze; wyjście: okno [Y, Y²] z ograniczeniem VAt dla każdego dopuszczalnego (q, d).",
+        "explanation": "Kontrakt: dla każdego ε ∈ (0, 1/52) i każdego wyboru warstw e(x) spełniającego PageN istnieją J ≥ 1 i X0 takie, że dla X ≥ X0 i każdej pary WinPair ε (X^(1/J)) q d istnieje Y z X^(1/J) ≤ Y oraz Y² ≤ X, dla którego VAt ψ ε 401 q d (e x) x zachodzi na całym [Y, Y²]. VAt ogranicza twisty poniżej ⌊x^401⌋ przez √exp(x^ε); bazowa miara to VVle — skończone długości dla 1 ≤ e < t i suma Σ log ℓ · Σ_e długość ≤ B. Producent vwin_of_row przekazuje Row0b przez OpenImageCondition, baseChangeN i RowT do pakietu rangi N.",
+        "key_insight": "Jeden term Row0b wystarcza, by wyprodukować cały kontrakt okna — pozostałe wejścia są dostarczane z rekordów literaturowych.",
+        "analogy_anchor": "SLA usługi: dla każdego poziomu jakości ε dostawca gwarantuje okno czasowe o stałym kształcie [Y, Y²], w którym limit błędów jest dotrzymany.",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Definicje PageN, WinPair i VAt (tylko ich rola w kontrakcie)",
+            "Wewnętrzne węzły wieży: tower-class-rank, tower-operator-bound, tower-fixed-growth",
+            "Szczegóły liczników counts-joint, counts-height, counts-pointwise, counts-inside/outside",
+            "Źródło par pierwszych z interfejsu if-03 (hostThickExists)"
+          ],
+          "where_metaphor_breaks": "Analogia SLA zakłada operacyjną gwarancję w czasie; tu „okno” to przedział skali w twierdzeniu istnienia, bez algorytmu wyznaczającego Y ani efektywnych stałych J, X0."
+        }
+      },
+      "L3": {
+        "title": "Okno kohomologiczne: ograniczenie długości Sza na [Y, Y²]",
+        "headline": "Ważone długości lokalnie trywialnej kohomologii Galois skręconych modułów ≤ √exp(x^ε), jednostajnie po ciałach.",
+        "explanation": "VVle E t B wymaga, by dla każdego domknięcia algebraicznego Ω i lokalnych danych LData długości shaLen(ld p, e) były skończone dla 0 < e < t oraz by Σ_{ℓ∈S} log ℓ · Σ_{e∈[1,t)} shaLen ≤ B dla każdego skończonego S. Okno powstaje w łańcuchu: vwin_of_row (Row0b z konwencją IsRecT) → automorphic_window_of_inputs (OpenImageCondition, BaseChangeIsobaricN, RowT) → v_window_of_depth_zero_residual_bc_cm (dodaje wejścia CM abelowe) → v_window_of_literal_automorphy_n (hipoteza rangi N) → patching z descWeak → vwin_of_hypotheses_H_E_alt. Ta ostatnia łączy lemat K (lemmaK_litN_alt), ends0_alt oraz liczniki i (Kato, automorfia nierozgałęziona), ii/iii (sp4In) i v (podniesienie unitarne) przez of_four_alt.",
+        "key_insight": "Ograniczenie Sza wynika z automorficzności rangi N plus patching, a cztery liczniki dzielą przestrzeń twistów na rozłączne przypadki kontrolowane osobno.",
+        "analogy_anchor": "Klasyczny schemat: automorficzność → kontrola grup Selmera, tu w wersji jednostajnej po rodzinie twistów i z wagą log ℓ.",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Dokładne sformułowania HypothesesH', litN i sp4In0_alt",
+            "Szczegóły stałych wieży (tower-window-constants) i wzrostu rang klas",
+            "Konkretna postać PChar ψ i jej związek z warstwą hosts"
+          ],
+          "where_metaphor_breaks": "Opis „automorficzność → Selmer” jest heurystyką literaturową; graf Lean zawiera konkretne rekordy (OpenImageCondition, LiteratureCMHypothesis), a zgodność ich treści z cytowanymi twierdzeniami nie jest tu oceniana."
+        }
+      },
+      "L4": {
+        "title": "Kotwice Lean: UpperTheory.Top.VWinAt i łańcuch vwin_of_row",
+        "headline": "Lean 4.33.1, commit 40e56bab026552e089d7afcfeff08d2defb9c005, aksjomaty: propext, Classical.choice, Quot.sound.",
+        "explanation": "Definicje: UpperTheory.Top.VVle (CharacterBoxes/ExistsPageN.lean L12–17) i UpperTheory.Top.VWinAt (ExistsPageN.lean L44–47, tier covered). Producent: UpperTheory.One.vwin_of_row (…/DenseThresholdCases/VwinOfRow.lean L4–5); reduktory: UpperTheory.One.Join.automorphic_window_of_inputs (TopMainZj.lean L71–74), UpperTheory.One.Join.v_window_of_depth_zero_residual_bc_cm (TopMainZj.lean L55–58), UpperTheory.V.v_window_of_literal_automorphy_n (WindowBoundOfLiteratureLevel.lean L33–34), UpperTheory.V.HV.DescentVanishingReductions.v_window_of_automorphy_csd_ss_mono_odd (L30–31) i vwin_of_hypotheses_H_E_alt (L25–29). Interfejsy: wejście if-02 (Row0b → okno) i if-03 (WinPair / hostThickExists), wyjście if-05 (VWinAt ψ 401 → hosts).",
+        "key_insight": "Każdy krok łańcucha to jawnie przypięta deklaracja; komponent obejmuje 25 węzłów, z których 8 ma kotwice z cytatem kodu.",
+        "analogy_anchor": "Kotwica formalna: github.com/Deicyde/riemann-hypothesis @ 40e56bab, moduł Development.AutomorphicArithmetic.CharacterBoxes.ExistsPageN.",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Granica specyfikacji: sprawdzenie maszynowe gwarantuje tylko, że deklaracje typują się w jądrze Lean (i powtórkach jądra) przy trzech standardowych aksjomatach. Nie gwarantuje, że definicje Mathlib i lokalne (shaLen, LData, OpenImageCondition, rekordy „of_literature”) wiernie oddają matematykę cytowanych prac; to ocenia trwający, ludzki przegląd matematyczny."
+        }
+      }
+    },
+    "en": {
+      "L0": {
+        "title": "The quiet stretch of road",
+        "headline": "On a long enough road you can always find a stretch where \"ghost letters\" are rare.",
+        "explanation": "Picture letters that look fine at every little post office yet never add up to one whole message — \"ghost letters\". This piece promises that on a very long trip you can always find a whole stretch of road, from milestone Y to milestone Y times Y, where the ghost letters stay under a fixed ceiling. That quiet stretch is handed on to the \"hosts\", who build on it.",
+        "key_insight": "You don't need silence everywhere; one long, guaranteed quiet stretch is enough.",
+        "analogy_anchor": "A night driver looking for a stretch without radio static so one station comes through clearly.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "What locally trivial Galois cohomology classes (Sha) and their lengths really are",
+            "Weighting by logarithms of primes and summing over layers e",
+            "The parameters ε < 1/52, Ct = 401, J ≥ 1 and threshold X0",
+            "The proof chain: Row0b → inputs → rank-N package → hypotheses H' → four counts"
+          ],
+          "where_metaphor_breaks": "\"Ghost letters\" suggests errors to be removed, whereas Sha classes are legitimate algebraic objects; the \"ceiling\" is the enormous bound √exp(x^ε), not a small number, and it covers twists up to ⌊x^401⌋, which the road picture cannot show."
+        }
+      },
+      "L1": {
+        "title": "A window where obstructions stay in check",
+        "headline": "The local-global obstruction signal is bounded not at a point but across the whole interval [Y, Y²].",
+        "explanation": "Cohomological obstructions measure the tension between agreeing locally at every prime and agreeing globally. This piece guarantees that for large scales X there is a window [Y, Y²] inside [X^(1/J), √X] where the weighted total of these obstructions stays within a budget that grows slowly compared with exponential scale. Two streams feed it (the Galois row Row0b and prime pairs), and its output flows to the \"hosts\" layer.",
+        "key_insight": "Control over a whole window, not at isolated points, is what the downstream layer needs.",
+        "analogy_anchor": "A bridge engineer doesn't need calm winds all year, only a guaranteed weather window to set the span.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The exact form of the predicates VAt, PageN and WinPair",
+            "The finiteness condition on shaLen before casting to ℕ",
+            "The internal reduction via lemma K, ends0 and counts i, ii/iii, v",
+            "The role of the character ψ and the constant Ct = 401"
+          ],
+          "where_metaphor_breaks": "\"Budget\" and \"weather window\" suggest one physical quantity; in fact the quantifiers are nested (for every ε and e there exist J, X0, then a Y depending on X, q, d), and that order carries logical weight."
+        }
+      },
+      "L2": {
+        "title": "The VWinAt ψ 401 contract",
+        "headline": "Inputs: Row0b + prime pairs; output: a window [Y, Y²] with the VAt bound for every admissible (q, d).",
+        "explanation": "Contract: for every ε ∈ (0, 1/52) and every layer choice e(x) satisfying PageN, there exist J ≥ 1 and X0 such that for X ≥ X0 and every pair WinPair ε (X^(1/J)) q d there is a Y with X^(1/J) ≤ Y and Y² ≤ X for which VAt ψ ε 401 q d (e x) x holds on all of [Y, Y²]. VAt bounds twists below ⌊x^401⌋ by √exp(x^ε); the base measure is VVle, meaning finite lengths for 1 ≤ e < t and Σ log ℓ · Σ_e length ≤ B. The producer vwin_of_row routes Row0b through OpenImageCondition, baseChangeN and RowT into the rank-N package.",
+        "key_insight": "A single Row0b term is enough to produce the whole window contract; the remaining inputs come from literature records.",
+        "analogy_anchor": "A service SLA: for every quality level ε the provider guarantees a fixed-shape time window [Y, Y²] in which the error cap holds.",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Definitions of PageN, WinPair and VAt (only their contract role is shown)",
+            "Internal tower nodes: tower-class-rank, tower-operator-bound, tower-fixed-growth",
+            "Details of counts-joint, counts-height, counts-pointwise, counts-inside/outside",
+            "Where the prime pairs from interface if-03 (hostThickExists) come from"
+          ],
+          "where_metaphor_breaks": "The SLA analogy implies an operational guarantee over time; here the \"window\" is a range of scales in an existence theorem, with no algorithm that finds Y and no effective constants J, X0."
+        }
+      },
+      "L3": {
+        "title": "The cohomological window: bounding Sha lengths on [Y, Y²]",
+        "headline": "Weighted lengths of locally trivial Galois cohomology of twisted modules are ≤ √exp(x^ε), uniformly over the fields.",
+        "explanation": "VVle E t B requires that for every algebraic closure Ω and local data LData the lengths shaLen(ld p, e) are finite for 0 < e < t, and that Σ_{ℓ∈S} log ℓ · Σ_{e∈[1,t)} shaLen ≤ B for every finite S. The window comes from a chain: vwin_of_row (Row0b with the IsRecT convention) → automorphic_window_of_inputs (OpenImageCondition, BaseChangeIsobaricN, RowT) → v_window_of_depth_zero_residual_bc_cm (adds the CM abelian inputs) → v_window_of_literal_automorphy_n (rank-N hypothesis) → patching with descWeak → vwin_of_hypotheses_H_E_alt. That last step combines lemma K (lemmaK_litN_alt), ends0_alt and counts i (Kato, unramified automorphy), ii/iii (sp4In) and v (unitary lift) via of_four_alt.",
+        "key_insight": "The Sha bound comes from rank-N automorphy plus patching, and the four counts split the twist space into disjoint cases that are each controlled separately.",
+        "analogy_anchor": "The classical pattern of automorphy giving control of Selmer groups, here made uniform over a family of twists and weighted by log ℓ.",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Exact statements of HypothesesH', litN and sp4In0_alt",
+            "Details of the tower constants (tower-window-constants) and class-rank growth",
+            "The concrete form of PChar ψ and its link to the hosts layer"
+          ],
+          "where_metaphor_breaks": "\"Automorphy → Selmer\" is a literature heuristic; the Lean graph contains specific records (OpenImageCondition, LiteratureCMHypothesis), and this lens does not judge whether their contents match the cited theorems."
+        }
+      },
+      "L4": {
+        "title": "Lean anchors: UpperTheory.Top.VWinAt and the vwin_of_row chain",
+        "headline": "Lean 4.33.1, commit 40e56bab026552e089d7afcfeff08d2defb9c005, axioms: propext, Classical.choice, Quot.sound.",
+        "explanation": "Definitions: UpperTheory.Top.VVle (CharacterBoxes/ExistsPageN.lean L12–17) and UpperTheory.Top.VWinAt (ExistsPageN.lean L44–47, tier covered). Producer: UpperTheory.One.vwin_of_row (…/DenseThresholdCases/VwinOfRow.lean L4–5). Reducers: UpperTheory.One.Join.automorphic_window_of_inputs (TopMainZj.lean L71–74), UpperTheory.One.Join.v_window_of_depth_zero_residual_bc_cm (TopMainZj.lean L55–58), UpperTheory.V.v_window_of_literal_automorphy_n (WindowBoundOfLiteratureLevel.lean L33–34), UpperTheory.V.HV.DescentVanishingReductions.v_window_of_automorphy_csd_ss_mono_odd (L30–31) and vwin_of_hypotheses_H_E_alt (L25–29). Interfaces: inputs if-02 (Row0b → window) and if-03 (WinPair / hostThickExists), output if-05 (VWinAt ψ 401 → hosts).",
+        "key_insight": "Every step of the chain is an explicitly pinned declaration; the component has 25 nodes, 8 of which carry anchors with code excerpts.",
+        "analogy_anchor": "Formal anchor: github.com/Deicyde/riemann-hypothesis @ 40e56bab, module Development.AutomorphicArithmetic.CharacterBoxes.ExistsPageN.",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Specification boundary: machine checking guarantees only that these declarations typecheck in the Lean kernel (and in kernel replays) under the three standard axioms. It does not guarantee that the Mathlib and local definitions (shaLen, LData, OpenImageCondition, the \"of_literature\" records) faithfully capture the mathematics of the cited works. That is for ongoing human mathematical peer review to judge."
+        }
+      }
+    }
+  },
+  "inputs": {
+    "pl": {
+      "L0": {
+        "title": "Siedem składników na ostatni przepis",
+        "headline": "Wielkie danie powstaje dopiero, gdy na stół trafi siedem składników naraz.",
+        "explanation": "Kucharz ma przepis, który działa tylko wtedy, gdy przyniesie się mu dokładnie siedem rzeczy, w tym jedną bardzo szczególną: „cichy odcinek drogi” z sąsiedniej kuchni. Ciekawostka jest taka, że jedna dostawa z magazynu (wiersz Galois) zapełnia od razu dwie miski i jeszcze pomaga przygotować ten cichy odcinek. Gotowe danie wędruje dalej, do „rodziny”.",
+        "key_insight": "Ostatni krok to nie nowa sztuczka, tylko staranne złożenie siedmiu gotowych składników.",
+        "analogy_anchor": "Orkiestra zaczyna grać dopiero, gdy wszystkie siedem sekcji siedzi na miejscach.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "Czym są pakiety grup unitarnych, lokalne pakiety theta i całki theta",
+            "Ograniczenie kowolumenu i jego kilkanaście wejść geometrycznych",
+            "Lokalne parametry Langlandsa i ich budowa z reprezentacji kuspidalnych",
+            "Rekord OpenLiteratureStatements i to, że twierdzenia literaturowe wchodzą jako jawne pola"
+          ],
+          "where_metaphor_breaks": "Składniki w kuchni są fizycznie odrębne; tu jeden i ten sam obiekt logiczny (term h typu Row0b) wypełnia dwa pola naraz, a „przepis” to implikacja logiczna, nie proces w czasie."
+        }
+      },
+      "L1": {
+        "title": "Punkt zbiegu siedmiu sygnałów",
+        "headline": "Twierdzenie arytmetyczne odpala dopiero wtedy, gdy zbiegnie się siedem niezależnych strumieni danych.",
+        "explanation": "To wąskie gardło grafu: wszystkie wcześniejsze wyniki zbiegają się w jednym wywołaniu, które przyjmuje siedem argumentów — pakiet grup unitarnych, lokalny pakiet theta, zgodność całek theta, lokalne dopasowanie, ograniczenie kowolumenu, lokalne parametry Langlandsa i okno kohomologiczne. Z góry płynie jeden sygnał, wiersz Galois Row0b, który wypełnia dwa pola rekordu literaturowego i równocześnie produkuje okno. W dół wynik odpływa jako dane po stronie definitywnej do warstwy „family”.",
+        "key_insight": "Cały arytmetyczny ciężar sprowadza się do jednego wejścia, Row0b; reszta to wyniki opublikowane, zapakowane w rekordy.",
+        "analogy_anchor": "Węzeł kolejowy, w którym siedem torów schodzi się w jedną linię główną.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Zawartość pakietów: 6 pól UnitaryGroupThirdPlaceHypotheses, 8 pól ThetaLocalInputs",
+            "Około 15 wejść ograniczenia kowolumenu (rozwiązanie osobliwości, Hilbert–Samuel–Moriwaki, Fargues, Zarhin…)",
+            "Konwencja parametru lokalnego IsRecT",
+            "Producent galoisLocalGlobalStrong_recParameter zamykający wiersz"
+          ],
+          "where_metaphor_breaks": "„Sygnały” sugerują niezależne źródła; w rzeczywistości sześć z siedmiu argumentów pochodzi z jednego rekordu O, a Row0b zasila zarówno rekord, jak i okno, więc wejścia nie są statystycznie ani logicznie niezależne."
+        }
+      },
+      "L2": {
+        "title": "Kontrakt wywołania every_character_of_literature_of_vWin",
+        "headline": "OpenLiteratureStatements × VWin → EveryCharacter, z rekordem budowanym z jednego Row0b.",
+        "explanation": "Sygnatura: (O : OpenLiteratureStatements) (hV : VWin) → EveryCharacter. Rekord O ma trzy pola w kolejności Row, RecTExists, Row, a everyCharacter_of_row wypełnia go jako ⟨h, recTExists, h⟩ i przekazuje vwin_of_row h jako hV. Wewnątrz O rozwija się w siedem argumentów every_character_of_theta_integrals_local_matching: published_results_eigen O, published_results_first O, .1 i .2 z theta_integrals_agree_and_local_matching_of_literature O, topCovolSlim2_use_alt_alt(…), local_langlands_gl_recT_exists_of_literature O oraz hV.",
+        "key_insight": "Jedynym otwartym parametrem jest h : Row0b, a końcowe everyCharacter zamyka go producentem nazwanym, bez jawnej przesłanki.",
+        "analogy_anchor": "Funkcja fabrykująca: jeden token konfiguracji rozpakowany w obiekt z siedmioma zależnościami (dependency injection).",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Sygnatury pól wewnątrz pakietów eigen, first i arithmetic",
+            "Pełna lista argumentów topCovolSlim2_use_alt_alt",
+            "Dowód recTExists (artEx, cuspEx, exists_isLExt, extDim, extTw)",
+            "Węzły green, linked-two-three, theta-match, covol, seven, definite"
+          ],
+          "where_metaphor_breaks": "W dependency injection zależności są wymienialnymi implementacjami; tu to dowody zdań (typ Prop), więc liczy się jedynie ich istnienie, a nie „która implementacja”."
+        }
+      },
+      "L3": {
+        "title": "Siedem wejść twierdzenia arytmetycznego",
+        "headline": "Pakiety grup unitarnych i lokalne pakiety theta, całki theta, lokalne dopasowanie, kowolumen, lokalny Langlands i okno.",
+        "explanation": "published_results_eigen daje UnitaryGroupThirdPlaceHypotheses (Clozel kohomologicznie, kuspidalność Greena, l-adyczny charakter Heckego, Czebotariow stopnia 1, reprezentacje Galois spolaryzowanych kuspidalnych, zamiana bazy dla definitywnej grupy unitarnej). published_results_first daje ThetaLocalInputs (Green, Linnik, CM j, mirabolik kuspidalny, rozgałęzienie Weyla, nieprzywiedlność Bernsteina, pierścień Zelevinsky’ego, skończoność Bernsteina–Zelevinsky’ego); kowolumen opiera się na PublishedHodgeBundleTheorems (zwartyfikacja toroidalna, objętości, nef, obliczenie arytmetyczne, de Rham abelowy) oraz Hilbercie–Samuelu–Moriwakim, Farguesie i Zarhinie. Lokalne parametry recTExists rozszerzają parametr z reprezentacji kuspidalnych (exists_isLExt) i ustalają zgodność wymiaru i twistów.",
+        "key_insight": "Rdzeniem arytmetycznym jest korespondencja theta z grupami unitarnymi; okno kohomologiczne to jedyne wejście nieliteraturowe.",
+        "analogy_anchor": "Standardowy most automorficzny: theta lift na grupy unitarne + lokalny Langlands dla GL + kontrola objętości odmian Shimury.",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Dokładna treść zdania EveryCharacter",
+            "Sformułowanie lokalnego dopasowania i zgodności całek theta",
+            "Wewnętrzny dowód topCovolSlim2_use_alt_alt"
+          ],
+          "where_metaphor_breaks": "Nazwy pól (np. „clozelCohomological”, „zarhin_statement”) wskazują źródła literaturowe, ale ta soczewka nie sprawdza, czy zdania Lean odpowiadają dokładnie twierdzeniom w tych pracach."
+        }
+      },
+      "L4": {
+        "title": "Kotwice Lean: UpperTheory.FinalTheorems.everyCharacter",
+        "headline": "Lean 4.33.1, commit 40e56bab026552e089d7afcfeff08d2defb9c005, aksjomaty: propext, Classical.choice, Quot.sound.",
+        "explanation": "UpperTheory.FinalTheorems.everyCharacter (CharacterBoxes/MainConclusion.lean L10–11) := everyCharacter_of_row UpperTheory.Gal.Int.galoisLocalGlobalStrong_recParameter; everyCharacter_of_row (L7–8) wywołuje UpperTheory.LiteratureTheorems.every_character_of_literature_of_vWin (…/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean L810–813). Rekord OpenLiteratureStatements jest w L215–218, pakiety published_results_eigen w L666–672, published_results_first w L727–735, a published_results_arithmetic w L781–786; UpperTheory.Zero.LLC.recTExists znajduje się w Foundations/LocalLanglands/LocalCentralUnits/RecTExists.lean L20–31. Interfejsy: wejście if-01 (Row0b, dwa pola), wyjście if-04 (every_character_of_theta_integrals_local_matching, SiegelEisensteinSecondTermHypotheses.lean L69–73).",
+        "key_insight": "Zdanie końcowe nie ma jawnej przesłanki arytmetycznej; komponent obejmuje 16 węzłów, z których 8 ma przypięte kotwice.",
+        "analogy_anchor": "Kotwica formalna: github.com/Deicyde/riemann-hypothesis @ 40e56bab, moduł Development.AutomorphicArithmetic.CharacterBoxes.MainConclusion.",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Granica specyfikacji: jądro Lean (oraz powtórki jądra) potwierdza tylko poprawność typowania przy trzech standardowych aksjomatach. Wierność definicji Mathlib, zdania EveryCharacter i zdań „of_literature” wobec zamierzonej matematyki i cytowanych prac to kwestia trwającego, ludzkiego przeglądu matematycznego, nie weryfikacji maszynowej."
+        }
+      }
+    },
+    "en": {
+      "L0": {
+        "title": "Seven ingredients for the final recipe",
+        "headline": "The big dish only comes together when seven ingredients are on the table at once.",
+        "explanation": "The cook has a recipe that only works if exactly seven things are brought in, including one very special one: the \"quiet stretch of road\" from the kitchen next door. The neat part is that a single delivery from the store (the Galois row) fills two bowls at once and also helps make that quiet stretch. The finished dish is passed on to the \"family\".",
+        "key_insight": "The last step is not a new trick, just careful assembly of seven ready-made ingredients.",
+        "analogy_anchor": "An orchestra starts playing only when all seven sections are in their seats.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "What unitary-group packages, local theta packages and theta integrals are",
+            "The covolume bound and its dozen-plus geometric inputs",
+            "Local Langlands parameters and how they are built from cuspidal representations",
+            "The OpenLiteratureStatements record and the fact that literature theorems enter as explicit fields"
+          ],
+          "where_metaphor_breaks": "Kitchen ingredients are physically separate; here one logical object (the term h of type Row0b) fills two fields at once, and the \"recipe\" is a logical implication, not a process in time."
+        }
+      },
+      "L1": {
+        "title": "Where seven signals converge",
+        "headline": "The arithmetic theorem fires only when seven separate data streams meet.",
+        "explanation": "This is a bottleneck of the graph: all earlier results converge on one call that takes seven arguments. They are the unitary-group package, the local theta package, agreement of theta integrals, local matching, a covolume bound, local Langlands parameters and the cohomological window. One upstream signal, the Galois row Row0b, fills two fields of the literature record and also produces the window, and the result flows downstream to the \"family\" layer as definite-side data.",
+        "key_insight": "All the arithmetic weight reduces to one input, Row0b; everything else is published results packed into records.",
+        "analogy_anchor": "A rail junction where seven tracks merge into one main line.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Package contents: the 6 fields of UnitaryGroupThirdPlaceHypotheses and 8 fields of ThetaLocalInputs",
+            "About 15 covolume inputs (resolution of singularities, Hilbert–Samuel–Moriwaki, Fargues, Zarhin…)",
+            "The IsRecT local parameter convention",
+            "The producer galoisLocalGlobalStrong_recParameter that closes the row"
+          ],
+          "where_metaphor_breaks": "\"Signals\" suggests independent sources; in fact six of the seven arguments come from the single record O, and Row0b feeds both the record and the window, so the inputs are not logically independent."
+        }
+      },
+      "L2": {
+        "title": "The every_character_of_literature_of_vWin call contract",
+        "headline": "OpenLiteratureStatements × VWin → EveryCharacter, with the record built from a single Row0b.",
+        "explanation": "Signature: (O : OpenLiteratureStatements) (hV : VWin) → EveryCharacter. The record O has three fields in the order Row, RecTExists, Row; everyCharacter_of_row fills it as ⟨h, recTExists, h⟩ and passes vwin_of_row h as hV. Inside, O unfolds into the seven arguments of every_character_of_theta_integrals_local_matching: published_results_eigen O, published_results_first O, .1 and .2 of theta_integrals_agree_and_local_matching_of_literature O, topCovolSlim2_use_alt_alt(…), local_langlands_gl_recT_exists_of_literature O, and hV.",
+        "key_insight": "The only open parameter is h : Row0b, and the final everyCharacter discharges it with a named producer, leaving no explicit premise.",
+        "analogy_anchor": "A factory function: one config token unpacked into an object with seven dependencies (dependency injection).",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Field signatures inside the eigen, first and arithmetic packages",
+            "The full argument list of topCovolSlim2_use_alt_alt",
+            "The proof of recTExists (artEx, cuspEx, exists_isLExt, extDim, extTw)",
+            "Nodes green, linked-two-three, theta-match, covol, seven, definite"
+          ],
+          "where_metaphor_breaks": "In dependency injection, dependencies are swappable implementations; here they are proofs of propositions (type Prop), so only their existence matters, not \"which implementation\"."
+        }
+      },
+      "L3": {
+        "title": "The seven inputs of the arithmetic theorem",
+        "headline": "Unitary-group and local theta packages, theta integrals, local matching, covolume, local Langlands and the window.",
+        "explanation": "published_results_eigen supplies UnitaryGroupThirdPlaceHypotheses (Clozel cohomological, Green cuspidality, Hecke l-adic character, degree-one Chebotarev, Galois representations of polarized cuspidals, base change for the definite unitary group). published_results_first supplies ThetaLocalInputs (Green series, Linnik, CM j, cuspidal mirabolic, Weyl branching, Bernstein unitary-product irreducibility, Zelevinsky polynomial ring, Bernstein–Zelevinsky finiteness). The covolume bound rests on PublishedHodgeBundleTheorems (toroidal compactification, volumes, nef, arithmetic computation, abelian de Rham) plus Hilbert–Samuel–Moriwaki, Fargues and Zarhin, while recTExists extends a parameter from the cuspidal representations (exists_isLExt) and establishes dimension and twist compatibility.",
+        "key_insight": "The arithmetic core is the theta correspondence with unitary groups; the cohomological window is the only non-literature input.",
+        "analogy_anchor": "The standard automorphic bridge: theta lift to unitary groups, plus local Langlands for GL, plus volume control on Shimura varieties.",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The exact content of the proposition EveryCharacter",
+            "The statements of local matching and theta-integral agreement",
+            "The internal proof of topCovolSlim2_use_alt_alt"
+          ],
+          "where_metaphor_breaks": "Field names (e.g. \"clozelCohomological\", \"zarhin_statement\") point to literature sources, but this lens does not check whether the Lean statements match exactly what those works prove."
+        }
+      },
+      "L4": {
+        "title": "Lean anchors: UpperTheory.FinalTheorems.everyCharacter",
+        "headline": "Lean 4.33.1, commit 40e56bab026552e089d7afcfeff08d2defb9c005, axioms: propext, Classical.choice, Quot.sound.",
+        "explanation": "UpperTheory.FinalTheorems.everyCharacter (CharacterBoxes/MainConclusion.lean L10–11) := everyCharacter_of_row UpperTheory.Gal.Int.galoisLocalGlobalStrong_recParameter, and everyCharacter_of_row (L7–8) calls UpperTheory.LiteratureTheorems.every_character_of_literature_of_vWin (…/ThirdPlaceSeries/EveryCharacterOfLiteratureOfVWin.lean L810–813). In that file the OpenLiteratureStatements record is at L215–218, published_results_eigen at L666–672, published_results_first at L727–735 and published_results_arithmetic at L781–786; UpperTheory.Zero.LLC.recTExists is in Foundations/LocalLanglands/LocalCentralUnits/RecTExists.lean L20–31. Interfaces: input if-01 (Row0b, two fields), output if-04 (every_character_of_theta_integrals_local_matching, SiegelEisensteinSecondTermHypotheses.lean L69–73).",
+        "key_insight": "The final statement has no explicit arithmetic premise; the component has 16 nodes, 8 of which carry pinned anchors.",
+        "analogy_anchor": "Formal anchor: github.com/Deicyde/riemann-hypothesis @ 40e56bab, module Development.AutomorphicArithmetic.CharacterBoxes.MainConclusion.",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Specification boundary: the Lean kernel (and kernel replays) confirm only that these declarations typecheck under the three standard axioms. Whether the Mathlib definitions, the EveryCharacter proposition and the \"of_literature\" statements faithfully capture the intended mathematics and the cited works is for ongoing human mathematical peer review to settle, not machine verification."
+        }
+      }
+    }
+  },
+  "family": {
+    "en": {
+      "L0": {
+        "title": "The Tuned Staircase of Bells",
+        "headline": "A long, carefully built staircase of bells where each leak is set before the concert starts.",
+        "explanation": "Imagine building a very long staircase of bells, each new bell lifted from the one below it. Every bell is checked so that it rings cleanly, does not lean too much, and stands on a floor of the right size. Because every bell passes these checks, the builders know in advance that one kind of sound leak costs exactly two notches and the other costs none, and they hand this fixed budget to the next team.",
+        "key_insight": "Picking the whole staircase on purpose turns two unknown leaks into two fixed numbers.",
+        "analogy_anchor": "A staircase of bells, each lifted from the one before and checked for clean ringing, tilt and floor size.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "The actual objects: theta lifts, divisibility of minors, cohomology sums and rank windows",
+            "The fact that the chain has about the square root of x steps and that its sizes grow with x",
+            "The role of the small parameter epsilon and the shared threshold below which everything holds",
+            "The hypotheses Green and the definite-side data that the construction needs"
+          ],
+          "where_metaphor_breaks": "Real bells exist one by one; here the whole family is a mathematical object whose existence is proved, and the two 'leaks' are exponents in an analytic estimate, not sounds."
+        }
+      },
+      "L1": {
+        "title": "Freezing the Loss Budget",
+        "headline": "Choose the family so carefully that both loss exponents stop being variables and become constants.",
+        "explanation": "The construction faces a tension: a richer family of theta lifts gives more signal, but every extra lift risks more loss through divisibility, slope and covolume defects. By imposing all controls at once and taking one common smallness threshold for the parameter, the family is built so that the divisibility loss is pinned at 2 and the second loss at 0. That frozen budget, not the family itself, is what flows downstream to the comparison step.",
+        "key_insight": "The bottleneck is not finding a family but finding one in which every control holds simultaneously below a single shared threshold.",
+        "analogy_anchor": "An engineer fixing two tolerances in advance so the next stage can rely on them as constants.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The explicit size windows for the ranks n, m, k and the linear relation for r and t",
+            "The modular divisibility argument for minors (the w with w squared equal to p)",
+            "The weighted cohomology (Sha-length) sum and how log squared of x is absorbed",
+            "The many individual link conditions (LinkN, LinkEta, LinkIRR, LinkG, LinkS, LinkGLOBAL)"
+          ],
+          "where_metaphor_breaks": "Tolerances in engineering are measured after the fact; here the exponents eD = 2 and eL = 0 are fed into the existence theorem as parameters, and the proof shows they are achievable, not merely observed."
+        }
+      },
+      "L2": {
+        "title": "Family Design Contract",
+        "headline": "Inputs: Green plus definite-side records. Output: TopG with eD = 2, eL = 0.",
+        "explanation": "The component takes the definite-side data (HypsAlt with DefiniteSideCondition, arriving from the inputs stratum) and the Green hypothesis, and produces TopG by calling topDesWin with Cabs = 2, C0 = 3, eD = 2, eL = 0. Internally it intersects closed conditions on the designed class (local, rank, divisibility, slope, global links), takes the minimum of two epsilon thresholds, and extracts one family meeting all of them. Rank sizes follow RankVal: n ~ x^(2+8ε), m ~ sqrt(x·δ1), k ~ x^(9/2+10ε), each within a factor 2.",
+        "key_insight": "Every control is a 'Closed' predicate on the same designed class, so they can be conjoined and satisfied by one common family.",
+        "analogy_anchor": "A configuration solver that intersects constraint sets and returns one witness plus fixed output parameters.",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The internal proofs of each link (link_gl, link_brest_alt, wire_sel_alt, etc.)",
+            "The exact definition of the Green hypothesis and of DefiniteSideCondition",
+            "The precise meaning of TuSize, DGamSize and the selection bundle fields",
+            "The constant relation r + t = 8fr + 4 + TOv·nWv and the meaning of its terms"
+          ],
+          "where_metaphor_breaks": "A solver searches; this proof does not compute a family but proves one exists, and the 'parameters' Cabs, C0, eD, eL are fixed real numbers in a theorem statement, not runtime configuration."
+        }
+      },
+      "L3": {
+        "title": "Theta Chain with Divisibility, Rank and Cohomology Control",
+        "headline": "topDesWin assembles a geometric family of theta lifts with loss exponents eD = 2, eL = 0, yielding FamilyClassConnected and then TopG.",
+        "explanation": "A chain of about sqrt(x) theta lifts is selected with RankVal size windows and a divisibility lemma key_minor_dvd: if w^2 = p, the rows u, u' are divisible by w off index 0, and M^(p^e) ≡ N' mod p, then the relevant 2x2 minor combination is divisible by w. Local divisibility DIVinN follows from HypV, LinkN and SmallLevelRankEq via vvRecord, which bounds the weighted sum of Sha-lengths (log ℓ times the sum over e in [1, t)) by B and absorbs log²x into x^ε. shape_closed_link_n_of_green then feeds all closed links to topDesWin with (Cabs, C0, eD, eL) = (2, 3, 2, 0).",
+        "key_insight": "Divisibility of minors modulo w (w² = p) reduces the minor combination to its index-0 terms, which is what keeps the divisibility loss exponent at exactly 2.",
+        "analogy_anchor": "Frobenius-type power congruences reduce a determinant-like combination to its leading row.",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Full proof terms of the global and irreducibility links (link_gl, closed_linkIRR_of_join_count)",
+            "Line-by-line construction of the selection fields (base level, columns, definite height)",
+            "How the slope and covolume fields (covol, onto, lamLow, etc.) are verified for each row",
+            "Machinery of neighbouring components (the comparison step that consumes TopG and the cohomology window) is not reconstructed here"
+          ],
+          "where_metaphor_breaks": "The phrase 'theta chain' summarizes a selection predicate; the Lean statements here are reducers that assume many closed link hypotheses, so this layer shows how the exponents are fixed, not that every link is unconditionally proved."
+        }
+      },
+      "L4": {
+        "title": "Formal Anchors: Family Component",
+        "headline": "Pinned at commit 40e56bab026552e089d7afcfeff08d2defb9c005, Lean 4.33.1.",
+        "explanation": "Anchors: GlobalTheory.Fc.forall_goal_of_shape_of_hyps (ShapeOf.lean L31-32) and GlobalTheory.Fc.goal_of_shape_of_hyps (L24-30); UpperTheory.Top.shape_closed_link_n_of_green (TopShape.lean L33-55), which ends with topDesWin ... 2 3 2 0; UpperTheory.Top.topDesWin (CharacterBoxes/DesWin.lean L11-31) concluding FamilyClassConnected; UpperTheory.Top.divinN_of_hypV (DivinNOfHypV.lean L117-130) and UpperTheory.Top.vvRecord (L17-57); GlobalTheory.EX.RankVal (PairRowIffQdRows.lean L28-32); Formalism.MainNotions.ColumnSystems.Pf.key_minor_dvd (KeyMinorDvd.lean L132-155). Tier: key_minor_dvd is 'checked'; the others are 'read'. Interfaces: in via every_character_of_theta_integrals_local_matching, out via UpperTheory.Top.TopG; the pinned axiom report lists propext, Classical.choice and Quot.sound.",
+        "key_insight": "The numeric exponents are literal arguments in shape_closed_link_n_of_green: topDesWin (WithChN 𝒜) ... 2 3 2 0.",
+        "analogy_anchor": "Exact declaration names, modules, line ranges and commit pin.",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Formalization Gap / Specification Boundary: trust rests on the Lean kernel (and independent replay), on Mathlib definitions matching standard mathematics, and on predicates such as Green, HypV and DefiniteSideCondition faithfully expressing the intended hypotheses; most anchors here carry tier 'read' rather than 'checked', and human mathematical peer review of the overall argument is still in progress."
+        }
+      }
+    },
+    "pl": {
+      "L0": {
+        "title": "Strojone schody z dzwonów",
+        "headline": "Długie, starannie zbudowane schody z dzwonów, w których każdy przeciek jest ustalony przed koncertem.",
+        "explanation": "Wyobraź sobie bardzo długie schody z dzwonów, gdzie każdy nowy dzwon unosi się z poprzedniego. Każdy dzwon jest sprawdzany: czy dzwoni czysto, czy się nie przechyla i czy stoi na podłodze właściwej wielkości. Dzięki temu budowniczowie wiedzą z góry, że jeden rodzaj przecieku dźwięku kosztuje dokładnie dwa ząbki, a drugi nic, i przekazują ten stały budżet następnej ekipie.",
+        "key_insight": "Celowy wybór całych schodów zamienia dwa nieznane przecieki w dwie stałe liczby.",
+        "analogy_anchor": "Schody z dzwonów, każdy uniesiony z poprzedniego i sprawdzony pod kątem czystości dźwięku, przechyłu i wielkości podłogi.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "Prawdziwe obiekty: podniesienia theta, podzielność minorów, sumy kohomologiczne i okna rang",
+            "To, że łańcuch ma około pierwiastka z x kroków, a jego rozmiary rosną z x",
+            "Rola małego parametru epsilon i wspólnego progu, poniżej którego wszystko działa",
+            "Hipoteza Green i dane strony określonej, których konstrukcja potrzebuje"
+          ],
+          "where_metaphor_breaks": "Prawdziwe dzwony powstają jeden po drugim; tu cała rodzina jest obiektem matematycznym, którego istnienie się dowodzi, a „przecieki” to wykładniki w oszacowaniu analitycznym, nie dźwięki."
+        }
+      },
+      "L1": {
+        "title": "Zamrożenie budżetu strat",
+        "headline": "Rodzinę wybiera się tak starannie, że oba wykładniki strat przestają być zmiennymi i stają się stałymi.",
+        "explanation": "Konstrukcja zmaga się z napięciem: bogatsza rodzina podniesień theta daje silniejszy sygnał, ale każde dodatkowe podniesienie grozi większą stratą przez defekty podzielności, nachylenia i kowolumenu. Narzucając wszystkie kontrole naraz i biorąc jeden wspólny próg małości parametru, buduje się rodzinę, w której strata podzielności wynosi dokładnie 2, a druga strata 0. Dalej, do kroku porównania, płynie właśnie ten zamrożony budżet, a nie sama rodzina.",
+        "key_insight": "Wąskim gardłem nie jest znalezienie rodziny, tylko znalezienie takiej, w której wszystkie kontrole działają jednocześnie poniżej jednego wspólnego progu.",
+        "analogy_anchor": "Inżynier ustalający z góry dwie tolerancje, by następny etap mógł na nich polegać jak na stałych.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Jawne okna rozmiarów rang n, m, k i liniowa relacja dla r oraz t",
+            "Modularny argument podzielności minorów (element w, którego kwadrat równa się p)",
+            "Ważona suma kohomologiczna (długości Sha) i sposób pochłonięcia log² x",
+            "Wiele osobnych warunków łączenia (LinkN, LinkEta, LinkIRR, LinkG, LinkS, LinkGLOBAL)"
+          ],
+          "where_metaphor_breaks": "Tolerancje inżynierskie mierzy się po fakcie; tu wykładniki eD = 2 i eL = 0 wchodzą do twierdzenia o istnieniu jako parametry, a dowód pokazuje, że są osiągalne, a nie tylko zaobserwowane."
+        }
+      },
+      "L2": {
+        "title": "Kontrakt projektu rodziny",
+        "headline": "Wejście: Green oraz rekordy strony określonej. Wyjście: TopG z eD = 2, eL = 0.",
+        "explanation": "Komponent przyjmuje dane strony określonej (HypsAlt z DefiniteSideCondition, napływające z warstwy wejść) i hipotezę Green, a zwraca TopG, wywołując topDesWin z Cabs = 2, C0 = 3, eD = 2, eL = 0. Wewnątrz przecina domknięte warunki na projektowanej klasie (lokalne, rangi, podzielności, nachylenia, globalne), bierze minimum dwóch progów epsilon i wydobywa jedną rodzinę spełniającą je wszystkie. Rozmiary rang wyznacza RankVal: n ~ x^(2+8ε), m ~ sqrt(x·δ1), k ~ x^(9/2+10ε), każda z dokładnością do czynnika 2.",
+        "key_insight": "Każda kontrola jest predykatem „Closed” na tej samej projektowanej klasie, więc można je połączyć koniunkcją i spełnić jedną wspólną rodziną.",
+        "analogy_anchor": "Solver konfiguracji, który przecina zbiory ograniczeń i zwraca jednego świadka oraz stałe parametry wyjściowe.",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Wewnętrzne dowody poszczególnych łączy (link_gl, link_brest_alt, wire_sel_alt itd.)",
+            "Dokładna definicja hipotezy Green i warunku DefiniteSideCondition",
+            "Precyzyjne znaczenie TuSize, DGamSize i pól pakietu selekcji",
+            "Relacja stałych r + t = 8fr + 4 + TOv·nWv i znaczenie jej składników"
+          ],
+          "where_metaphor_breaks": "Solver przeszukuje; ten dowód nie oblicza rodziny, tylko dowodzi jej istnienia, a „parametry” Cabs, C0, eD, eL to ustalone liczby rzeczywiste w treści twierdzenia, nie konfiguracja w czasie wykonania."
+        }
+      },
+      "L3": {
+        "title": "Łańcuch theta z kontrolą podzielności, rang i kohomologii",
+        "headline": "topDesWin składa geometryczną rodzinę podniesień theta z wykładnikami strat eD = 2, eL = 0, dając FamilyClassConnected, a potem TopG.",
+        "explanation": "Łańcuch około sqrt(x) podniesień theta wybiera się z oknami rozmiarów RankVal i lematem podzielności key_minor_dvd: jeśli w² = p, wiersze u, u' są podzielne przez w poza indeksem 0, a M^(p^e) ≡ N' mod p, to odpowiednia kombinacja minorów 2×2 jest podzielna przez w. Lokalna podzielność DIVinN wynika z HypV, LinkN i SmallLevelRankEq przez vvRecord, które ogranicza przez B ważoną sumę długości Sha (log ℓ razy suma po e z [1, t)) i pochłania log² x przez x^ε. Następnie shape_closed_link_n_of_green przekazuje wszystkie domknięte łącza do topDesWin z (Cabs, C0, eD, eL) = (2, 3, 2, 0).",
+        "key_insight": "Podzielność minorów modulo w (w² = p) redukuje kombinację minorów do wyrazów z indeksem 0 i to właśnie utrzymuje wykładnik straty podzielności na poziomie dokładnie 2.",
+        "analogy_anchor": "Kongruencje potęg typu Frobeniusa sprowadzają kombinację podobną do wyznacznika do jej wiodącego wiersza.",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Pełne termy dowodowe łączy globalnych i nierozkładalności (link_gl, closed_linkIRR_of_join_count)",
+            "Konstrukcja pól selekcji krok po kroku (poziom bazowy, kolumny, wysokość określona)",
+            "Sposób weryfikacji pól nachylenia i kowolumenu (covol, onto, lamLow itd.) dla każdego wiersza",
+            "Maszyneria sąsiednich komponentów (krok porównania konsumujący TopG oraz okno kohomologiczne) nie jest tu odtwarzana"
+          ],
+          "where_metaphor_breaks": "Wyrażenie „łańcuch theta” streszcza predykat selekcji; deklaracje Lean w tym miejscu to reduktory zakładające wiele domkniętych hipotez łączących, więc ta warstwa pokazuje, jak ustala się wykładniki, a nie że każde łącze udowodniono bezwarunkowo."
+        }
+      },
+      "L4": {
+        "title": "Kotwice formalne: komponent rodziny",
+        "headline": "Przypięte do commitu 40e56bab026552e089d7afcfeff08d2defb9c005, Lean 4.33.1.",
+        "explanation": "Kotwice: GlobalTheory.Fc.forall_goal_of_shape_of_hyps (ShapeOf.lean L31-32) i GlobalTheory.Fc.goal_of_shape_of_hyps (L24-30); UpperTheory.Top.shape_closed_link_n_of_green (TopShape.lean L33-55), kończące się wywołaniem topDesWin ... 2 3 2 0; UpperTheory.Top.topDesWin (CharacterBoxes/DesWin.lean L11-31) z tezą FamilyClassConnected; UpperTheory.Top.divinN_of_hypV (DivinNOfHypV.lean L117-130) i UpperTheory.Top.vvRecord (L17-57); GlobalTheory.EX.RankVal (PairRowIffQdRows.lean L28-32); Formalism.MainNotions.ColumnSystems.Pf.key_minor_dvd (KeyMinorDvd.lean L132-155). Poziom: key_minor_dvd ma status „checked”, pozostałe „read”. Interfejsy: wejście przez every_character_of_theta_integrals_local_matching, wyjście przez UpperTheory.Top.TopG; przypięty raport aksjomatów wymienia propext, Classical.choice i Quot.sound.",
+        "key_insight": "Wykładniki liczbowe są dosłownymi argumentami w shape_closed_link_n_of_green: topDesWin (WithChN 𝒜) ... 2 3 2 0.",
+        "analogy_anchor": "Dokładne nazwy deklaracji, moduły, zakresy linii i przypięty commit.",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Luka formalizacji / granica specyfikacji: zaufanie opiera się na jądrze Lean (i niezależnym odtworzeniu), na zgodności definicji Mathlib ze standardową matematyką oraz na tym, że predykaty takie jak Green, HypV i DefiniteSideCondition wiernie wyrażają zamierzone hipotezy; większość kotwic ma tu status „read”, a nie „checked”, a ludzka recenzja matematyczna całego argumentu wciąż trwa."
+        }
+      }
+    }
+  },
+  "hosts": {
+    "en": {
+      "L0": {
+        "title": "A Concert Hall for Every Tune",
+        "headline": "Whatever tune you pick, far enough down the road there is always a hall of the right width to play it in.",
+        "explanation": "Think of every possible tune as a guest that needs a concert hall. A special window, opened earlier by another team, lets light into the tune; once that window is open, you are promised that, far enough along the road, every town has a hall of the same fixed width ready for that tune. These halls are then handed to the next team, which compares how the tunes sound.",
+        "key_insight": "The open window comes first; the halls follow from it, for every tune and every far-away town.",
+        "analogy_anchor": "Concert halls of one fixed width waiting in every distant town for each tune.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "What a primitive character is and what the cohomological window measures",
+            "The exact width 3/2 and the window parameter 401",
+            "The system of scales and the threshold beyond which hosts exist",
+            "The twisted character classes that actually build the hosts"
+          ],
+          "where_metaphor_breaks": "Halls are built by people; here 'hosts' are arithmetic objects whose existence is proved from a hypothesis, and 'far down the road' means all sufficiently large scales, not physical distance."
+        }
+      },
+      "L1": {
+        "title": "Window In, Hosts Out",
+        "headline": "One upstream signal per character unlocks hosts of fixed width at every large scale.",
+        "explanation": "For each primitive character, the cohomology stratum delivers a window condition; this component converts that single signal into a steady supply of arithmetic hosts. The width is fixed at 3/2 and does not drift with the scale, which is what lets the comparison step treat all characters uniformly. The only threshold is a starting scale, past which supply never runs out.",
+        "key_insight": "Uniform width across all characters and all large scales is the property the downstream comparison needs.",
+        "analogy_anchor": "A supply line: one permit at the gate guarantees standard-size containers at every later station.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The internal structure of VWinAt ψ 401 and where 401 comes from",
+            "The reduction lemma supplyOfAdm and the requirement (GChi ψ).req",
+            "The admissible range of epsilon and the existence of the starting threshold x0",
+            "How twisted character classes are matched to scales"
+          ],
+          "where_metaphor_breaks": "A supply line delivers physical goods over time; here nothing is produced step by step: the theorem asserts existence of hosts at all large scales at once, conditional on the window hypothesis."
+        }
+      },
+      "L2": {
+        "title": "Host Supply Contract",
+        "headline": "Input: VWinAt ψ 401 for each primitive ψ. Output: HostExW (3/2) (GChi ψ).req.",
+        "explanation": "The interface from cohomology supplies VWinAt ψ 401; supplyChi turns it into host existence of width 3/2 for the requirement attached to GChi ψ, which is passed to comparison. The proof reduces via supplyOfAdm to showing, for each admissible ε, a threshold x0 beyond which every scale s admits suitable twisted character classes. That obligation is discharged directly by admissibleClassesTwistedChar.",
+        "key_insight": "The component is a thin, fully generic adapter: quantify over ψ, then over admissible ε, then over large scales.",
+        "analogy_anchor": "An adapter function with signature (ψ, window proof) → host-existence proof.",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The definitions of PChar, GChi, HostExW and VWinAt",
+            "The proof of admissibleClassesTwistedChar itself",
+            "The precise bounds on ε encoded by the hypotheses he0 and he1",
+            "The upstream proof that VWinAt ψ 401 holds"
+          ],
+          "where_metaphor_breaks": "An adapter function only reshapes data; this theorem carries mathematical content through admissibleClassesTwistedChar, and its output is a proposition, not computed hosts."
+        }
+      },
+      "L3": {
+        "title": "Cyclic Character Hosts via supplyChi",
+        "headline": "For every primitive character ψ, VWinAt ψ 401 implies HostExW (3/2) (GChi ψ).req.",
+        "explanation": "supplyChi applies supplyOfAdm to ψ and its window hypothesis, reducing host existence to an admissibility statement: for every ε in the admissible range there is x0 such that every scale s of the system beyond x0, with bounds on the parameter φ and level H0, carries admissible twisted character classes. admissibleClassesTwistedChar provides exactly this x0, and the proof closes by substituting the scale equation. The width 3/2 is uniform in ψ, and the window parameter is the fixed constant 401.",
+        "key_insight": "All the analytic weight lives in VWinAt (upstream) and admissibleClassesTwistedChar; supplyChi is the uniform-in-ψ glue between them.",
+        "analogy_anchor": "A uniform existence statement over primitive characters, obtained by specialising an admissibility lemma.",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The internal construction and proof of admissibleClassesTwistedChar",
+            "The statement and proof of supplyOfAdm",
+            "The meaning of the bounds hlo, hhi on the scale data",
+            "The cohomological origin of the window VWinAt ψ 401"
+          ],
+          "where_metaphor_breaks": "The word 'cyclic' and the gloss 'arithmetic hosts' summarise Lean structures (GChi ψ, HostExW); this layer does not unfold them, so readers must not assume a specific classical construction beyond what the declarations state."
+        }
+      },
+      "L4": {
+        "title": "Formal Anchor: supplyChi",
+        "headline": "UpperTheory.Top.supplyChi, CharacterBoxes/SupplyChi.lean L8-16, commit 40e56bab026552e089d7afcfeff08d2defb9c005.",
+        "explanation": "Declaration: theorem UpperTheory.Top.supplyChi : ∀ ψ : PChar, VWinAt ψ 401 → HostExW (3 / 2) (GChi ψ).req, in module Development.AutomorphicArithmetic.CharacterBoxes.SupplyChi, tier 'checked', Lean 4.33.1. The proof is supplyOfAdm ψ hψ followed by admissibleClassesTwistedChar eps he0 he1 and subst hs. Interfaces: in from UpperTheory.Top.VWinAt (ExistsPageN.lean L44-47), out to comparison as hosts of width 3/2; the pinned axiom report lists propext, Classical.choice and Quot.sound.",
+        "key_insight": "The whole component is one checked declaration of nine lines.",
+        "analogy_anchor": "Exact declaration, module, line range and commit pin.",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Formalization Gap / Specification Boundary: 'checked' means the Lean kernel accepts this declaration under the stated axioms; it does not by itself certify that PChar, VWinAt, HostExW and GChi match the intended mathematical notions, it relies on Mathlib definitions and kernel trust, and human mathematical peer review of the surrounding argument is still in progress."
+        }
+      }
+    },
+    "pl": {
+      "L0": {
+        "title": "Sala koncertowa dla każdej melodii",
+        "headline": "Jakąkolwiek melodię wybierzesz, wystarczająco daleko przy drodze zawsze stoi sala o właściwej szerokości.",
+        "explanation": "Pomyśl o każdej możliwej melodii jak o gościu, który potrzebuje sali koncertowej. Specjalne okno, otwarte wcześniej przez inną ekipę, wpuszcza do melodii światło; gdy okno jest otwarte, masz obietnicę, że wystarczająco daleko przy drodze każde miasto ma salę tej samej, stałej szerokości gotową dla tej melodii. Te sale trafiają potem do następnej ekipy, która porównuje brzmienie melodii.",
+        "key_insight": "Najpierw jest otwarte okno, a sale wynikają z niego, dla każdej melodii i każdego dalekiego miasta.",
+        "analogy_anchor": "Sale koncertowe jednej stałej szerokości, czekające w każdym dalekim mieście na każdą melodię.",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "Czym jest charakter prymitywny i co mierzy okno kohomologiczne",
+            "Dokładna szerokość 3/2 i parametr okna 401",
+            "System skal i próg, od którego gospodarze istnieją",
+            "Skręcone klasy charakterów, które faktycznie budują gospodarzy"
+          ],
+          "where_metaphor_breaks": "Sale budują ludzie; tu „gospodarze” to obiekty arytmetyczne, których istnienie dowodzi się z hipotezy, a „daleko przy drodze” oznacza wszystkie dostatecznie duże skale, nie fizyczną odległość."
+        }
+      },
+      "L1": {
+        "title": "Okno na wejściu, gospodarze na wyjściu",
+        "headline": "Jeden sygnał z góry dla każdego charakteru odblokowuje gospodarzy stałej szerokości na każdej dużej skali.",
+        "explanation": "Dla każdego charakteru prymitywnego warstwa kohomologii dostarcza warunek okna; ten komponent zamienia ten pojedynczy sygnał w stałe zaopatrzenie w gospodarzy arytmetycznych. Szerokość jest ustalona na 3/2 i nie dryfuje wraz ze skalą, dzięki czemu krok porównania może traktować wszystkie charaktery jednakowo. Jedynym progiem jest skala startowa, za którą zaopatrzenie nigdy się nie kończy.",
+        "key_insight": "Jednakowa szerokość dla wszystkich charakterów i wszystkich dużych skal to dokładnie ta własność, której potrzebuje porównanie.",
+        "analogy_anchor": "Linia zaopatrzenia: jedno zezwolenie przy bramie gwarantuje kontenery standardowego rozmiaru na każdej dalszej stacji.",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Wewnętrzna budowa VWinAt ψ 401 i pochodzenie liczby 401",
+            "Lemat redukcyjny supplyOfAdm i wymaganie (GChi ψ).req",
+            "Dopuszczalny zakres epsilon i istnienie progu startowego x0",
+            "Sposób dopasowania skręconych klas charakterów do skal"
+          ],
+          "where_metaphor_breaks": "Linia zaopatrzenia dostarcza fizyczne towary w czasie; tu nic nie powstaje krok po kroku: twierdzenie orzeka istnienie gospodarzy na wszystkich dużych skalach naraz, pod warunkiem hipotezy okna."
+        }
+      },
+      "L2": {
+        "title": "Kontrakt zaopatrzenia w gospodarzy",
+        "headline": "Wejście: VWinAt ψ 401 dla każdego prymitywnego ψ. Wyjście: HostExW (3/2) (GChi ψ).req.",
+        "explanation": "Interfejs z kohomologii dostarcza VWinAt ψ 401; supplyChi zamienia go w istnienie gospodarzy szerokości 3/2 dla wymagania związanego z GChi ψ, które trafia do porównania. Dowód redukuje się przez supplyOfAdm do pokazania, że dla każdego dopuszczalnego ε istnieje próg x0, za którym każda skala s dopuszcza odpowiednie skręcone klasy charakterów. To zobowiązanie wypełnia bezpośrednio admissibleClassesTwistedChar.",
+        "key_insight": "Komponent jest cienkim, w pełni ogólnym adapterem: kwantyfikacja po ψ, potem po dopuszczalnym ε, potem po dużych skalach.",
+        "analogy_anchor": "Funkcja-adapter o sygnaturze (ψ, dowód okna) → dowód istnienia gospodarzy.",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Definicje PChar, GChi, HostExW i VWinAt",
+            "Dowód samego admissibleClassesTwistedChar",
+            "Dokładne ograniczenia na ε zakodowane w hipotezach he0 i he1",
+            "Dowód z wyższej warstwy, że VWinAt ψ 401 zachodzi"
+          ],
+          "where_metaphor_breaks": "Adapter tylko przekształca dane; to twierdzenie niesie treść matematyczną przez admissibleClassesTwistedChar, a jego wynikiem jest zdanie, nie obliczeni gospodarze."
+        }
+      },
+      "L3": {
+        "title": "Cykliczni gospodarze charakterów przez supplyChi",
+        "headline": "Dla każdego charakteru prymitywnego ψ z VWinAt ψ 401 wynika HostExW (3/2) (GChi ψ).req.",
+        "explanation": "supplyChi stosuje supplyOfAdm do ψ i jego hipotezy okna, redukując istnienie gospodarzy do zdania o dopuszczalności: dla każdego ε z dopuszczalnego zakresu istnieje x0 takie, że każda skala s systemu powyżej x0, z ograniczeniami na parametr φ i poziom H0, niesie dopuszczalne skręcone klasy charakterów. admissibleClassesTwistedChar daje dokładnie to x0, a dowód zamyka podstawienie równania skali. Szerokość 3/2 jest jednakowa względem ψ, a parametr okna to stała 401.",
+        "key_insight": "Cały ciężar analityczny leży w VWinAt (wyżej) i w admissibleClassesTwistedChar; supplyChi to jednolity względem ψ klej między nimi.",
+        "analogy_anchor": "Jednolite twierdzenie o istnieniu dla charakterów prymitywnych, uzyskane przez specjalizację lematu o dopuszczalności.",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Wewnętrzna konstrukcja i dowód admissibleClassesTwistedChar",
+            "Treść i dowód supplyOfAdm",
+            "Znaczenie ograniczeń hlo, hhi na danych skali",
+            "Kohomologiczne pochodzenie okna VWinAt ψ 401"
+          ],
+          "where_metaphor_breaks": "Słowo „cykliczni” i określenie „gospodarze arytmetyczni” streszczają struktury Lean (GChi ψ, HostExW); ta warstwa ich nie rozwija, więc nie należy zakładać żadnej konkretnej klasycznej konstrukcji ponad to, co mówią deklaracje."
+        }
+      },
+      "L4": {
+        "title": "Kotwica formalna: supplyChi",
+        "headline": "UpperTheory.Top.supplyChi, CharacterBoxes/SupplyChi.lean L8-16, commit 40e56bab026552e089d7afcfeff08d2defb9c005.",
+        "explanation": "Deklaracja: theorem UpperTheory.Top.supplyChi : ∀ ψ : PChar, VWinAt ψ 401 → HostExW (3 / 2) (GChi ψ).req, w module Development.AutomorphicArithmetic.CharacterBoxes.SupplyChi, status „checked”, Lean 4.33.1. Dowód to supplyOfAdm ψ hψ, następnie admissibleClassesTwistedChar eps he0 he1 i subst hs. Interfejsy: wejście z UpperTheory.Top.VWinAt (ExistsPageN.lean L44-47), wyjście do porównania jako gospodarze szerokości 3/2; przypięty raport aksjomatów wymienia propext, Classical.choice i Quot.sound.",
+        "key_insight": "Cały komponent to jedna sprawdzona deklaracja o dziewięciu liniach.",
+        "analogy_anchor": "Dokładna deklaracja, moduł, zakres linii i przypięty commit.",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Luka formalizacji / granica specyfikacji: „checked” znaczy, że jądro Lean przyjmuje tę deklarację przy podanych aksjomatach; samo w sobie nie poświadcza, że PChar, VWinAt, HostExW i GChi odpowiadają zamierzonym pojęciom matematycznym, opiera się na definicjach Mathlib i zaufaniu do jądra, a ludzka recenzja matematyczna otaczającego argumentu wciąż trwa."
+        }
+      }
+    }
+  },
+  "comparison": {
+    "en": {
+      "L0": {
+        "title": "The Prism That Translates Shapes into Primes",
+        "headline": "If the points on a shape are spread evenly enough, then the prime-drum wobble must be small.",
+        "explanation": "Picture a prism that splits white light into colours and a second prism that puts the colours back together without losing any light. This part of the machine uses the same trick on a finite set of 'colours' to turn one scoreboard, which records how evenly points are spread on a geometric shape, into another, the prime noise meter. The main parts of the two scoreboards match exactly, so only their errors are compared. The arrow runs one way: a good spread goes in, and a quiet prime meter comes out.",
+        "key_insight": "Splitting into colours and adding them back loses nothing, so a geometric guarantee can be carried over unchanged into a guarantee about primes.",
+        "analogy_anchor": "Two glass prisms: one splits the light, the other rebuilds it exactly",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "Finite Fourier analysis on an abelian group and on its subgroup A0",
+            "The exact main-term identity ASK − Main = gapA",
+            "The loss budget in the exponent 1/2 + (eD+eL+7)ε",
+            "The window and size conditions (b, k, m, aE, the scales X′ and θ)"
+          ],
+          "where_metaphor_breaks": "A real prism works on continuous light. Here the 'colours' are a finite set of additive characters, and some losses do occur: they are paid in powers x^ε, so the transfer is not perfectly lossless."
+        }
+      },
+      "L1": {
+        "title": "Converting a Discrepancy Budget into a Prime Budget",
+        "headline": "Main terms match exactly, gaps are averaged by orthogonality, and every loss is paid in the exponent.",
+        "explanation": "An exact main-term identity makes the per-index gap equal to the difference between the observed value and the main term, so only the geometric error is compared. Character orthogonality averages those per-index gaps into a weighted average, and the factor that depends on the level is absorbed into one extra x^ε. The losses add up linearly in the exponent to 1/2 + (eD+eL+7)ε; with the family's inputs eD = 2 and eL = 0 this becomes 1/2 + 9ε.",
+        "key_insight": "The bottleneck is additive bookkeeping: every input loss raises the exponent above 1/2 by a fixed multiple of ε, and nothing more.",
+        "analogy_anchor": "An exchange office that converts geometric currency into prime currency at a fixed commission, with every fee written into the exponent",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The predicates EAtH and CoreAtH and the 'tied' structure of families",
+            "Where the +7 comes from: (C+3) with C = eD+eL+3, plus one ε for the factor 1+4o",
+            "The SigA term and its bound sigA_le"
+          ],
+          "where_metaphor_breaks": "The 'fixed commission' holds only for large enough x (thresholds x1, x2, x3). The comparison says nothing about whether geometric families with eD = 2 and eL = 0 exist; that is supplied by the input interface TopG."
+        }
+      },
+      "L2": {
+        "title": "Exponent Choreography in the Comparison Layer",
+        "headline": "In: TopG (eD=2, eL=0) and hosts with width 3/2. Out: G_P ≤ x^(1/2+9ε) on windows, sent to the choreography layer.",
+        "explanation": "ch_top: for each index u, gapA = ASK(u) − Main(u) ≤ x^(CErr·ε)·errorBracketSizeWindows(x, ε, |H|, |TT|, |T2|, m, b, k, aE). ch_core with C = max(eD+eL, 0) + 3 averages these bounds: GmA ≤ x^(1/2+(C+3)ε) + SigA, under the conditions m ≤ x^(1/2+ε/2) and xm ≤ k. core_gm absorbs the factor 1 + 4o into x^ε and gives Λ.Gm(x) ≤ x^(1/2+(eD+eL+7)ε) for x ≥ x1. windowInequality_of_artinInputs then chooses the threshold max(x1, x0, xE) on each window.",
+        "key_insight": "Invariant: the final exponent is linear in (eD, eL) with slope ε, so the input budget fully determines the output budget.",
+        "analogy_anchor": "A pipeline: a per-index bound, then averaging, then absorbing constants, then choosing thresholds",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The internal fields of Data/Consts (Dd, Cc) and the 17 + 28 decomposed window components",
+            "The definitions of SizesA, ThinScales, CostWindows and RestSize",
+            "The identities ch_top_main_eq and gmA_eq"
+          ],
+          "where_metaphor_breaks": "The 'pipeline' picture suggests independent stages. In fact the thresholds and the constants C, K and cHH are chained across stages, and the choice of x1 depends on the earlier constants."
+        }
+      },
+      "L3": {
+        "title": "Finite Character Comparison on (E0 × H)",
+        "headline": "Orthogonality of additive characters on the subgroup A0, the kept characters Kp and the coefficient c = (3o+1)⁻¹ link gapA with GmA.",
+        "explanation": "The characters are ell : AddChar(E0 × H) ℂ → ℂ, with the subgroup A0 ⊆ H, the kept set Kp, coefficient c = (3o+1)⁻¹ satisfying |c| ≤ 1, and M = 4o in CharsA. The hypothesis ∀u ∈ A0, gapA(u) ≤ x^(Cε)·bracket, together with ThinScales, CostWindows and RestSize, implies GmA ≤ x^(1/2+(C+3)ε) + SigA. In core_gm the identification gmA_eq takes GmA to Λ.Gm, and SigA is controlled by sigA_le. level_gm_le_on_family_scales sends ChainTied to the shared host data via tiedCore_of_chainTied.",
+        "key_insight": "The finite Fourier transform on H with A0 converts a pointwise geometric bound into a bound on a weighted, localized Landau-type prime sum, losing only powers of x^ε.",
+        "analogy_anchor": "Discrete Plancherel/orthogonality on a finite abelian group as a translator of inequalities",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "The full body of ch_core (lines before 343) and the auxiliary lemma each_unit_bound_statement",
+            "The precise form of errorBracketSizeWindows and CErr",
+            "How TopG is built in the family layer and how supplyChi is built in the hosts layer"
+          ],
+          "where_metaphor_breaks": "'Translating inequalities' assumes the input hypotheses (EAtH, CoreAtH) are delivered. This component is conditional on them, and the coverage condition hcov must hold for every index u ∈ A0."
+        }
+      },
+      "L4": {
+        "title": "Lean Anchors of the Comparison Component",
+        "headline": "Five declarations at commit 40e56bab026552e089d7afcfeff08d2defb9c005; four have tier 'checked'.",
+        "explanation": "UpperTheory.Comparison₂.level_gm_le_on_family_scales (PrimitiveCosets/LevelGmLeOnFamilyScales.lean:28–30, tier covered) calls windowInequality_of_artinInputs (WindowInequalityOfArtinInputs.lean:17–25, tier checked). That in turn uses core_gm (CoreGm.lean:12–74, tier checked), which combines Deduction.ch_core (LandauTheorems/ChCore.lean:343–351, tier checked) and Deduction.ch_top (LandauTheorems/ChTop.lean:37–72, tier checked). Inputs come through UpperTheory.Top.TopG and UpperTheory.Top.supplyChi. Build: Lean 4.33.1, standard axioms propext, Classical.choice and Quot.sound.",
+        "key_insight": "The output contract to choreography is exactly the type ChebyshevInequalityOnWindows (Fam := FamP) … Λ, no more and no less.",
+        "analogy_anchor": "src/Development/AutomorphicArithmetic/PrimitiveCosets/CoreGm.lean#L12-L74 @ 40e56ba",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Specification Boundary: correctness is guaranteed only relative to the Lean kernel and its independent replays and to the Mathlib definitions (AddChar, Finset, Real.rpow). Whether the predicates EAtH, CoreAtH and ChainTied capture the intended geometric content, and whether the whole chain amounts to the mathematical claim, is still being assessed by human mathematical peer review."
+        }
+      }
+    },
+    "pl": {
+      "L0": {
+        "title": "Pryzmat, który tłumaczy kształty na liczby pierwsze",
+        "headline": "Jeśli punkty na kształcie są rozłożone dość równo, to drżenie bębna liczb pierwszych musi być małe.",
+        "explanation": "Wyobraź sobie pryzmat, który rozszczepia białe światło na kolory, i drugi pryzmat, który składa kolory z powrotem bez utraty światła. Ta część maszyny robi tę samą sztuczkę na skończonym zbiorze „kolorów”: zamienia jedną tablicę wyników, która zapisuje, jak równo rozłożone są punkty na kształcie geometrycznym, w drugą, czyli miernik szumu liczb pierwszych. Główne części obu tablic zgadzają się dokładnie, więc porównuje się tylko ich błędy. Strzałka biegnie w jedną stronę: wchodzi dobry rozkład, a wychodzi cichy miernik.",
+        "key_insight": "Rozszczepienie na kolory i ponowne złożenie niczego nie gubi, więc gwarancję geometryczną da się przenieść bez zmian na gwarancję o liczbach pierwszych.",
+        "analogy_anchor": "Dwa szklane pryzmaty: jeden rozszczepia światło, drugi dokładnie je odtwarza",
+        "loss_meter": {
+          "fidelity_score": 0.2,
+          "compression_ratio": "~500,000:1",
+          "topology_status": "lossy_analogy",
+          "what_is_omitted": [
+            "Skończona analiza Fouriera na grupie abelowej i na jej podgrupie A0",
+            "Dokładna tożsamość wyrazów głównych ASK − Main = gapA",
+            "Budżet strat w wykładniku 1/2 + (eD+eL+7)ε",
+            "Warunki okien i rozmiarów (b, k, m, aE, skale X′ i θ)"
+          ],
+          "where_metaphor_breaks": "Prawdziwy pryzmat działa na ciągłym świetle. Tu „kolory” to skończony zbiór charakterów addytywnych, a pewne straty jednak występują: płaci się je potęgami x^ε, więc przeniesienie nie jest idealnie bezstratne."
+        }
+      },
+      "L1": {
+        "title": "Zamiana budżetu rozbieżności na budżet liczb pierwszych",
+        "headline": "Wyrazy główne zgadzają się dokładnie, luki uśrednia ortogonalność, a każdą stratę płaci się w wykładniku.",
+        "explanation": "Dokładna tożsamość wyrazów głównych sprawia, że luka dla każdego indeksu równa się różnicy między wartością obserwowaną a wyrazem głównym, więc porównuje się tylko błąd geometryczny. Ortogonalność charakterów uśrednia te luki do średniej ważonej, a czynnik zależny od poziomu zostaje wchłonięty przez jedno dodatkowe x^ε. Straty sumują się w wykładniku liniowo do 1/2 + (eD+eL+7)ε; przy danych z rodziny eD = 2 i eL = 0 daje to 1/2 + 9ε.",
+        "key_insight": "Wąskim gardłem jest addytywna księgowość: każda strata na wejściu podnosi wykładnik ponad 1/2 o stałą wielokrotność ε, i nic więcej.",
+        "analogy_anchor": "Kantor, który wymienia walutę geometryczną na walutę liczb pierwszych po stałej prowizji, z każdą opłatą zapisaną w wykładniku",
+        "loss_meter": {
+          "fidelity_score": 0.45,
+          "compression_ratio": "~50,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Predykaty EAtH i CoreAtH oraz struktura rodzin związanych (tied)",
+            "Skąd bierze się +7: (C+3) z C = eD+eL+3, plus jedno ε za czynnik 1+4o",
+            "Wyraz SigA i jego ograniczenie sigA_le"
+          ],
+          "where_metaphor_breaks": "„Stała prowizja” obowiązuje tylko dla dostatecznie dużych x (progi x1, x2, x3). Porównanie nic nie mówi o tym, czy istnieją rodziny geometryczne z eD = 2 i eL = 0; to dostarcza interfejs wejściowy TopG."
+        }
+      },
+      "L2": {
+        "title": "Choreografia wykładników w warstwie porównania",
+        "headline": "Wejście: TopG (eD=2, eL=0) i hosty o szerokości 3/2. Wyjście: G_P ≤ x^(1/2+9ε) na oknach, wysyłane do warstwy choreografii.",
+        "explanation": "ch_top: dla każdego indeksu u zachodzi gapA = ASK(u) − Main(u) ≤ x^(CErr·ε)·errorBracketSizeWindows(x, ε, |H|, |TT|, |T2|, m, b, k, aE). ch_core z C = max(eD+eL, 0) + 3 uśrednia te ograniczenia: GmA ≤ x^(1/2+(C+3)ε) + SigA, przy warunkach m ≤ x^(1/2+ε/2) i xm ≤ k. core_gm wchłania czynnik 1 + 4o w x^ε i daje Λ.Gm(x) ≤ x^(1/2+(eD+eL+7)ε) dla x ≥ x1. Następnie windowInequality_of_artinInputs wybiera próg max(x1, x0, xE) na każdym oknie.",
+        "key_insight": "Niezmiennik: końcowy wykładnik jest liniowy w (eD, eL) z nachyleniem ε, więc budżet wejścia w pełni wyznacza budżet wyjścia.",
+        "analogy_anchor": "Potok: ograniczenie dla każdego indeksu, potem uśrednienie, potem wchłonięcie stałych, potem wybór progów",
+        "loss_meter": {
+          "fidelity_score": 0.7,
+          "compression_ratio": "~5,000:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Wewnętrzne pola Data/Consts (Dd, Cc) oraz 17 + 28 rozłożonych składowych okien",
+            "Definicje SizesA, ThinScales, CostWindows i RestSize",
+            "Tożsamości ch_top_main_eq i gmA_eq"
+          ],
+          "where_metaphor_breaks": "Obraz „potoku” sugeruje niezależne etapy. W rzeczywistości progi i stałe C, K i cHH są powiązane między etapami, a wybór x1 zależy od wcześniejszych stałych."
+        }
+      },
+      "L3": {
+        "title": "Skończone porównanie charakterów na (E0 × H)",
+        "headline": "Ortogonalność charakterów addytywnych na podgrupie A0, zachowane charaktery Kp i współczynnik c = (3o+1)⁻¹ wiążą gapA z GmA.",
+        "explanation": "Charaktery to ell : AddChar(E0 × H) ℂ → ℂ, z podgrupą A0 ⊆ H, zachowanym zbiorem Kp, współczynnikiem c = (3o+1)⁻¹ spełniającym |c| ≤ 1 oraz M = 4o w CharsA. Hipoteza ∀u ∈ A0, gapA(u) ≤ x^(Cε)·bracket, razem z ThinScales, CostWindows i RestSize, implikuje GmA ≤ x^(1/2+(C+3)ε) + SigA. W core_gm utożsamienie gmA_eq przenosi GmA na Λ.Gm, a SigA kontroluje sigA_le. level_gm_le_on_family_scales przenosi ChainTied na wspólne dane hosta przez tiedCore_of_chainTied.",
+        "key_insight": "Skończona transformata Fouriera na H z A0 zamienia punktowe ograniczenie geometryczne w ograniczenie ważonej, zlokalizowanej sumy pierwszej typu Landaua, tracąc jedynie potęgi x^ε.",
+        "analogy_anchor": "Dyskretny Plancherel/ortogonalność na skończonej grupie abelowej jako tłumacz nierówności",
+        "loss_meter": {
+          "fidelity_score": 0.9,
+          "compression_ratio": "~200:1",
+          "topology_status": "faithful_projection",
+          "what_is_omitted": [
+            "Pełne ciało ch_core (wiersze przed 343) i lemat pomocniczy each_unit_bound_statement",
+            "Dokładna postać errorBracketSizeWindows i CErr",
+            "Jak TopG powstaje w warstwie rodzin, a supplyChi w warstwie hostów"
+          ],
+          "where_metaphor_breaks": "„Tłumaczenie nierówności” zakłada, że hipotezy wejściowe (EAtH, CoreAtH) są dostarczone. Ten komponent jest od nich warunkowo zależny, a warunek pokrycia hcov musi zachodzić dla każdego indeksu u ∈ A0."
+        }
+      },
+      "L4": {
+        "title": "Kotwice Lean komponentu porównania",
+        "headline": "Pięć deklaracji w commicie 40e56bab026552e089d7afcfeff08d2defb9c005; cztery mają poziom „checked”.",
+        "explanation": "UpperTheory.Comparison₂.level_gm_le_on_family_scales (PrimitiveCosets/LevelGmLeOnFamilyScales.lean:28–30, poziom covered) woła windowInequality_of_artinInputs (WindowInequalityOfArtinInputs.lean:17–25, poziom checked). To z kolei korzysta z core_gm (CoreGm.lean:12–74, poziom checked), które łączy Deduction.ch_core (LandauTheorems/ChCore.lean:343–351, poziom checked) i Deduction.ch_top (LandauTheorems/ChTop.lean:37–72, poziom checked). Wejścia przychodzą przez UpperTheory.Top.TopG i UpperTheory.Top.supplyChi. Kompilacja: Lean 4.33.1, standardowe aksjomaty propext, Classical.choice i Quot.sound.",
+        "key_insight": "Kontrakt wyjściowy do choreografii to dokładnie typ ChebyshevInequalityOnWindows (Fam := FamP) … Λ, ani więcej, ani mniej.",
+        "analogy_anchor": "src/Development/AutomorphicArithmetic/PrimitiveCosets/CoreGm.lean#L12-L74 @ 40e56ba",
+        "loss_meter": {
+          "fidelity_score": 1.0,
+          "compression_ratio": "1:1 (formal anchor)",
+          "topology_status": "exact_isomorphism",
+          "what_is_omitted": [],
+          "where_metaphor_breaks": "Granica specyfikacji: poprawność jest gwarantowana tylko względem jądra Lean i jego niezależnych odtworzeń oraz definicji Mathlib (AddChar, Finset, Real.rpow). Czy predykaty EAtH, CoreAtH i ChainTied oddają zamierzoną treść geometryczną i czy cały łańcuch składa się na twierdzenie matematyczne, wciąż ocenia ludzka recenzja matematyczna."
+        }
+      }
+    }
+  }
+}

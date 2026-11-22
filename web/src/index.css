@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    background-color: #0b1114;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+}
+
+@keyframes pulse-flow {
+  0% {
+    stroke-dashoffset: 32;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.edge-flow {
+  stroke-dasharray: 6 6;
+  animation: pulse-flow 1.4s linear infinite;
+}
+
+/* Custom subtle scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b1114;
+}
+::-webkit-scrollbar-thumb {
+  background: #24343e;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #354c5a;
+}

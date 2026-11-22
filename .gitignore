@@ -1,12 +1,14 @@
 __pycache__/
 *.pyc
 *.pyo
+.venv/
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
 node_modules/
 web/dist/
 web/.vite/
+capsules/*/lenses/cache/
 .env
 .DS_Store
 Thumbs.db

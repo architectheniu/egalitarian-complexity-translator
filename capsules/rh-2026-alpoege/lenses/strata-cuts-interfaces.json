@@ -1,0 +1,1336 @@
+{
+  "level_meta": {
+    "L0": {
+      "label": {
+        "pl": "Opowieść",
+        "en": "Story"
+      },
+      "audience": {
+        "pl": "Dziecko (~10 lat) i każdy ciekawy świata",
+        "en": "A child (~10 years old) and anyone curious"
+      },
+      "description": {
+        "pl": "Obrazy z życia: dźwięki, ruch, przedmioty. Bez wzorów i bez żargonu, ale z zachowaną kolejnością przyczyn i skutków.",
+        "en": "Everyday images of sound, motion and objects. No equations and no jargon, but cause still comes before effect."
+      }
+    },
+    "L1": {
+      "label": {
+        "pl": "Intuicja architekta",
+        "en": "Intuitive Architect"
+      },
+      "audience": {
+        "pl": "Głęboki myśliciel bez formalnego przygotowania",
+        "en": "Deep thinker without formal training"
+      },
+      "description": {
+        "pl": "Wierny kształt konstrukcji: równowagi, sygnały, ograniczenia, granice faz i wąskie gardła.",
+        "en": "The faithful shape of the construction: balances, signals, constraints, phase boundaries and bottlenecks."
+      }
+    },
+    "L2": {
+      "label": {
+        "pl": "Inżynier systemów",
+        "en": "Systems Engineer"
+      },
+      "audience": {
+        "pl": "Praktyk, który chce wiedzieć, jak działa maszyna",
+        "en": "Practitioner who wants to know how the machine runs"
+      },
+      "description": {
+        "pl": "Moduły z wejściami, wyjściami i niezmiennikami, wykładniki skali, kolejność parametrów i powód istnienia każdej warstwy.",
+        "en": "Modules with inputs, outputs and invariants, scaling exponents, parameter ordering, and why each layer exists."
+      }
+    },
+    "L3": {
+      "label": {
+        "pl": "Badacz dziedziny",
+        "en": "Domain Researcher"
+      },
+      "audience": {
+        "pl": "Matematyk z teorii liczb i analizy",
+        "en": "Number theorist or analyst"
+      },
+      "description": {
+        "pl": "Dokładne słownictwo dziedziny: obiekty algebraiczne i analityczne, strategie dowodu, oszacowania i warunki.",
+        "en": "Exact domain vocabulary: algebraic and analytic objects, proof strategies, bounds and conditions."
+      }
+    },
+    "L4": {
+      "label": {
+        "pl": "Rdzeń formalny",
+        "en": "Formal Core"
+      },
+      "audience": {
+        "pl": "Weryfikator, audytor, jądro dowodowe",
+        "en": "Verifier, auditor, proof kernel"
+      },
+      "description": {
+        "pl": "Identyfikatory twierdzeń, przypięcia plik/linia/commit, aksjomaty i stan weryfikacji wprost z formal_core_ir, z jawną Granicą Specyfikacji.",
+        "en": "Theorem identifiers, file/line/commit pins, axioms and verification state taken directly from formal_core_ir, with an explicit Specification Boundary."
+      }
+    }
+  },
+  "strata": {
+    "arith": {
+      "pl": {
+        "L0": {
+          "title": "Kuźnia instrumentów",
+          "summary": "Najpierw ktoś musi zbudować całą orkiestrę instrumentów, które grają prawie bezgłośnie, gdy przechodzą przez nie liczby pierwsze."
+        },
+        "L1": {
+          "title": "Źródło tłumiących rodzin",
+          "summary": "Ta warstwa dostarcza surowiec: całe rodziny obiektów, w których sygnał liczb pierwszych się znosi. Bez tej dostawy dalsze piętra nie mają czego mierzyć."
+        },
+        "L2": {
+          "title": "Moduł podaży arytmetycznej",
+          "summary": "Wejście: reprezentacje Galois i podniesienia theta. Wyjście: rodziny z kohomologicznymi ograniczeniami typu Iwasawy, które gwarantują małość sumy po liczbach pierwszych w następnej warstwie."
+        },
+        "L3": {
+          "title": "Reprezentacje Galois, podniesienia theta, kohomologia Iwasawy",
+          "summary": "Reprezentacje Galois i łańcuchy podniesień theta, kontrolowane oszacowaniami kohomologii typu Iwasawy, mają wytworzyć rodziny automorficzne, na których ważona suma po liczbach pierwszych jest mała."
+        },
+        "L4": {
+          "title": "Stratum `arith` (order 0)",
+          "summary": "Węzły i krawędzie stratum `arith` są przypięte w formal_core_ir; obowiązują wyłącznie tamtejsze identyfikatory, pinezki i epistemic_status, a ta soczewka niczego do nich nie dodaje."
+        }
+      },
+      "en": {
+        "L0": {
+          "title": "The instrument forge",
+          "summary": "First someone has to build a whole orchestra of instruments that play almost silently whenever prime numbers pass through them."
+        },
+        "L1": {
+          "title": "Source of quieting families",
+          "summary": "This layer supplies the raw material: whole families of objects in which the prime signal cancels out. Without that supply, the floors above have nothing to measure."
+        },
+        "L2": {
+          "title": "Arithmetic supply module",
+          "summary": "Input: Galois representations and theta lifts. Output: families with Iwasawa-type cohomology bounds that make the prime sum small for the next layer."
+        },
+        "L3": {
+          "title": "Galois representations, theta lifts, Iwasawa cohomology",
+          "summary": "Galois representations and chains of theta lifts, controlled by Iwasawa-type cohomology bounds, are meant to produce automorphic families on which a weighted prime sum is small."
+        },
+        "L4": {
+          "title": "Stratum `arith` (order 0)",
+          "summary": "The nodes and edges of stratum `arith` are pinned in formal_core_ir. Only the identifiers, pins and epistemic_status recorded there count; this lens adds nothing to them."
+        }
+      }
+    },
+    "est": {
+      "pl": {
+        "L0": {
+          "title": "Ważenie hałasu",
+          "summary": "Ustawiamy długi rząd instrumentów jeden za drugim i porównując ich nuty, sprawdzamy, że szum liczb pierwszych nie może być głośniejszy niż pewna granica."
+        },
+        "L1": {
+          "title": "Sufit nad hałasem",
+          "summary": "Kontrolę geometrii zamienia się tu na twardy sufit: ważona suma po liczbach pierwszych nie może go przebić. Działa tylko w jedną stronę, bo ogranicza od góry."
+        },
+        "L2": {
+          "title": "Moduł oszacowania",
+          "summary": "Skończone porównanie charakterów przyjmuje łańcuch podniesień theta długości około √x i zwraca górne ograniczenie ważonej sumy po liczbach pierwszych. Długość łańcucha rośnie z x jak √x."
+        },
+        "L3": {
+          "title": "Porównanie charakterów dla łańcucha długości ~√x",
+          "summary": "Skończone porównanie charakterów przekłada kontrolę geometryczną łańcucha podniesień theta długości rzędu √x na jednostronne górne oszacowanie ważonej sumy po liczbach pierwszych."
+        },
+        "L4": {
+          "title": "Stratum `est` (order 1)",
+          "summary": "Twierdzenie oszacowania i jego zależności od `arith` są przypięte w formal_core_ir. Status epistemiczny, w tym ewentualne otwarte założenia, odczytuje się stamtąd, a nie z tej soczewki."
+        }
+      },
+      "en": {
+        "L0": {
+          "title": "Weighing the noise",
+          "summary": "We line up a long row of instruments one after another and compare their notes to show that the noise of the primes cannot get louder than a certain limit."
+        },
+        "L1": {
+          "title": "A ceiling over the noise",
+          "summary": "Here geometric control becomes a hard ceiling that the weighted prime sum cannot break through. It works in one direction only and bounds from above."
+        },
+        "L2": {
+          "title": "Estimate module",
+          "summary": "A finite character comparison takes a chain of theta lifts of length about √x and returns an upper bound for a weighted prime sum. The chain length grows with x like √x."
+        },
+        "L3": {
+          "title": "Character comparison over a ~√x theta chain",
+          "summary": "A finite character comparison turns geometric control of a chain of theta lifts of length on the order of √x into a one-sided upper bound for a weighted prime sum."
+        },
+        "L4": {
+          "title": "Stratum `est` (order 1)",
+          "summary": "The estimate theorem and its dependencies on `arith` are pinned in formal_core_ir. Epistemic status, including any open assumptions, is read from there, not from this lens."
+        }
+      }
+    },
+    "ana": {
+      "pl": {
+        "L0": {
+          "title": "Silnik, który słyszy echo",
+          "summary": "Jeśli żadne okno w domu nigdy nie dudni za głośno, silnik dowodzi, że w całej połowie domu nie może ukrywać się żaden ukryty dzwon."
+        },
+        "L1": {
+          "title": "Z sufitu na wolną strefę",
+          "summary": "Jednostronne sufity nałożone na całe okna potęgowe wystarczą, by wykluczyć zera w pełnej półpłaszczyźnie. Ukryte zero wywołałoby drgania, które przebiłyby sufit."
+        },
+        "L2": {
+          "title": "Silnik analityczny",
+          "summary": "Wejście: jednostronne ograniczenia na całych oknach potęgowych. Wyjście: półpłaszczyzna wolna od zer, uzyskana lokalizowanym argumentem oscylacyjnym Landaua."
+        },
+        "L3": {
+          "title": "Zlokalizowana oscylacja Landaua",
+          "summary": "Zlokalizowany argument oscylacyjny typu Landaua zamienia jednostronne oszacowania na całych oknach potęgowych w półpłaszczyznę wolną od zer odpowiednich funkcji L."
+        },
+        "L4": {
+          "title": "Stratum `ana` (order 2)",
+          "summary": "Twierdzenie o półpłaszczyźnie bez zer i jego zależność od `est` są przypięte w formal_core_ir. Kierunek grafu `est -> ana` jest nienaruszalny."
+        }
+      },
+      "en": {
+        "L0": {
+          "title": "The engine that hears echoes",
+          "summary": "If no window in the house ever rattles too loudly, the engine proves that no hidden bell can be lurking anywhere in half of the house."
+        },
+        "L1": {
+          "title": "From ceiling to free zone",
+          "summary": "One-sided ceilings over whole power windows are enough to rule out zeros in an entire half-plane. A hidden zero would cause oscillations that break the ceiling."
+        },
+        "L2": {
+          "title": "Analytic engine",
+          "summary": "Input: one-sided bounds on whole power windows. Output: a zero-free half-plane, obtained by a localized Landau oscillation argument."
+        },
+        "L3": {
+          "title": "Localized Landau oscillation",
+          "summary": "A localized Landau-type oscillation argument converts one-sided bounds on whole power windows into a zero-free half-plane for the relevant L-functions."
+        },
+        "L4": {
+          "title": "Stratum `ana` (order 2)",
+          "summary": "The zero-free half-plane theorem and its dependency on `est` are pinned in formal_core_ir. The graph direction `est -> ana` is fixed."
+        }
+      }
+    },
+    "dest": {
+      "pl": {
+        "L0": {
+          "title": "Meta",
+          "summary": "Na końcu odbijamy pół domu w lustrze. Skoro w żadnej połowie nie ma dzwonów, wszystkie prawdziwe dzwony stoją dokładnie na środkowej linii."
+        },
+        "L1": {
+          "title": "Lustro symetrii",
+          "summary": "Symetria równania funkcyjnego odbija wolną półpłaszczyznę na drugą stronę, więc zera zostają ściśnięte na jednej prostej. Stąd biorą się końcowe twierdzenia."
+        },
+        "L2": {
+          "title": "Moduł eksportu",
+          "summary": "Czynniki Eulera, konduktory i równania funkcyjne przenoszą twierdzenie o półpłaszczyźnie na pięć eksportowanych twierdzeń. Jednym z nich jest `RiemannHypothesis` z Mathlib."
+        },
+        "L3": {
+          "title": "Czynniki Eulera, konduktory, równanie funkcyjne",
+          "summary": "Kontrola czynników Eulera i konduktorów wraz z równaniem funkcyjnym przenosi półpłaszczyznę bez zer na pięć eksportowanych tez, w tym hipotezę Riemanna w sformułowaniu Mathlib."
+        },
+        "L4": {
+          "title": "Stratum `dest` (order 3)",
+          "summary": "Pięć eksportowanych twierdzeń, w tym `RiemannHypothesis` z Mathlib, jest przypiętych w formal_core_ir. Sprawdzenie maszynowe i powtórka w jądrze to nie to samo co recenzja matematyczna przez ludzi; status każdego z nich podaje epistemic_status."
+        }
+      },
+      "en": {
+        "L0": {
+          "title": "The finish line",
+          "summary": "At the end we reflect half of the house in a mirror. Since neither half hides any bells, all the real bells stand exactly on the middle line."
+        },
+        "L1": {
+          "title": "The symmetry mirror",
+          "summary": "The symmetry of the functional equation reflects the free half-plane across, squeezing the zeros onto a single line. The final theorems come from that squeeze."
+        },
+        "L2": {
+          "title": "Export module",
+          "summary": "Euler factors, conductors and functional equations carry the half-plane theorem over to the five exported statements. One of them is Mathlib's `RiemannHypothesis`."
+        },
+        "L3": {
+          "title": "Euler factors, conductors, functional equation",
+          "summary": "Control of Euler factors and conductors, together with the functional equation, carries the zero-free half-plane over to five exported statements, including the Riemann Hypothesis as formulated in Mathlib."
+        },
+        "L4": {
+          "title": "Stratum `dest` (order 3)",
+          "summary": "The five exported statements, including Mathlib's `RiemannHypothesis`, are pinned in formal_core_ir. Machine-checked compilation and kernel replay are not the same as human mathematical peer review; epistemic_status gives the status of each."
+        }
+      }
+    }
+  },
+  "cuts": {
+    "cut-zeta": {
+      "pl": {
+        "L0": {
+          "title": "Jeśli w późnych oknach zawsze jest cicho, muzyka jest idealnie zestrojona",
+          "statement": "Wyobraź sobie ogromną orkiestrę bębniarzy: każdy bębniarz to liczba pierwsza. Słuchamy jej przez okna, które otwierają się coraz później. Jeśli w każdym takim oknie hałas nigdy nie robi się za głośny, to ukryta melodia całej orkiestry jest idealnie równa. Komputer sprawdził, że to „jeśli… to…” jest poprawne. Nikt jeszcze nie pokazał, że w oknach naprawdę jest cicho.",
+          "intuition": "Nie trzeba słuchać całego koncertu, wystarczy wciąż na nowo zaglądać w coraz późniejsze fragmenty. Kolejność jest ważna: najpierw cisza w oknach, dopiero z niej wynika idealne zestrojenie, nigdy odwrotnie.",
+          "loss_meter": {
+            "fidelity_score": 0.2,
+            "compression_ratio": "~10^6:1",
+            "topology_status": "lossy_analogy",
+            "what_is_omitted": [
+              "definicja wielkości G(y) z formalnego rozwoju",
+              "kwantyfikator „dla każdego θ z przedziału (1/2, 1)”",
+              "kształt okna [Y, Y^{3/2}]",
+              "stała C i jej zależność od θ",
+              "pojęcie zer funkcji zeta i prostej krytycznej"
+            ],
+            "where_metaphor_breaks": "„Cisza” sugeruje jeden próg głośności, a przesłanka wymaga ograniczenia przy każdym wykładniku θ > 1/2 osobno i tylko od góry (jednostronnie). Poza tym metafora brzmi jak fakt, a to tylko implikacja: przesłanka pozostaje otwarta."
+          }
+        },
+        "L1": {
+          "title": "Jednostronna kontrola liczb pierwszych w rzadkich oknach wymusza RH",
+          "statement": "Most: jeśli pewna ważona liczbami pierwszymi wielkość G(y) jest ograniczona od góry przez C·y^θ na nieskończenie wielu oknach [Y, Y^{3/2}], i to dla każdego θ powyżej 1/2, to zachodzi Hipoteza Riemanna. Sama implikacja jest sformułowana jako twierdzenie Lean w przypiętym archiwum (sprawdzenie maszynowe); przesłanka nie jest udowodniona, a recenzja matematyczna przez ludzi wciąż trwa.",
+          "intuition": "To bramka sygnałowa: tłumienie szumu do poziomu tuż powyżej pierwiastka (θ → 1/2⁺) to dokładnie ta skala, której wymaga RH. Dwie oszczędności czynią most ciekawym: ograniczenie jest tylko z góry (bez wartości bezwzględnej) i tylko na oknach uciekających do nieskończoności, a nie na całej półprostej.",
+          "loss_meter": {
+            "fidelity_score": 0.45,
+            "compression_ratio": "~10^4:1",
+            "topology_status": "faithful_projection",
+            "what_is_omitted": [
+              "dokładna definicja G(y) w Lean",
+              "mechanizm dowodu: jak ograniczenie w oknach wyklucza zera poza prostą krytyczną",
+              "kolejność kwantyfikatorów (∀θ ∃C ∀Y₀ ∃Y) w pełnej postaci",
+              "przypięcia: commit, toolchain, Mathlib"
+            ],
+            "where_metaphor_breaks": "„Szum tuż powyżej pierwiastka” sugeruje, że wystarczy jedno θ bliskie 1/2; w rzeczywistości przesłanka obejmuje wszystkie θ z (1/2, 1), a stała C może zależeć od θ, lecz nie od okna."
+          }
+        },
+        "L2": {
+          "title": "Interfejs: jednostronne ograniczenia okienkowe G → RH",
+          "statement": "Wejście: dla każdego θ ∈ (1/2, 1) istnieje stała C taka, że dla każdego progu Y₀ istnieje Y ≥ Y₀ z G(y) ≤ C·y^θ dla wszystkich y ∈ [Y, Y^{3/2}]. Wyjście: RiemannHypothesis. Niezmiennik: implikacja jest bezwarunkowym twierdzeniem Lean (Reading.WindowBridge.riemannHypothesis_of_prime_windows); cała niepewność matematyczna jest przeniesiona do przesłanki.",
+          "intuition": "To globalne cięcie: oddziela maszynerię, która wyprowadza RH, od jednej jawnie nazwanej hipotezy wejściowej. Parametry w kolejności: θ (wykładnik budżetu), C (stała zależna tylko od θ), Y (początek okna, dowolnie daleko), szerokość okna multiplikatywna, wykładnik 3/2. Słabsza przesłanka (jednostronna, okienkowa) oznacza silniejszy most.",
+          "loss_meter": {
+            "fidelity_score": 0.7,
+            "compression_ratio": "~10^2:1",
+            "topology_status": "faithful_projection",
+            "what_is_omitted": [
+              "wnętrze dowodu mostu i lematy pośrednie",
+              "formalna definicja G i jej typ w Lean",
+              "status odtworzenia przez niezależne jądra (zapisany w epistemic_status formal_core_ir)"
+            ],
+            "where_metaphor_breaks": "Ujęcie „wejście/wyjście” sugeruje moduł, który można uruchomić; tymczasem nikt nie dostarczył wejścia, więc wyjście RH nie jest tu udowodnione, tylko zredukowane do przesłanki."
+          }
+        },
+        "L3": {
+          "title": "Jednostronne ograniczenia G(y) ≪ y^θ na oknach [Y, Y^{3/2}] implikują RH",
+          "statement": "Twierdzenie: jeśli ∀θ∈(1/2,1) ∃C ∀Y₀ ∃Y≥Y₀ ∀y∈[Y,Y^{3/2}]: G(y) ≤ C·y^θ, to wszystkie nietrywialne zera ζ leżą na prostej Re(s) = 1/2. Implikacja jest sformalizowana w Lean 4 z Mathlib; przesłanka jest otwarta. Recenzja przez matematyków jest niezależna od sprawdzenia maszynowego i wciąż w toku.",
+          "intuition": "Klasycznie RH jest równoważna ograniczeniom typu ψ(x) − x ≪ x^{1/2+ε} na całej półprostej i z wartością bezwzględną. Ten most osłabia przesłankę w dwóch osiach: jednostronność i ograniczenie do rzadkiej, nieskończonej rodziny okien o multiplikatywnej szerokości wykładnika 3/2. Okno musi być na tyle szerokie, żeby zero poza prostą krytyczną zostawiło w nim wykrywalny ślad wzrostu.",
+          "loss_meter": {
+            "fidelity_score": 0.9,
+            "compression_ratio": "~10:1",
+            "topology_status": "faithful_projection",
+            "what_is_omitted": [
+              "dokładna definicja G w formalnym rozwoju (nie utożsamiać automatycznie z ψ(x) − x)",
+              "pełny łańcuch lematów w Lean",
+              "przypięte skróty SHA-256 i commity"
+            ],
+            "where_metaphor_breaks": "Porównanie z klasycznym ψ(x) − x ≪ x^{1/2+ε} to heurystyka orientacyjna; formalna wielkość G jest zdefiniowana w archiwum i może się różnić normalizacją lub wagami, więc poprawność mostu dotyczy wyłącznie definicji z Lean."
+          }
+        },
+        "L4": {
+          "title": "Reading.WindowBridge.riemannHypothesis_of_prime_windows",
+          "statement": "Identyfikator Lean: Reading.WindowBridge.riemannHypothesis_of_prime_windows. Przesłanka: \\forall\\theta\\in(\\tfrac12,1)\\ \\exists C\\ \\forall Y_0\\ \\exists Y\\ge Y_0\\ \\forall y\\in[Y,Y^{3/2}]:\\ G(y)\\le C\\,y^{\\theta}. Wniosek: RiemannHypothesis. Przypięcia: archiwum sha256 9631b4f020199e580ba86178cb56c6e9b09f690c2369a80dc4334aa93f49c7fc; PDF sha256 3fc97784b71ddd44ff8aa0a177e99622a1c61b13cfa843a0989ee4a7a0cfeb8d; lustro https://github.com/Deicyde/riemann-hypothesis @ 40e56bab026552e089d7afcfeff08d2defb9c005; toolchain leanprover/lean4:v4.33.1; Mathlib 0df444a360eaa60ab8c11dca51a86af692955474.",
+          "intuition": "Zakotwiczenie 1:1: twierdzenie jest implikacją, nie bezwarunkowym dowodem RH. Status sprawdzenia maszynowego (kompilacja, odtworzenie przez jądra) jest taki, jak zapisano w epistemic_status formal_core_ir; recenzja ludzka jest osobną, trwającą osią.",
+          "loss_meter": {
+            "fidelity_score": 1.0,
+            "compression_ratio": "1:1",
+            "topology_status": "exact_isomorphism",
+            "what_is_omitted": [],
+            "where_metaphor_breaks": "Granica specyfikacji: Lean gwarantuje implikację tylko dla definicji G i RiemannHypothesis z przypiętego archiwum i Mathlib. Zgodność tych definicji z klasycznym sformułowaniem musi ocenić człowiek, a sama przesłanka pozostaje nieudowodniona."
+          }
+        }
+      },
+      "en": {
+        "L0": {
+          "title": "If the late windows always stay quiet, the music is perfectly in tune",
+          "statement": "Imagine a huge orchestra of drummers where every drummer is a prime number. We listen through windows that open later and later. If the noise never gets too loud in any of those windows, then the hidden tune of the whole orchestra is perfectly even. A computer has checked that this \"if… then…\" is correct. Nobody has yet shown that the windows really are quiet.",
+          "intuition": "You do not need to hear the whole concert; it is enough to keep peeking into later and later stretches. The order matters: quiet windows come first and the perfect tuning follows from them, never the other way round.",
+          "loss_meter": {
+            "fidelity_score": 0.2,
+            "compression_ratio": "~10^6:1",
+            "topology_status": "lossy_analogy",
+            "what_is_omitted": [
+              "the definition of the quantity G(y) in the formal development",
+              "the quantifier \"for every θ in (1/2, 1)\"",
+              "the window shape [Y, Y^{3/2}]",
+              "the constant C and its dependence on θ",
+              "zeta zeros and the critical line"
+            ],
+            "where_metaphor_breaks": "\"Quiet\" suggests a single loudness threshold, but the premise demands a bound for every exponent θ > 1/2 separately, and only from above (one-sided). The metaphor also sounds like a fact; it is only an implication, and the premise is still open."
+          }
+        },
+        "L1": {
+          "title": "One-sided prime control on sparse windows forces RH",
+          "statement": "Bridge: if a certain prime-weighted quantity G(y) is bounded above by C·y^θ on infinitely many windows [Y, Y^{3/2}], for every θ above 1/2, then the Riemann Hypothesis holds. The implication itself is stated as a Lean theorem in the pinned archive (machine checking); the premise is unproved, and human mathematical review is still ongoing.",
+          "intuition": "It is a signal gate: suppressing noise to just above square-root scale (θ → 1/2⁺) is exactly the scale RH demands. Two economies make the bridge interesting: the bound is only from above (no absolute value), and only on windows escaping to infinity, not on the whole half-line.",
+          "loss_meter": {
+            "fidelity_score": 0.45,
+            "compression_ratio": "~10^4:1",
+            "topology_status": "faithful_projection",
+            "what_is_omitted": [
+              "the exact Lean definition of G(y)",
+              "the proof mechanism: how window bounds exclude zeros off the critical line",
+              "the full quantifier order (∀θ ∃C ∀Y₀ ∃Y)",
+              "pins: commit, toolchain, Mathlib"
+            ],
+            "where_metaphor_breaks": "\"Noise just above square root\" suggests a single θ near 1/2 suffices; in fact the premise covers all θ in (1/2, 1), and C may depend on θ but not on the window."
+          }
+        },
+        "L2": {
+          "title": "Interface: one-sided windowed bounds on G → RH",
+          "statement": "Input: for every θ ∈ (1/2, 1) there is a constant C such that for every threshold Y₀ there is Y ≥ Y₀ with G(y) ≤ C·y^θ for all y ∈ [Y, Y^{3/2}]. Output: RiemannHypothesis. Invariant: the implication is an unconditional Lean theorem (Reading.WindowBridge.riemannHypothesis_of_prime_windows); all mathematical uncertainty is moved into the premise.",
+          "intuition": "This is a global cut: it separates the machinery that derives RH from one explicitly named input hypothesis. Parameters in order: θ (budget exponent), C (constant depending only on θ), Y (window start, arbitrarily far out), multiplicative window width with exponent 3/2. A weaker premise (one-sided, windowed) means a stronger bridge.",
+          "loss_meter": {
+            "fidelity_score": 0.7,
+            "compression_ratio": "~10^2:1",
+            "topology_status": "faithful_projection",
+            "what_is_omitted": [
+              "the internals of the bridge proof and intermediate lemmas",
+              "the formal definition of G and its Lean type",
+              "independent-kernel replay status (recorded in formal_core_ir epistemic_status)"
+            ],
+            "where_metaphor_breaks": "The input/output framing suggests a module you can run; but nobody has supplied the input, so the RH output is not proved here, only reduced to the premise."
+          }
+        },
+        "L3": {
+          "title": "One-sided bounds G(y) ≪ y^θ on windows [Y, Y^{3/2}] imply RH",
+          "statement": "Theorem: if ∀θ∈(1/2,1) ∃C ∀Y₀ ∃Y≥Y₀ ∀y∈[Y,Y^{3/2}]: G(y) ≤ C·y^θ, then all nontrivial zeros of ζ lie on Re(s) = 1/2. The implication is formalized in Lean 4 with Mathlib; the premise is open. Peer review by mathematicians is independent of machine checking and still in progress.",
+          "intuition": "Classically RH is equivalent to bounds like ψ(x) − x ≪ x^{1/2+ε} on the whole half-line and in absolute value. This bridge weakens the premise along two axes: one-sidedness, and restriction to a sparse infinite family of windows of multiplicative width exponent 3/2. The window must be wide enough that a zero off the critical line leaves a detectable growth trace inside it.",
+          "loss_meter": {
+            "fidelity_score": 0.9,
+            "compression_ratio": "~10:1",
+            "topology_status": "faithful_projection",
+            "what_is_omitted": [
+              "the exact definition of G in the formal development (do not silently identify it with ψ(x) − x)",
+              "the full chain of Lean lemmas",
+              "pinned SHA-256 digests and commits"
+            ],
+            "where_metaphor_breaks": "The comparison with classical ψ(x) − x ≪ x^{1/2+ε} is an orienting heuristic; the formal G is defined in the archive and may differ in normalization or weights, so the bridge's correctness concerns only the Lean definitions."
+          }
+        },
+        "L4": {
+          "title": "Reading.WindowBridge.riemannHypothesis_of_prime_windows",
+          "statement": "Lean identifier: Reading.WindowBridge.riemannHypothesis_of_prime_windows. Premise: \\forall\\theta\\in(\\tfrac12,1)\\ \\exists C\\ \\forall Y_0\\ \\exists Y\\ge Y_0\\ \\forall y\\in[Y,Y^{3/2}]:\\ G(y)\\le C\\,y^{\\theta}. Conclusion: RiemannHypothesis. Pins: archive sha256 9631b4f020199e580ba86178cb56c6e9b09f690c2369a80dc4334aa93f49c7fc; PDF sha256 3fc97784b71ddd44ff8aa0a177e99622a1c61b13cfa843a0989ee4a7a0cfeb8d; mirror https://github.com/Deicyde/riemann-hypothesis @ 40e56bab026552e089d7afcfeff08d2defb9c005; toolchain leanprover/lean4:v4.33.1; Mathlib 0df444a360eaa60ab8c11dca51a86af692955474.",
+          "intuition": "1:1 anchor: the theorem is an implication, not an unconditional proof of RH. Machine-check status (compilation, kernel replay) is as recorded in formal_core_ir epistemic_status; human review is a separate, ongoing axis.",
+          "loss_meter": {
+            "fidelity_score": 1.0,
+            "compression_ratio": "1:1",
+            "topology_status": "exact_isomorphism",
+            "what_is_omitted": [],
+            "where_metaphor_breaks": "Specification Boundary: Lean guarantees the implication only for the definitions of G and RiemannHypothesis in the pinned archive and Mathlib. Whether these match the classical formulation is for humans to judge, and the premise itself remains unproved."
+          }
+        }
+      }
+    },
+    "cut-dirichlet": {
+      "pl": {
+        "L0": {
+          "title": "Strojenie główne i próba każdej sekcji: cała orkiestra gra czysto",
+          "statement": "Teraz mamy nie jedną orkiestrę, tylko całą rodzinę orkiestr: jedną główną i wiele sekcji o różnych barwach. Jeśli przejdzie jedno główne strojenie i jeśli każda sekcja zda swoją próbę w oknie, to czysto gra i orkiestra główna, i każda sekcja. Komputer sprawdził to „jeśli… to…”. Czy strojenie i próby naprawdę przechodzą, tego jeszcze nikt nie pokazał.",
+          "intuition": "Dwa rodzaje sprawdzianów idą razem: jeden wspólny dla wszystkich i jeden osobny dla każdej sekcji. Dopiero z obu naraz wynika czyste brzmienie całości.",
+          "loss_meter": {
+            "fidelity_score": 0.2,
+            "compression_ratio": "~10^6:1",
+            "topology_status": "lossy_analogy",
+            "what_is_omitted": [
+              "formalna treść predykatu TopG",
+              "formalna treść predykatu VWinAt i znaczenie parametru 401",
+              "pojęcie prymitywnego charakteru Dirichleta",
+              "funkcje L Dirichleta i ich zera"
+            ],
+            "where_metaphor_breaks": "„Strojenie” i „próba” sugerują pomiary, które można po prostu wykonać; TopG i VWinAt to ścisłe predykaty formalne, których nikt jeszcze nie udowodnił, a sekcji (charakterów prymitywnych) jest nieskończenie wiele."
+          }
+        },
+        "L1": {
+          "title": "Jedna hipoteza globalna plus okna dla każdego charakteru dają RH i GRH",
+          "statement": "Most: jeśli zachodzi hipoteza TopG i dla każdego prymitywnego charakteru Dirichleta ψ zachodzi warunek okienkowy VWinAt ψ 401 (tytuł nazywa te okna kohomologicznymi), to zachodzi zarówno Hipoteza Riemanna, jak i uogólniona hipoteza (GRH) dla funkcji L Dirichleta. Implikacja jest twierdzeniem Lean; przesłanki są otwarte, recenzja ludzka trwa.",
+          "intuition": "Architektura „jeden wspólny filar plus nieskończenie wiele lokalnych kontroli”. W odróżnieniu od cut-zeta wyjście obejmuje całą rodzinę funkcji L, nie tylko ζ: oba punkty końcowe (RH i Dirichletowska GRH) wychodzą z jednej bramki.",
+          "loss_meter": {
+            "fidelity_score": 0.45,
+            "compression_ratio": "~10^4:1",
+            "topology_status": "faithful_projection",
+            "what_is_omitted": [
+              "definicje TopG i VWinAt w Lean",
+              "rola parametru 401 w VWinAt",
+              "mechanizm dowodu przenoszący warunki okienkowe na położenie zer",
+              "przypięcia: commit, toolchain, Mathlib"
+            ],
+            "where_metaphor_breaks": "„Filar i kontrole lokalne” sugeruje, że TopG i VWinAt są niezależne i proste; ich faktyczna treść i wzajemne zależności są ustalone wyłącznie w formalnym rozwoju i nie wolno ich tu dopowiadać."
+          }
+        },
+        "L2": {
+          "title": "Interfejs: TopG ∧ (∀ψ prymitywny: VWinAt ψ 401) → RH ∧ GRH Dirichleta",
+          "statement": "Wejście: (1) predykat TopG; (2) rodzina predykatów VWinAt ψ 401 dla wszystkich prymitywnych charakterów Dirichleta ψ. Wyjście: punkty końcowe RH oraz GRH dla funkcji L Dirichleta. Niezmiennik: implikacja jest twierdzeniem Lean Reading.DirichletBridge.endpoints_of_topG_vWin401; cała niepewność siedzi w przesłankach.",
+          "intuition": "Globalne cięcie z dwoma portami wejściowymi i dwoma wyjściowymi. Parametr 401 jest ustalony w samym twierdzeniu (jedna wartość dla wszystkich ψ), więc wejście nie ma ukrytych swobodnych parametrów. Kwantyfikacja po prymitywnych charakterach wystarcza, bo charaktery nieprymitywne indukowane są przez prymitywne.",
+          "loss_meter": {
+            "fidelity_score": 0.7,
+            "compression_ratio": "~10^2:1",
+            "topology_status": "faithful_projection",
+            "what_is_omitted": [
+              "wnętrze dowodu i lematy pośrednie",
+              "typy i definicje TopG oraz VWinAt w Lean",
+              "status odtworzenia przez niezależne jądra (zapisany w epistemic_status formal_core_ir)"
+            ],
+            "where_metaphor_breaks": "Ujęcie portów sugeruje, że wejścia są dostępne; żadna z przesłanek nie jest udowodniona, więc RH i GRH nie są tu wykazane, a jedynie zredukowane do TopG i warunków okienkowych."
+          }
+        },
+        "L3": {
+          "title": "TopG i kohomologiczne warunki okienkowe VWinAt ψ 401 implikują RH i GRH Dirichleta",
+          "statement": "Twierdzenie: TopG ∧ ∀ψ prymitywny: VWinAt ψ 401 ⟹ (wszystkie nietrywialne zera ζ mają Re(s) = 1/2) ∧ (dla każdego charakteru Dirichleta χ wszystkie nietrywialne zera L(s, χ) mają Re(s) = 1/2). Sformalizowane w Lean 4 z Mathlib. Przesłanki otwarte; recenzja matematyczna niezależna od sprawdzenia maszynowego i w toku.",
+          "intuition": "Redukcja GRH do warunków na prymitywnych ψ jest standardowa: L(s, χ) dla χ nieprymitywnego różni się od L(s, ψ) indukującego charakteru tylko skończonym iloczynem czynników Eulera, które nie mają zer w pasie krytycznym poza Re(s) = 0. Nowa jest forma przesłanki: jeden warunek globalny TopG i jednolity (z tym samym parametrem 401) warunek okienkowy o charakterze kohomologicznym dla każdego ψ.",
+          "loss_meter": {
+            "fidelity_score": 0.9,
+            "compression_ratio": "~10:1",
+            "topology_status": "faithful_projection",
+            "what_is_omitted": [
+              "ścisłe definicje TopG i VWinAt (nie należy ich rekonstruować z nazw)",
+              "pełny łańcuch lematów w Lean",
+              "przypięte skróty SHA-256 i commity"
+            ],
+            "where_metaphor_breaks": "Słowo „kohomologiczne” pochodzi z tytułu cięcia; bez definicji z archiwum nie wolno przypisywać VWinAt konkretnej teorii kohomologii ani interpretować liczby 401 poza tym, że jest stałym argumentem predykatu."
+          }
+        },
+        "L4": {
+          "title": "Reading.DirichletBridge.endpoints_of_topG_vWin401",
+          "statement": "Identyfikator Lean: Reading.DirichletBridge.endpoints_of_topG_vWin401. Przesłanka: \\mathrm{TopG}\\ \\wedge\\ \\forall\\psi\\ \\text{primitive}:\\ \\mathrm{VWinAt}\\ \\psi\\ 401. Wniosek: punkty końcowe RH oraz GRH Dirichleta. Przypięcia: archiwum sha256 9631b4f020199e580ba86178cb56c6e9b09f690c2369a80dc4334aa93f49c7fc; PDF sha256 3fc97784b71ddd44ff8aa0a177e99622a1c61b13cfa843a0989ee4a7a0cfeb8d; lustro https://github.com/Deicyde/riemann-hypothesis @ 40e56bab026552e089d7afcfeff08d2defb9c005; toolchain leanprover/lean4:v4.33.1; Mathlib 0df444a360eaa60ab8c11dca51a86af692955474.",
+          "intuition": "Zakotwiczenie 1:1: implikacja, nie bezwarunkowy dowód. Status sprawdzenia maszynowego jest taki, jak zapisano w epistemic_status formal_core_ir; recenzja ludzka to osobna, trwająca oś.",
+          "loss_meter": {
+            "fidelity_score": 1.0,
+            "compression_ratio": "1:1",
+            "topology_status": "exact_isomorphism",
+            "what_is_omitted": [],
+            "where_metaphor_breaks": "Granica specyfikacji: Lean gwarantuje implikację tylko dla definicji TopG, VWinAt, prymitywności i obu punktów końcowych z przypiętego archiwum. Ich wierność klasycznym RH i GRH ocenia człowiek; przesłanki pozostają nieudowodnione."
+          }
+        }
+      },
+      "en": {
+        "L0": {
+          "title": "A master tuning and a test for every section: the whole orchestra plays clean",
+          "statement": "Now there is not one orchestra but a whole family: one main orchestra and many sections with different colours. If one master tuning passes, and every section passes its own window test, then the main orchestra and every section play clean. A computer checked this \"if… then…\". Whether the tuning and the tests really pass, nobody has shown yet.",
+          "intuition": "Two kinds of checks go together: one shared by everyone and one for each section. Clean sound for the whole family follows only from both at once.",
+          "loss_meter": {
+            "fidelity_score": 0.2,
+            "compression_ratio": "~10^6:1",
+            "topology_status": "lossy_analogy",
+            "what_is_omitted": [
+              "the formal content of the predicate TopG",
+              "the formal content of VWinAt and the meaning of parameter 401",
+              "the notion of a primitive Dirichlet character",
+              "Dirichlet L-functions and their zeros"
+            ],
+            "where_metaphor_breaks": "\"Tuning\" and \"test\" suggest measurements one could simply perform; TopG and VWinAt are precise formal predicates that nobody has proved, and there are infinitely many sections (primitive characters)."
+          }
+        },
+        "L1": {
+          "title": "One global hypothesis plus per-character windows yield RH and GRH",
+          "statement": "Bridge: if hypothesis TopG holds and every primitive Dirichlet character ψ satisfies the window condition VWinAt ψ 401 (the title calls these windows cohomological), then both the Riemann Hypothesis and the Generalized Riemann Hypothesis for Dirichlet L-functions hold. The implication is a Lean theorem; the premises are open and human review is ongoing.",
+          "intuition": "Architecture of \"one shared pillar plus infinitely many local checks\". Unlike cut-zeta, the output covers the whole family of L-functions, not just ζ: both endpoints (RH and Dirichlet GRH) leave through a single gate.",
+          "loss_meter": {
+            "fidelity_score": 0.45,
+            "compression_ratio": "~10^4:1",
+            "topology_status": "faithful_projection",
+            "what_is_omitted": [
+              "the Lean definitions of TopG and VWinAt",
+              "the role of parameter 401 in VWinAt",
+              "the proof mechanism transferring window conditions to zero locations",
+              "pins: commit, toolchain, Mathlib"
+            ],
+            "where_metaphor_breaks": "\"Pillar and local checks\" suggests TopG and VWinAt are independent and simple; their actual content and interdependence are fixed only in the formal development and must not be filled in here."
+          }
+        },
+        "L2": {
+          "title": "Interface: TopG ∧ (∀ψ primitive: VWinAt ψ 401) → RH ∧ Dirichlet GRH",
+          "statement": "Input: (1) the predicate TopG; (2) the family of predicates VWinAt ψ 401 for all primitive Dirichlet characters ψ. Output: the endpoints RH and GRH for Dirichlet L-functions. Invariant: the implication is the Lean theorem Reading.DirichletBridge.endpoints_of_topG_vWin401; all uncertainty sits in the premises.",
+          "intuition": "A global cut with two input ports and two output ports. Parameter 401 is fixed in the theorem itself (one value for all ψ), so the input has no hidden free parameters. Quantifying over primitive characters suffices because non-primitive characters are induced by primitive ones.",
+          "loss_meter": {
+            "fidelity_score": 0.7,
+            "compression_ratio": "~10^2:1",
+            "topology_status": "faithful_projection",
+            "what_is_omitted": [
+              "proof internals and intermediate lemmas",
+              "Lean types and definitions of TopG and VWinAt",
+              "independent-kernel replay status (recorded in formal_core_ir epistemic_status)"
+            ],
+            "where_metaphor_breaks": "The port framing suggests the inputs are available; neither premise is proved, so RH and GRH are not established here, only reduced to TopG and the window conditions."
+          }
+        },
+        "L3": {
+          "title": "TopG and cohomological window conditions VWinAt ψ 401 imply RH and Dirichlet GRH",
+          "statement": "Theorem: TopG ∧ ∀ψ primitive: VWinAt ψ 401 ⟹ (all nontrivial zeros of ζ have Re(s) = 1/2) ∧ (for every Dirichlet character χ, all nontrivial zeros of L(s, χ) have Re(s) = 1/2). Formalized in Lean 4 with Mathlib. Premises open; mathematical peer review is independent of machine checking and in progress.",
+          "intuition": "Reducing GRH to primitive ψ is standard: for non-primitive χ, L(s, χ) differs from the L-function of its inducing primitive character by a finite product of Euler factors, whose zeros lie on Re(s) = 0 and not in the open critical strip. What is new is the premise shape: one global condition TopG and a uniform (same parameter 401) cohomological-style window condition for each ψ.",
+          "loss_meter": {
+            "fidelity_score": 0.9,
+            "compression_ratio": "~10:1",
+            "topology_status": "faithful_projection",
+            "what_is_omitted": [
+              "the exact definitions of TopG and VWinAt (do not reconstruct them from their names)",
+              "the full chain of Lean lemmas",
+              "pinned SHA-256 digests and commits"
+            ],
+            "where_metaphor_breaks": "The word \"cohomological\" comes from the cut title; without the archive's definitions one must not assign VWinAt to a specific cohomology theory or read meaning into 401 beyond its being a fixed argument of the predicate."
+          }
+        },
+        "L4": {
+          "title": "Reading.DirichletBridge.endpoints_of_topG_vWin401",
+          "statement": "Lean identifier: Reading.DirichletBridge.endpoints_of_topG_vWin401. Premise: \\mathrm{TopG}\\ \\wedge\\ \\forall\\psi\\ \\text{primitive}:\\ \\mathrm{VWinAt}\\ \\psi\\ 401. Conclusion: the RH and Dirichlet GRH endpoints. Pins: archive sha256 9631b4f020199e580ba86178cb56c6e9b09f690c2369a80dc4334aa93f49c7fc; PDF sha256 3fc97784b71ddd44ff8aa0a177e99622a1c61b13cfa843a0989ee4a7a0cfeb8d; mirror https://github.com/Deicyde/riemann-hypothesis @ 40e56bab026552e089d7afcfeff08d2defb9c005; toolchain leanprover/lean4:v4.33.1; Mathlib 0df444a360eaa60ab8c11dca51a86af692955474.",
+          "intuition": "1:1 anchor: an implication, not an unconditional proof. Machine-check status is as recorded in formal_core_ir epistemic_status; human review is a separate, ongoing axis.",
+          "loss_meter": {
+            "fidelity_score": 1.0,
+            "compression_ratio": "1:1",
+            "topology_status": "exact_isomorphism",
+            "what_is_omitted": [],
+            "where_metaphor_breaks": "Specification Boundary: Lean guarantees the implication only for the definitions of TopG, VWinAt, primitivity and both endpoints in the pinned archive. Whether they faithfully capture classical RH and GRH is for humans to judge; the premises remain unproved."
+          }
+        }
+      }
+    }
+  },
+  "interfaces": {
+    "if-01-galois-to-inputs": {
+      "pl": {
+        "L0": "Lustro podaje klocki",
+        "L1": "Rząd Galois zasila wejścia",
+        "L2": "Row0b dla dwóch ciał",
+        "L3": "Row0b: ℓ-adyczny rząd, dwa ciała",
+        "L4": "everyCharacter_of_row (Row0b)"
+      },
+      "en": {
+        "L0": "Mirror hands over pieces",
+        "L1": "Galois row supplies inputs",
+        "L2": "Row0b over two fields",
+        "L3": "Row0b: ℓ-adic row, two fields",
+        "L4": "everyCharacter_of_row (Row0b)"
+      }
+    },
+    "if-02-galois-to-cohomology": {
+      "pl": {
+        "L0": "Lustro otwiera okno",
+        "L1": "Rząd otwiera okno kohomologiczne",
+        "L2": "Row0b daje ograniczenie okna",
+        "L3": "Row0b ⇒ okno kohomologiczne",
+        "L4": "vwin_of_row"
+      },
+      "en": {
+        "L0": "Mirror opens the window",
+        "L1": "Row unlocks cohomological window",
+        "L2": "Row0b yields window bound",
+        "L3": "Row0b ⇒ cohomological window",
+        "L4": "vwin_of_row"
+      }
+    },
+    "if-03-primes-to-cohomology": {
+      "pl": {
+        "L0": "Dwie cegiełki i wieża",
+        "L1": "Pary liczb pierwszych i wieża",
+        "L2": "Pary pomocnicze, wieża Behrenda",
+        "L3": "WinPair, skręty kwadratowe, wieża",
+        "L4": "WinPair / hostThickExists"
+      },
+      "en": {
+        "L0": "Two helper bricks, tall tower",
+        "L1": "Prime pairs and tower",
+        "L2": "Auxiliary prime pairs, Behrend tower",
+        "L3": "WinPair, quadratic twists, tower",
+        "L4": "WinPair / hostThickExists"
+      }
+    },
+    "if-04-inputs-to-family": {
+      "pl": {
+        "L0": "Skrzynka buduje łańcuch",
+        "L1": "Wejścia kształtują rodzinę theta",
+        "L2": "Dane strony określonej do rodziny",
+        "L3": "Całki theta, lokalne dopasowanie",
+        "L4": "every_character_of_theta_integrals_local_matching"
+      },
+      "en": {
+        "L0": "Toolbox builds the chain",
+        "L1": "Inputs shape theta family",
+        "L2": "Definite-side data to family",
+        "L3": "Theta integrals, local matching",
+        "L4": "every_character_of_theta_integrals_local_matching"
+      }
+    },
+    "if-05-cohomology-to-hosts": {
+      "pl": {
+        "L0": "Okno daje schronienie gościom",
+        "L1": "Okno tworzy gospodarzy",
+        "L2": "VWinAt dla każdego ψ",
+        "L3": "VWinAt ψ 401",
+        "L4": "UpperTheory.Top.VWinAt"
+      },
+      "en": {
+        "L0": "Window shelters every guest",
+        "L1": "Window bound creates hosts",
+        "L2": "VWinAt per character ψ",
+        "L3": "VWinAt ψ 401",
+        "L4": "UpperTheory.Top.VWinAt"
+      }
+    },
+    "if-06-family-to-comparison": {
+      "pl": {
+        "L0": "Łańcuch ustala stratę",
+        "L1": "Rodzina ustala wykładniki straty",
+        "L2": "TopG: e_D = 2, e_L = 0",
+        "L3": "TopG: wykładniki e_D = 2, e_L = 0",
+        "L4": "UpperTheory.Top.TopG"
+      },
+      "en": {
+        "L0": "Chain fixes the loss",
+        "L1": "Family fixes loss exponents",
+        "L2": "TopG: e_D = 2, e_L = 0",
+        "L3": "TopG: exponents e_D = 2, e_L = 0",
+        "L4": "UpperTheory.Top.TopG"
+      }
+    },
+    "if-07-hosts-to-comparison": {
+      "pl": {
+        "L0": "Goście idą na wagę",
+        "L1": "Gospodarze o szerokości 3/2",
+        "L2": "Dostawa gospodarzy, szerokość 3/2",
+        "L3": "supplyChi: gospodarze szer. 3/2",
+        "L4": "UpperTheory.Top.supplyChi"
+      },
+      "en": {
+        "L0": "Guests join the weighing",
+        "L1": "Hosts of width 3/2",
+        "L2": "Hosts supplied, width 3/2",
+        "L3": "supplyChi: width-3/2 hosts",
+        "L4": "UpperTheory.Top.supplyChi"
+      }
+    },
+    "if-08-comparison-to-choreography": {
+      "pl": {
+        "L0": "Waga prawie w równowadze",
+        "L1": "Suma pierwszych ograniczona w oknach",
+        "L2": "G_P ≤ x^(½+9ε) w oknach",
+        "L3": "G_P ≤ x^(½+9ε) na skalach rodziny",
+        "L4": "level_gm_le_on_family_scales"
+      },
+      "en": {
+        "L0": "Scale stays nearly balanced",
+        "L1": "Prime sum bounded on windows",
+        "L2": "G_P ≤ x^(½+9ε) on windows",
+        "L3": "G_P ≤ x^(½+9ε) on family scales",
+        "L4": "level_gm_le_on_family_scales"
+      }
+    },
+    "if-09-statistic-to-residues": {
+      "pl": {
+        "L0": "Melodia zamienia się w echo",
+        "L1": "Suma z rampą daje bieguny",
+        "L2": "Transformata Mellina rampy",
+        "L3": "Mellin: n^(-s)/(s(s-1))",
+        "L4": "MellinRamp"
+      },
+      "en": {
+        "L0": "Song turned into echoes",
+        "L1": "Ramp sum becomes poles",
+        "L2": "Mellin transform of ramp",
+        "L3": "Mellin: n^(-s)/(s(s-1))",
+        "L4": "MellinRamp"
+      }
+    },
+    "if-10-residues-to-criterion": {
+      "pl": {
+        "L0": "Głośne echo się nie schowa",
+        "L1": "Dodatnie residua się nie znoszą",
+        "L2": "Dane biegunów, S(ρ) > 0",
+        "L3": "Residuum S(ρ) > 0 w zerach",
+        "L4": "Deduction.poleData"
+      },
+      "en": {
+        "L0": "Loud echo cannot hide",
+        "L1": "Positive residues cannot cancel",
+        "L2": "Pole data, S(ρ) > 0",
+        "L3": "Residue S(ρ) > 0 at zeros",
+        "L4": "Deduction.poleData"
+      }
+    },
+    "if-11-criterion-to-choreography": {
+      "pl": {
+        "L0": "Reguła na każdym piętrze",
+        "L1": "Test okna na każdym poziomie",
+        "L2": "Kryterium na każdym poziomie",
+        "L3": "Brak zer na prawo od θ",
+        "L4": "zeroFree_of_rpow_window"
+      },
+      "en": {
+        "L0": "Rule checked on every floor",
+        "L1": "Window test at each level",
+        "L2": "Criterion applied at each level",
+        "L3": "Zero-free right of θ",
+        "L4": "zeroFree_of_rpow_window"
+      }
+    },
+    "if-12-choreography-to-descent": {
+      "pl": {
+        "L0": "Główne głosy są czyste",
+        "L1": "Każdy prymitywny charakter bez zer",
+        "L2": "ZeroFreeAll dla prymitywnych",
+        "L3": "Prymitywne L(s,χ) bez zer, Re s > ½",
+        "L4": "zeroFreeAll_of_topG"
+      },
+      "en": {
+        "L0": "All main voices are clean",
+        "L1": "Every primitive character zero-free",
+        "L2": "ZeroFreeAll for primitive characters",
+        "L3": "Primitive L(s,χ) zero-free, Re s > ½",
+        "L4": "zeroFreeAll_of_topG"
+      }
+    },
+    "if-13-descent-to-reflection": {
+      "pl": {
+        "L0": "Echa też są czyste",
+        "L1": "Rozszerzenie na każdy charakter",
+        "L2": "Każde χ, Re s > ½",
+        "L3": "Nieprymitywne χ: czynniki Eulera",
+        "L4": "UpperTheory.Top.imprimitive"
+      },
+      "en": {
+        "L0": "Echo voices clean too",
+        "L1": "Extends to every character",
+        "L2": "Every χ, Re s > ½",
+        "L3": "Imprimitive χ via Euler factors",
+        "L4": "UpperTheory.Top.imprimitive"
+      }
+    },
+    "if-14-reflection-to-endpoints": {
+      "pl": {
+        "L0": "Lustro przypina linię",
+        "L1": "Symetria wymusza prostą krytyczną",
+        "L2": "Zera w pasie na Re s = ½",
+        "L3": "Równanie funkcyjne ⇒ prosta krytyczna",
+        "L4": "Claim.zeta · Claim.strip"
+      },
+      "en": {
+        "L0": "Mirror pins the line",
+        "L1": "Symmetry forces critical line",
+        "L2": "Strip zeros on Re s = ½",
+        "L3": "Functional equation ⇒ critical line",
+        "L4": "Claim.zeta · Claim.strip"
+      }
+    }
+  },
+  "itineraries": [
+    {
+      "id": "architect-path",
+      "is_architect_default": true,
+      "component_path": [
+        "primes",
+        "galois",
+        "family",
+        "comparison",
+        "criterion",
+        "endpoints"
+      ],
+      "lean_node_path": [
+        "behrend",
+        "row-prod",
+        "shape",
+        "core-gm",
+        "window-consumer",
+        "main-rh"
+      ],
+      "pl": {
+        "title": "Ścieżka Architekta: Od cegiełek do niewidzialnej liny w 6 krokach",
+        "question": "Jak dowód spina elementarne liczby pierwsze z prostą krytyczną bez czytania 17 milionów linii?",
+        "step_notes": [
+          {
+            "component_id": "primes",
+            "note_by_level": {
+              "L0": "Zaczynamy od specjalnych cegiełek: dwóch pomocniczych liczb pierwszych i wieży ułożonej tak, żeby żadne trzy cegiełki nie stały w równych odstępach.",
+              "L1": "Dwie pomocnicze liczby pierwsze o zadanych kongruencjach i wieża dobrana kombinatoryką Behrenda. To surowy materiał arytmetyczny. Płynie do okna kohomologicznego, a nie wprost do rzędu Galois.",
+              "L2": "Wejście: dwie pomocnicze liczby pierwsze z warunkami kongruencji i ograniczeniami pierwiastkowymi sum po liczbach pierwszych dla ich skrętów kwadratowych. Wyjście: dane WinPair i wieża zasilające warstwę kohomologii (if-03).",
+              "L3": "Pomocnicze liczby pierwsze o zadanych kongruencjach. Ich skręty kwadratowe spełniają pierwiastkowe ograniczenia sum po liczbach pierwszych. Wieżę wybiera się konstrukcją typu Behrenda (kombinatoryka addytywna).",
+              "L4": "Węzeł `behrend`. Krawędź if-03 `WinPair / hostThickExists` (ExistsPageN.lean#L27-L37 @40e56ba). Granica: ta ścieżka przeskakuje z primes do galois, ale IR nie ma takiej krawędzi. Liczby pierwsze wchodzą do łańcucha przez cohomology."
+            }
+          },
+          {
+            "component_id": "galois",
+            "note_by_level": {
+              "L0": "Magiczne lustro zamienia każdy wzór muzyczny w komplet pasujących kluczy. Jedno można sprawdzić, patrząc na drugie.",
+              "L1": "Rząd Galois łączy dane automorficzne z reprezentacjami ℓ-adycznymi: wielomiany Frobeniusa zgadzają się z parametrami Satake. Na tym słowniku opiera się wszystko dalej.",
+              "L2": "Wejście: regularna algebraiczna spolaryzowana kuspidalna π na GL_a nad ciałem CM. Wyjście: Row0b (dwa ciała), które konsumują wejścia (if-01) i okno (if-02).",
+              "L3": "Ciągła półprosta ℓ-adyczna reprezentacja Galois, której wielomiany Frobeniusa równają się parametrom Satake π. Row0b pakuje to dla dwóch ciał.",
+              "L4": "Węzeł `row-prod`. Krawędzie: `everyCharacter_of_row` (MainConclusion.lean#L7-L8) i `vwin_of_row` (VwinOfRow.lean#L4-L5) @40e56ba. Do `family` dociera tylko przez `inputs` (if-01 → if-04)."
+            }
+          },
+          {
+            "component_id": "family",
+            "note_by_level": {
+              "L0": "Z tych części budujemy długi łańcuch ogniw, każde przycięte na miarę. Dzięki temu wiemy dokładnie, jak bardzo może się chwiać.",
+              "L1": "Około √x liftów theta tworzy łańcuch z kontrolą podzielności, nachylenia i kowolumenu. Konstrukcja ustala wykładniki straty na stałe liczby.",
+              "L2": "Wejście: dane strony określonej (if-04). Wyjście: TopG z e_D = 2, e_L = 0 do porównania (if-06). Wykładniki są stałe, więc ε można wybrać później.",
+              "L3": "Łańcuch ~√x liftów theta z kontrolą podzielności, nachylenia i kowolumenu daje wykładniki rozbieżności e_D = 2 i e_L = 0.",
+              "L4": "Węzeł `shape`. Krawędź `UpperTheory.Top.TopG` (ZeroFreeAllOfTopG.lean#L12-L34 @40e56ba)."
+            }
+          },
+          {
+            "component_id": "comparison",
+            "note_by_level": {
+              "L0": "Waga porównuje kształt łańcucha z liczbami pierwszymi. Prawie się równoważy, różnica jest malutka.",
+              "L1": "Skończona ortogonalność Fouriera na podgrupie i dokładna tożsamość wyrazu głównego zamieniają geometryczną rozbieżność w ograniczenie sumy po liczbach pierwszych.",
+              "L2": "Wejścia: TopG (if-06) i gospodarze o szerokości 3/2 (if-07). Wyjście: G_P ≤ x^(½+9ε) w oknach (if-08). Wykładnik ½+(e_D+e_L+7)ε = ½+9ε.",
+              "L3": "Ortogonalność charakterów na skończonej podgrupie plus dokładna tożsamość wyrazu głównego. Wykładnik wynosi ½+(e_D+e_L+7)ε, a e_D = 2, e_L = 0 dają ½+9ε.",
+              "L4": "Węzeł `core-gm`. Krawędź `level_gm_le_on_family_scales` (LevelGmLeOnFamilyScales.lean#L28-L30 @40e56ba)."
+            }
+          },
+          {
+            "component_id": "criterion",
+            "note_by_level": {
+              "L0": "Jeśli waga jest cicha w każdym późnym okienku, żadne ukryte zero nie może dzwonić.",
+              "L1": "Weźmy dodatnią rodzinę, której suma po liczbach pierwszych zostaje poniżej Cy^θ w dowolnie późnych oknach [Y, Y^(1+δ)]. Wtedy nie ma ona zer na prawo od θ. Dodatnie wagi nie pozwalają na znoszenie się.",
+              "L2": "Wejście: dane biegunów S(ρ) > 0 (if-10). Wyjście: kryterium na każdym poziomie do choreografii (if-11), gdzie spotyka ograniczenie G_P ≤ x^(½+9ε) z porównania.",
+              "L3": "Argument typu Landaua. Transformata Mellina rampy daje w zerach bieguny o dodatnich residuach. Ograniczenie Cy^θ na [Y, Y^(1+δ)] wyklucza więc zera z Re > θ.",
+              "L4": "Węzeł `window-consumer`. Krawędzie: `Deduction.poleData` (poleData.lean#L248-L259) i `zeroFree_of_rpow_window` (ZeroFreeOfRpowWindow.lean#L11-L14) @40e56ba. Do endpoints dociera przez choreography → descent → reflection (if-12..if-14)."
+            }
+          },
+          {
+            "component_id": "endpoints",
+            "note_by_level": {
+              "L0": "Na koniec sztuczka z lustrem pokazuje, że każde ukryte zero musi leżeć dokładnie na środkowej linii.",
+              "L1": "Brak zer dla charakterów prymitywnych schodzi na wszystkie charaktery, a odbicie czyści lewą połowę. Zera leżą więc na prostej krytycznej: RH i GRH Dirichleta.",
+              "L2": "Ścieżka: ZeroFreeAll (if-12) → każde χ, Re s > ½ (if-13) → prosta krytyczna (if-14). Wyjście: pięć punktów końcowych, w tym RH w sformułowaniu Mathlib.",
+              "L3": "Skończenie wiele czynników Eulera nie znika dla Re s > 0, a równanie funkcyjne odbija zera. Wynik: RH i GRH dla wszystkich charakterów Dirichleta.",
+              "L4": "Węzeł `main-rh`. Krawędź `Claim.zeta · Claim.strip` (ClaimStrip.lean#L59-L100 @40e56ba). Granica specyfikacji: stan weryfikacji maszynowej podaje epistemic_status w IR. Ludzka recenzja matematyczna to osobna sprawa i może być w toku."
+            }
+          }
+        ]
+      },
+      "en": {
+        "title": "The Architect's Path: From Prime Bricks to the Critical Line in 6 Steps",
+        "question": "How does the proof bind prime bricks to the critical line without reading 17 million lines?",
+        "step_notes": [
+          {
+            "component_id": "primes",
+            "note_by_level": {
+              "L0": "Start with special bricks: two helper prime numbers and a tower stacked so that no three bricks sit evenly spaced.",
+              "L1": "Two auxiliary primes with prescribed congruences, and a tower chosen by Behrend-type combinatorics. This is raw arithmetic material. It flows into the cohomological window, not directly into the Galois row.",
+              "L2": "Input: two auxiliary primes with congruence conditions and square-root prime-sum bounds for their quadratic twists. Output: WinPair data and a tower feeding the cohomology stratum (if-03).",
+              "L3": "Auxiliary primes with prescribed congruences. Their quadratic twists satisfy square-root prime-sum bounds. The tower is chosen by a Behrend-type (additive-combinatorial) construction.",
+              "L4": "Node `behrend`. Edge if-03 `WinPair / hostThickExists` (ExistsPageN.lean#L27-L37 @40e56ba). Boundary: this path jumps from primes to galois, but the IR has no such edge. Primes enter the chain via cohomology."
+            }
+          },
+          {
+            "component_id": "galois",
+            "note_by_level": {
+              "L0": "A magic mirror turns each musical pattern into a matching set of keys. You can check one by looking at the other.",
+              "L1": "The Galois row matches automorphic data to ℓ-adic representations: Frobenius polynomials agree with Satake parameters. Everything downstream relies on this dictionary.",
+              "L2": "Input: regular algebraic polarized cuspidal π on GL_a over a CM field. Output: Row0b (two fields), consumed by the inputs (if-01) and the window (if-02).",
+              "L3": "A continuous semisimple ℓ-adic Galois representation whose Frobenius polynomials equal the Satake parameters of π. Row0b packages this for two fields.",
+              "L4": "Node `row-prod`. Edges: `everyCharacter_of_row` (MainConclusion.lean#L7-L8) and `vwin_of_row` (VwinOfRow.lean#L4-L5) @40e56ba. Reaches `family` only via `inputs` (if-01 → if-04)."
+            }
+          },
+          {
+            "component_id": "family",
+            "note_by_level": {
+              "L0": "From these pieces we build a long chain of rings, each cut to size, so we know exactly how much it can wobble.",
+              "L1": "About √x theta lifts form a chain with divisibility, slope and covolume control. The design pins the loss exponents to fixed numbers.",
+              "L2": "Input: definite-side data (if-04). Output: TopG with e_D = 2, e_L = 0 into the comparison (if-06). Because the exponents are fixed, ε can be chosen later.",
+              "L3": "A chain of ~√x theta lifts with divisibility, slope and covolume control yields discrepancy exponents e_D = 2 and e_L = 0.",
+              "L4": "Node `shape`. Edge `UpperTheory.Top.TopG` (ZeroFreeAllOfTopG.lean#L12-L34 @40e56ba)."
+            }
+          },
+          {
+            "component_id": "comparison",
+            "note_by_level": {
+              "L0": "A balance scale compares the chain's shape with the primes. It almost balances, off by only a tiny bit.",
+              "L1": "Finite Fourier orthogonality on a subgroup and an exact main-term identity turn the geometric discrepancy into a prime-sum bound.",
+              "L2": "Inputs: TopG (if-06) and hosts of width 3/2 (if-07). Output: G_P ≤ x^(½+9ε) on windows (if-08). The exponent is ½+(e_D+e_L+7)ε = ½+9ε.",
+              "L3": "Character orthogonality on a finite subgroup plus an exact main-term identity. The exponent is ½+(e_D+e_L+7)ε, and e_D = 2, e_L = 0 give ½+9ε.",
+              "L4": "Node `core-gm`. Edge `level_gm_le_on_family_scales` (LevelGmLeOnFamilyScales.lean#L28-L30 @40e56ba)."
+            }
+          },
+          {
+            "component_id": "criterion",
+            "note_by_level": {
+              "L0": "If the scale stays quiet in every late window, no hidden zero can be ringing.",
+              "L1": "Take a positive family whose prime sum stays below Cy^θ in arbitrarily late windows [Y, Y^(1+δ)]. Then it has no zeros right of θ. Positive weights rule out cancellation.",
+              "L2": "Input: pole data S(ρ) > 0 (if-10). Output: the criterion at each level, passed to the choreography (if-11), where it meets the bound G_P ≤ x^(½+9ε) from the comparison.",
+              "L3": "Landau-type argument. The Mellin transform of the ramp turns zeros into poles with positive residues, so a bound Cy^θ on [Y, Y^(1+δ)] excludes zeros with Re > θ.",
+              "L4": "Node `window-consumer`. Edges: `Deduction.poleData` (poleData.lean#L248-L259) and `zeroFree_of_rpow_window` (ZeroFreeOfRpowWindow.lean#L11-L14) @40e56ba. Reaches endpoints via choreography → descent → reflection (if-12..if-14)."
+            }
+          },
+          {
+            "component_id": "endpoints",
+            "note_by_level": {
+              "L0": "Finally, a mirror trick shows that every hidden zero must sit exactly on the middle line.",
+              "L1": "Zero-freeness for primitive characters descends to all characters, and reflection clears the left half. So the zeros lie on the critical line: RH and Dirichlet GRH.",
+              "L2": "Path: ZeroFreeAll (if-12) → every χ, Re s > ½ (if-13) → critical line (if-14). Output: five endpoints, including RH in Mathlib's formulation.",
+              "L3": "Finitely many Euler factors do not vanish for Re s > 0, and the functional equation reflects zeros. Result: RH and GRH for all Dirichlet characters.",
+              "L4": "Node `main-rh`. Edge `Claim.zeta · Claim.strip` (ClaimStrip.lean#L59-L100 @40e56ba). Specification boundary: machine-check state is given by epistemic_status in the IR. Human mathematical review is separate and may still be in progress."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "upstream-1",
+      "is_architect_default": false,
+      "component_path": [
+        "endpoints",
+        "reflection"
+      ],
+      "lean_node_path": [
+        "main-rh",
+        "rh-all",
+        "rh-every",
+        "rh-right"
+      ],
+      "pl": {
+        "title": "Przeczytaj najpierw ostatnią stronę dowodu",
+        "question": "Jak oszacowanie w prawej półpłaszczyźnie daje zwykłą hipotezę Riemanna?",
+        "step_notes": [
+          {
+            "component_id": "endpoints",
+            "note_by_level": {
+              "L0": "Meta: wszystkie tajemnicze zera leżą na jednej prostej linii.",
+              "L1": "Pięć punktów końcowych: zwykła RH w sformułowaniu Mathlib oraz GRH dla każdego charakteru Dirichleta każdego dodatniego modułu.",
+              "L2": "Tylko wyjście. Wejście to twierdzenie o prostej krytycznej z odbicia (if-14).",
+              "L3": "RH w sformułowaniu Mathlib i GRH Dirichleta dla wszystkich χ mod q, q ≥ 1.",
+              "L4": "Węzły `main-rh`, `rh-all`. Krawędź `Claim.zeta · Claim.strip` (ClaimStrip.lean#L59-L100 @40e56ba)."
+            }
+          },
+          {
+            "component_id": "reflection",
+            "note_by_level": {
+              "L0": "Lustro: zero po lewej miałoby bliźniaka po prawej, a prawa strona jest już czysta.",
+              "L1": "Dzięki symetrii odbicia wystarczy oczyścić półpłaszczyznę Re s > ½.",
+              "L2": "Wejście: każde χ, Re s > ½ (if-13). Wyjście: prosta krytyczna (if-14).",
+              "L3": "Równanie funkcyjne paruje zero ρ z 1−ρ (dla χ̄). Ponieważ objęte są wszystkie χ, brak zer dla Re s > ½ wymusza Re ρ = ½ w pasie krytycznym.",
+              "L4": "Węzły `rh-every`, `rh-right`. Krawędź wejściowa `UpperTheory.Top.imprimitive` (Imprimitive.lean#L5-L35 @40e56ba)."
+            }
+          }
+        ]
+      },
+      "en": {
+        "title": "Read the last page of the proof first",
+        "question": "How does a right-half-plane estimate imply ordinary RH?",
+        "step_notes": [
+          {
+            "component_id": "endpoints",
+            "note_by_level": {
+              "L0": "The finish line: all the secret zeros sit on one straight line.",
+              "L1": "Five endpoints: ordinary RH in Mathlib's own formulation, and GRH for every Dirichlet character of every positive modulus.",
+              "L2": "Output only. The input is the critical-line statement from reflection (if-14).",
+              "L3": "RH in Mathlib's formulation, plus Dirichlet GRH for all χ mod q, q ≥ 1.",
+              "L4": "Nodes `main-rh`, `rh-all`. Edge `Claim.zeta · Claim.strip` (ClaimStrip.lean#L59-L100 @40e56ba)."
+            }
+          },
+          {
+            "component_id": "reflection",
+            "note_by_level": {
+              "L0": "A mirror: a zero on the left would have a twin on the right, and the right side is already clean.",
+              "L1": "Because of reflection symmetry, clearing the half-plane Re s > ½ is enough.",
+              "L2": "Input: every χ, Re s > ½ (if-13). Output: critical line (if-14).",
+              "L3": "The functional equation pairs a zero ρ with 1−ρ (for χ̄). Since every χ is covered, zero-freeness for Re s > ½ forces Re ρ = ½ in the critical strip.",
+              "L4": "Nodes `rh-every`, `rh-right`. Incoming edge `UpperTheory.Top.imprimitive` (Imprimitive.lean#L5-L35 @40e56ba)."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "upstream-2",
+      "is_architect_default": false,
+      "component_path": [
+        "choreography",
+        "comparison",
+        "family"
+      ],
+      "lean_node_path": [
+        "zero-top",
+        "window-consumer",
+        "prime-bound",
+        "core-gm",
+        "shape",
+        "family-design"
+      ],
+      "pl": {
+        "title": "Znajdź oszacowanie matematyczne",
+        "question": "Jak szerokie muszą być przedziały i skąd bierze się strata w wykładniku?",
+        "step_notes": [
+          {
+            "component_id": "choreography",
+            "note_by_level": {
+              "L0": "Najpierw ustalamy, ile chwiania wolno, a dopiero potem wybieramy, jak blisko patrzeć.",
+              "L1": "Wykładniki straty ustala się najpierw. Gdy mamy zero z β > ½, wybieramy θ ∈ (½, β), a potem ε z ½+9ε ≤ θ. Ograniczenie przy ε = 0 nigdy nie jest potrzebne.",
+              "L2": "Wejścia: ograniczenie G_P (if-08) i kryterium (if-11). Wyjście: ZeroFreeAll dla prymitywnych (if-12). Okna mają postać [Y, Y^(1+δ)], dowolnie późne.",
+              "L3": "Kolejność kwantyfikatorów: e_D, e_L są stałe, potem θ ∈ (½, β), potem ε ≤ (θ−½)/9. Kryterium potrzebuje tylko okien [Y, Y^(1+δ)] dla dowolnie dużych Y.",
+              "L4": "Węzły `zero-top`, `window-consumer`. Krawędź `zeroFreeAll_of_topG` (ZeroFreeAllOfTopG.lean#L26-L34 @40e56ba)."
+            }
+          },
+          {
+            "component_id": "comparison",
+            "note_by_level": {
+              "L0": "Waga prawie się równoważy, a mała strata jest dokładnie policzona.",
+              "L1": "Strata w wykładniku to (e_D+e_L+7)ε: część pochodzi z geometrii rodziny, a stała 7 jest częścią wzoru.",
+              "L2": "Wejścia: TopG (if-06) i gospodarze o szerokości 3/2 (if-07). Wyjście: G_P ≤ x^(½+9ε) (if-08).",
+              "L3": "Skończona ortogonalność Fouriera na podgrupie i dokładna tożsamość wyrazu głównego dają wykładnik ½+(e_D+e_L+7)ε. IR nie rozkłada stałej 7 na części.",
+              "L4": "Węzły `prime-bound`, `core-gm`. Krawędzie: `UpperTheory.Top.supplyChi` (SupplyChi.lean#L8-L16) i `level_gm_le_on_family_scales` (LevelGmLeOnFamilyScales.lean#L28-L30) @40e56ba."
+            }
+          },
+          {
+            "component_id": "family",
+            "note_by_level": {
+              "L0": "Łańcuch jest zbudowany tak, że jego chwianie jest zawsze tą samą liczbą.",
+              "L1": "Około √x liftów theta, a e_D = 2 i e_L = 0 są stałe niezależnie od ε. Dlatego strata nie rośnie.",
+              "L2": "Wejście: dane strony określonej (if-04). Wyjście: TopG (if-06).",
+              "L3": "Kontrola podzielności, nachylenia i kowolumenu w łańcuchu liftów theta ustala e_D = 2 i e_L = 0.",
+              "L4": "Węzły `shape`, `family-design`. Krawędź `UpperTheory.Top.TopG` (ZeroFreeAllOfTopG.lean#L12-L34 @40e56ba)."
+            }
+          }
+        ]
+      },
+      "en": {
+        "title": "Find the mathematical estimate",
+        "question": "How wide must the intervals be, and where does the loss in the exponent come from?",
+        "step_notes": [
+          {
+            "component_id": "choreography",
+            "note_by_level": {
+              "L0": "First decide how much wobble is allowed, and only then choose how closely to look.",
+              "L1": "The loss exponents are fixed first. Given a zero with β > ½, choose θ ∈ (½, β), then ε with ½+9ε ≤ θ. No bound at ε = 0 is ever needed.",
+              "L2": "Inputs: the G_P bound (if-08) and the criterion (if-11). Output: ZeroFreeAll for primitive characters (if-12). The windows are [Y, Y^(1+δ)], arbitrarily late.",
+              "L3": "Quantifier order: e_D and e_L are fixed, then θ ∈ (½, β), then ε ≤ (θ−½)/9. The criterion only needs windows [Y, Y^(1+δ)] for arbitrarily large Y.",
+              "L4": "Nodes `zero-top`, `window-consumer`. Edge `zeroFreeAll_of_topG` (ZeroFreeAllOfTopG.lean#L26-L34 @40e56ba)."
+            }
+          },
+          {
+            "component_id": "comparison",
+            "note_by_level": {
+              "L0": "The scale nearly balances, and the small loss is counted exactly.",
+              "L1": "The loss in the exponent is (e_D+e_L+7)ε: part comes from the family's geometry, and the constant 7 is part of the formula.",
+              "L2": "Inputs: TopG (if-06) and hosts of width 3/2 (if-07). Output: G_P ≤ x^(½+9ε) (if-08).",
+              "L3": "Finite Fourier orthogonality on a subgroup and an exact main-term identity give the exponent ½+(e_D+e_L+7)ε. The IR does not decompose the constant 7.",
+              "L4": "Nodes `prime-bound`, `core-gm`. Edges: `UpperTheory.Top.supplyChi` (SupplyChi.lean#L8-L16) and `level_gm_le_on_family_scales` (LevelGmLeOnFamilyScales.lean#L28-L30) @40e56ba."
+            }
+          },
+          {
+            "component_id": "family",
+            "note_by_level": {
+              "L0": "The chain is built so that its wobble is always the same number.",
+              "L1": "About √x theta lifts, with e_D = 2 and e_L = 0 fixed whatever ε is. That is why the loss does not grow.",
+              "L2": "Input: definite-side data (if-04). Output: TopG (if-06).",
+              "L3": "Divisibility, slope and covolume control in the theta-lift chain fix e_D = 2 and e_L = 0.",
+              "L4": "Nodes `shape`, `family-design`. Edge `UpperTheory.Top.TopG` (ZeroFreeAllOfTopG.lean#L12-L34 @40e56ba)."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "upstream-3",
+      "is_architect_default": false,
+      "component_path": [
+        "inputs",
+        "galois",
+        "inputs",
+        "cohomology"
+      ],
+      "lean_node_path": [
+        "every",
+        "from-row",
+        "row-prod",
+        "lit",
+        "seven",
+        "vwin-row",
+        "four-produce"
+      ],
+      "pl": {
+        "title": "Znajdź, kto dostarcza arytmetykę",
+        "question": "Które twierdzenie musi wytworzyć zgodne dane Galois, theta i kohomologiczne?",
+        "step_notes": [
+          {
+            "component_id": "inputs",
+            "note_by_level": {
+              "L0": "Decydujący krok potrzebuje siedmiu narzędzi w jednej skrzynce.",
+              "L1": "Twierdzenie arytmetyczne bierze siedem argumentów: pakiety grupy unitarnej i lokalnej theta, zgodność całek theta, lokalne dopasowanie, ograniczenie kowolumenu, lokalne parametry Langlandsa i okno.",
+              "L2": "Pierwsza wizyta: konsument. Wyjście to dane strony określonej do rodziny (if-04).",
+              "L3": "Argumenty wywołania: pakiety U(n) i lokalnej theta, zgodność całek theta, lokalne dopasowanie, ograniczenie kowolumenu, lokalne parametry Langlandsa, okno kohomologiczne.",
+              "L4": "Węzeł `every`. Krawędź `every_character_of_theta_integrals_local_matching` (SiegelEisensteinSecondTermHypotheses.lean#L69-L73 @40e56ba)."
+            }
+          },
+          {
+            "component_id": "galois",
+            "note_by_level": {
+              "L0": "Lustro wyrabia pasujące klucze.",
+              "L1": "Row0b dostarcza stronę Galois dla dwóch ciał. To samo źródło zasila wejścia i okno.",
+              "L2": "Dwie krawędzie wyjściowe: if-01 do wejść i if-02 do kohomologii.",
+              "L3": "Ciągła półprosta ℓ-adyczna reprezentacja, której Frobeniusy zgadzają się z parametrami Satake π na GL_a nad ciałem CM.",
+              "L4": "Węzły `from-row`, `row-prod`. Krawędzie: `everyCharacter_of_row` (MainConclusion.lean#L7-L8) i `vwin_of_row` (VwinOfRow.lean#L4-L5) @40e56ba."
+            }
+          },
+          {
+            "component_id": "inputs",
+            "note_by_level": {
+              "L0": "Wracamy do skrzynki i liczymy, czy wszystkie siedem narzędzi pasuje do siebie.",
+              "L1": "Druga wizyta sprawdza, czy siedem argumentów jest obecnych i zgodnych ze sobą.",
+              "L2": "Pełna lista argumentów decydującego wywołania. Dane Galois wchodzą przez if-01.",
+              "L3": "Zgodność danych Galois, theta i kohomologicznych to warunek wywołania twierdzenia arytmetycznego.",
+              "L4": "Węzły `lit`, `seven`. Konsumuje if-01 `everyCharacter_of_row` @40e56ba."
+            }
+          },
+          {
+            "component_id": "cohomology",
+            "note_by_level": {
+              "L0": "Ostatnie narzędzie to okno, które pokazuje, jak duża może być ukryta sterta.",
+              "L1": "Na całym przedziale [Y, Y²] ważone długości kohomologii są nie większe niż √exp(x^ε), jednostajnie.",
+              "L2": "Wejścia: Row0b (if-02) i pary liczb pierwszych z wieżą (if-03). Wyjście: VWinAt ψ 401 (if-05).",
+              "L3": "Ważone długości lokalnie trywialnej kohomologii Galois skręconych modułów są ≤ √exp(x^ε) na [Y, Y²], jednostajnie względem odpowiednich ciał.",
+              "L4": "Węzły `vwin-row`, `four-produce`. Krawędzie: `vwin_of_row` i `UpperTheory.Top.VWinAt` (ExistsPageN.lean#L44-L47) @40e56ba."
+            }
+          }
+        ]
+      },
+      "en": {
+        "title": "Find who supplies the arithmetic",
+        "question": "Which assertion has to produce the compatible Galois, theta and cohomology data?",
+        "step_notes": [
+          {
+            "component_id": "inputs",
+            "note_by_level": {
+              "L0": "The decisive step needs seven tools in one box.",
+              "L1": "The arithmetic theorem takes seven arguments: unitary-group and local theta packages, agreement of theta integrals, local matching, a covolume bound, local Langlands parameters and the window.",
+              "L2": "First visit: the consumer. The output is definite-side data to the family (if-04).",
+              "L3": "Call arguments: unitary-group and local theta packages, theta-integral agreement, local matching, covolume bound, local Langlands parameters, cohomological window.",
+              "L4": "Node `every`. Edge `every_character_of_theta_integrals_local_matching` (SiegelEisensteinSecondTermHypotheses.lean#L69-L73 @40e56ba)."
+            }
+          },
+          {
+            "component_id": "galois",
+            "note_by_level": {
+              "L0": "The mirror makes the matching keys.",
+              "L1": "Row0b supplies the Galois side for two fields. The same source feeds both the inputs and the window.",
+              "L2": "Two outgoing edges: if-01 to the inputs and if-02 to cohomology.",
+              "L3": "A continuous semisimple ℓ-adic representation whose Frobenius polynomials match the Satake parameters of π on GL_a over a CM field.",
+              "L4": "Nodes `from-row`, `row-prod`. Edges: `everyCharacter_of_row` (MainConclusion.lean#L7-L8) and `vwin_of_row` (VwinOfRow.lean#L4-L5) @40e56ba."
+            }
+          },
+          {
+            "component_id": "inputs",
+            "note_by_level": {
+              "L0": "Back at the box, check that all seven tools fit together.",
+              "L1": "The second visit checks that all seven arguments are present and compatible with each other.",
+              "L2": "The full argument list of the decisive call. Galois data enters via if-01.",
+              "L3": "Compatibility of the Galois, theta and cohomological data is the precondition for calling the arithmetic theorem.",
+              "L4": "Nodes `lit`, `seven`. Consumes if-01 `everyCharacter_of_row` @40e56ba."
+            }
+          },
+          {
+            "component_id": "cohomology",
+            "note_by_level": {
+              "L0": "The last tool is a window that shows how big a hidden pile can get.",
+              "L1": "On the whole interval [Y, Y²], weighted cohomology lengths are at most √exp(x^ε), uniformly.",
+              "L2": "Inputs: Row0b (if-02) and prime pairs with the tower (if-03). Output: VWinAt ψ 401 (if-05).",
+              "L3": "Weighted lengths of locally trivial Galois cohomology of twisted modules are ≤ √exp(x^ε) on [Y, Y²], uniformly over the relevant fields.",
+              "L4": "Nodes `vwin-row`, `four-produce`. Edges: `vwin_of_row` and `UpperTheory.Top.VWinAt` (ExistsPageN.lean#L44-L47) @40e56ba."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "upstream-4",
+      "is_architect_default": false,
+      "component_path": [
+        "cohomology"
+      ],
+      "lean_node_path": [
+        "four-produce",
+        "tower-fixed-growth",
+        "four-use",
+        "tower-window-from-lemma-k",
+        "tower-bound-from-rank",
+        "tower-operator-bound",
+        "tower-window-constants",
+        "counts-i",
+        "counts-common-integer",
+        "counts-window",
+        "counts-joint",
+        "counts-pointwise",
+        "counts-inside",
+        "counts-outside"
+      ],
+      "pl": {
+        "title": "Prześledź pojedynczy skręt i dowolną skończoną sumę po liczbach pierwszych",
+        "question": "Które ograniczenie kontroluje skręt o nieograniczonej długości abstrakcyjnej i jak jedno oszacowanie działa dla każdego dozwolonego skończonego zbioru liczb pierwszych współczynników?",
+        "step_notes": [
+          {
+            "component_id": "cohomology",
+            "note_by_level": {
+              "L0": "Nawet bardzo długi skręt mieści się pod jednym sufitem. Ten sam sufit działa niezależnie od tego, które kilka pomocniczych liczb pierwszych wybierzesz.",
+              "L1": "Ograniczenie jest jednostajne. Wzrost wieży jest ustalony, rząd kontroluje normę operatora, a stałe okna nie zależą od wybranego skończonego zbioru liczb pierwszych współczynników. Zliczanie dzieli się na część wewnętrzną i zewnętrzną.",
+              "L2": "Łańcuch wieży: produce → stały wzrost → use → okno z lematu K → ograniczenie z rzędu → ograniczenie operatora → stałe okna. Łańcuch zliczeń: wspólna liczba całkowita, okno, łączne, punktowe, wewnątrz/na zewnątrz. Wyjście: VWinAt (if-05).",
+              "L3": "Długości lokalnie trywialnej kohomologii Galois skręconych modułów ≤ √exp(x^ε) na [Y, Y²]. Ograniczenie operatora przez rząd obsługuje nieograniczoną długość abstrakcyjną, a podział zliczeń na wkłady wewnętrzne i zewnętrzne daje jednostajność względem skończonych zbiorów liczb pierwszych.",
+              "L4": "14 węzłów, od `four-produce` do `counts-outside`. Krawędzie: if-03 `WinPair / hostThickExists` i if-05 `UpperTheory.Top.VWinAt` (ExistsPageN.lean @40e56ba). Granica: dla tych węzłów IR podaje tylko identyfikatory, bez nazw twierdzeń Lean."
+            }
+          }
+        ]
+      },
+      "en": {
+        "title": "Follow a singular twist and an arbitrary finite prime sum",
+        "question": "Which bound controls a twist of unbounded abstract length, and how can one estimate work over every allowed finite set of coefficient primes?",
+        "step_notes": [
+          {
+            "component_id": "cohomology",
+            "note_by_level": {
+              "L0": "Even a very long twist fits under one ceiling, and the same ceiling works whichever few helper primes you pick.",
+              "L1": "The bound is uniform. Tower growth is fixed, rank controls the operator norm, and the window constants do not depend on the chosen finite set of coefficient primes. The counting splits into inside and outside parts.",
+              "L2": "Tower chain: produce → fixed growth → use → window from lemma K → bound from rank → operator bound → window constants. Counting chain: common integer, window, joint, pointwise, inside/outside. Output: VWinAt (if-05).",
+              "L3": "Lengths of locally trivial Galois cohomology of twisted modules are ≤ √exp(x^ε) on [Y, Y²]. A rank-based operator bound handles the unbounded abstract length, and splitting the counts into inside and outside contributions gives uniformity over finite prime sets.",
+              "L4": "14 nodes, from `four-produce` to `counts-outside`. Edges: if-03 `WinPair / hostThickExists` and if-05 `UpperTheory.Top.VWinAt` (ExistsPageN.lean @40e56ba). Boundary: for these nodes the IR gives only identifiers, not Lean theorem names."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "upstream-5",
+      "is_architect_default": false,
+      "component_path": [
+        "statistic"
+      ],
+      "lean_node_path": [
+        "moment-target",
+        "moment-theorem",
+        "moment-calculation",
+        "moment-majorant",
+        "moment-dominated",
+        "moment-laurent"
+      ],
+      "pl": {
+        "title": "Odtwórz stałą centrującą w zwykłym oknie zeta",
+        "question": "Dlaczego poprawka liniowa to (1+γ)x?",
+        "step_notes": [
+          {
+            "component_id": "statistic",
+            "note_by_level": {
+              "L0": "Zanim zaczniemy nasłuchiwać fałszywych nut, dokładnie odejmujemy spodziewany szum. Jego wielkość ma stały przepis.",
+              "L1": "Centrowanie dokładnie usuwa wyrazy główne. Stała 1+γ w wyrazie liniowym bierze się z lokalnego kształtu ζ w pobliżu s = 1.",
+              "L2": "Węzły w kolejności: cel, twierdzenie, rachunek, majoranta (pozwala zamienić granice), zbieżność zmajoryzowana, rozwinięcie Laurenta. Wyjście: transformata Mellina (if-09).",
+              "L3": "Przy normalizacji n^(-s)/(s(s−1)) wyraz główny daje podwójny biegun w s = 1. Rozwinięcia −ζ'/ζ(s) = 1/(s−1) − γ + O(s−1) oraz x^s/s = x(1 + (s−1)(log x − 1) + …) dają residuum x log x − (1+γ)x.",
+              "L4": "Węzły `moment-target`, `moment-theorem`, `moment-calculation`, `moment-majorant`, `moment-dominated`, `moment-laurent`. Krawędź `MellinRamp` (MellinRamp.lean#L10-L32 @40e56ba). Granica: rachunek z L3 to rekonstrukcja standardowa. Jego dokładną postać w Lean potwierdza tylko pin."
+            }
+          }
+        ]
+      },
+      "en": {
+        "title": "Recover the centering constant in the ordinary zeta window",
+        "question": "Why is the linear correction (1+γ)x?",
+        "step_notes": [
+          {
+            "component_id": "statistic",
+            "note_by_level": {
+              "L0": "Before listening for wrong notes, subtract the expected hum exactly. Its size follows a fixed recipe.",
+              "L1": "Centering removes the main terms exactly. The constant 1+γ in the linear term comes from the local shape of ζ near s = 1.",
+              "L2": "Nodes in order: target, theorem, calculation, majorant (allows swapping limits), dominated convergence, Laurent expansion. Output: Mellin transform (if-09).",
+              "L3": "Under the normalization n^(-s)/(s(s−1)), the main term has a double pole at s = 1. The expansions −ζ'/ζ(s) = 1/(s−1) − γ + O(s−1) and x^s/s = x(1 + (s−1)(log x − 1) + …) give the residue x log x − (1+γ)x.",
+              "L4": "Nodes `moment-target`, `moment-theorem`, `moment-calculation`, `moment-majorant`, `moment-dominated`, `moment-laurent`. Edge `MellinRamp` (MellinRamp.lean#L10-L32 @40e56ba). Boundary: the L3 calculation is a standard reconstruction. Only the pin confirms its exact Lean form."
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
