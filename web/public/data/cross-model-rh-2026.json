@@ -1,7 +1,7 @@
 {
   "schema": "ect-cross-model-audit/1.0",
   "capsule_id": "rh-2026-alpoege",
-  "executed_at": "2026-11-22T13:43:48.348742+00:00",
+  "executed_at": "2026-11-22T13:49:21.319132+00:00",
   "input_ir_path": "capsules/rh-2026-alpoege/formal-core-ir.json",
   "models": [
     {
@@ -64,6 +64,42 @@
         "l1_intuitive_synthesis_pl": "Maszyneria źródłowa (reprezentacje Galois dopasowane do form automorficznych, pomocnicze liczby pierwsze i wieże Behrenda oraz okno kohomologiczne ograniczone na [Y, Y^2]) dostarcza dla każdego charakteru rodzinę gospodarzy i łańcuch około √x podniesień theta o stałych, z góry znanych stratach. Skończone porównanie charakterów zamienia tę kontrolę geometryczną w sufit dla wycentrowanej, ważonej rampą sumy po liczbach pierwszych: w późnych oknach suma pozostaje poniżej x^(1/2 + 9ε). Silnik analityczny działa jak alarm o dodatnich wagach. Każde zero na prawo od θ dałoby biegun o residuum, którego nic nie zniesie, i wypchnęłoby sumę ponad sufit, więc sufit oczyszcza tę półpłaszczyznę. Odbicie przez równania funkcyjne i zejście od charakterów nieprymitywnych do prymitywnych przenoszą wynik na prostą krytyczną dla ζ i każdej L-funkcji Dirichleta.",
         "epistemic_status_distinction": "Machine side, as reported by the IR (this audit did not re-run it): full Lean 4.33.1 compilation of 175,187 modules, pinned to Mathlib commit 0df444a3…, plus an independent Rust kernel replay (con-leche / nanoda / lean4lean). All five exported endpoints match Mathlib's Challenge.lean, and the only axioms used are propext, Classical.choice and Quot.sound. This shows that the formal object type-checks against the canonical statements in two independent kernels. Human side: mathematical peer review and a readable prose account are explicitly incomplete and ongoing. Community atlases and reading guides only map the roughly 17.4M-line object. Kernel acceptance is not human refereeing, conceptual understanding, or community consensus that the argument is understood.",
         "where_stepanov_metaphor_breaks": "Caveat: the IR never names Stepanov, so this field contrasts the metaphor against the mechanisms the IR does record. Stepanov's method works over a finite field F_q. There, Frobenius x ↦ x^q, characteristic-p (Hasse) derivatives and a degree count bound the points of a curve: an auxiliary polynomial that vanishes to high order at many points must have large degree. None of that is available here. Over Z, and over the CM and number fields in the IR, there is no Frobenius endomorphism acting globally on the ring and no characteristic-p differentiation. A theta lift is not a derivative: it is a correspondence that transfers automorphic representations between members of a dual reductive pair (the IR's unitary-group and local theta packages). The control on the chain comes from divisibility, slope and covolume bounds and from Galois-cohomology lengths, not from multiplicity of vanishing. The bound is extracted through finite Fourier orthogonality on a subgroup plus an exact main-term identity, then the Mellin pole and positive-residue argument, not through counting zeros of a polynomial against its degree. 'Iterated lifts as successive derivatives' is therefore only a loose structural analogy (repeated application of an operator to build an auxiliary object with controlled growth), not an isomorphism."
+      },
+      "scores": {
+        "total_score": 100,
+        "dimensions": {
+          "D1_stratum_dag_order": 20,
+          "D2_global_cuts_recall": 20,
+          "D3_exponent_budget_algebra": 20,
+          "D4_bilingual_l1_synthesis": 20,
+          "D5_epistemic_fracture_honesty": 20
+        }
+      }
+    },
+    {
+      "model_id": "claude-fable-5-2",
+      "model_label": "Claude Fable 5.2",
+      "provider": "Anthropic",
+      "mode": "Blind CLI inference via Claude Code 2.1.321 (--tools '' --no-session-persistence)",
+      "reconstruction": {
+        "stratum_order_upstream_to_downstream": [
+          "arith",
+          "est",
+          "ana",
+          "dest"
+        ],
+        "cut_zeta_summary": "Reading.WindowBridge.riemannHypothesis_of_prime_windows: if for every θ in (1/2, 1) there is a C such that, for every Y_0, some Y ≥ Y_0 has G(y) ≤ C·y^θ for all y in the window [Y, Y^{3/2}] (window width exponent exactly 3/2), then RH follows. The bound is one-sided (upper only) and is required only on arbitrarily late windows, not for all y.",
+        "cut_dirichlet_summary": "Reading.DirichletBridge.endpoints_of_topG_vWin401: TopG (the geometric theta-chain family with fixed loss exponents e_D = 2, e_L = 0) together with VWinAt ψ 401 for every primitive character ψ (the cohomological window with parameter 401) implies the exported endpoints, i.e. RH and Dirichlet GRH for every character of every positive modulus.",
+        "exponent_budget": {
+          "e_D": 2,
+          "e_L": 0,
+          "effective_exponent_formula": "1/2 + (e_D + e_L + 7)*epsilon = 1/2 + 9*epsilon <= theta",
+          "why_epsilon_zero_not_needed": "The loss exponents e_D = 2 and e_L = 0 are fixed first, independently of any zero. Given a hypothetical zero with real part β > 1/2, one chooses θ in (1/2, β), and only then ε > 0 small enough that 1/2 + 9ε ≤ θ. Because β − 1/2 > 0 always leaves room for a strictly positive ε, the window bound x^(1/2+9ε) is used for some positive ε per zero, and a bound at ε = 0 is never needed."
+        },
+        "l1_intuitive_synthesis_en": "Deep arithmetic suppliers — a Galois representation row, two auxiliary primes with a Behrend tower, and seven theta-lift inputs — deliver a cohomological window and a chain of about √x theta lifts whose losses are pinned to fixed numbers (e_D = 2, e_L = 0). A finite character comparison turns that geometric control into a ceiling on a centred, weighted prime sum: it stays below x^(1/2+9ε) throughout whole late windows. The analytic engine then uses positivity: a zero right of the line would create a pole whose positive residue cannot be cancelled, forcing the prime sum to break through that ceiling inside a window, so no such zero exists. Finally, conductor descent extends this from primitive to all characters, and reflection through the functional equation clears the left side, leaving zeros only on the critical line.",
+        "l1_intuitive_synthesis_pl": "Głębokie zaplecze arytmetyczne — wiersz reprezentacji Galois, dwie pomocnicze liczby pierwsze z wieżą Behrenda oraz siedem wejść związanych z podniesieniami theta — dostarcza okno kohomologiczne i łańcuch około √x podniesień theta, którego straty są ustalone z góry (e_D = 2, e_L = 0). Skończone porównanie charakterów zamienia tę kontrolę geometryczną w sufit dla wycentrowanej, ważonej sumy po liczbach pierwszych: w całych późnych oknach pozostaje ona poniżej x^(1/2+9ε). Silnik analityczny korzysta z dodatniości: zero na prawo od prostej dałoby biegun o dodatnim residuum, którego nie da się skasować, więc suma musiałaby przebić ten sufit wewnątrz okna — zatem takiego zera nie ma. Na koniec zejście po przewodniku przenosi wynik z charakterów pierwotnych na wszystkie, a odbicie przez równanie funkcyjne oczyszcza lewą stronę, zostawiając zera wyłącznie na prostej krytycznej.",
+        "epistemic_status_distinction": "Machine side (reported complete): full Lean 4.33.1 compilation of 175,187 modules, independent Rust kernel replay (con-leche / nanoda / lean4lean), all 5 exported endpoints matching Mathlib's Challenge.lean, using only the axioms propext, Classical.choice and Quot.sound; pinned to mirror commit 40e56bab026552e089d7afcfeff08d2defb9c005. Human side (ongoing, incomplete): mathematical peer review and a readable prose account of the 17.4M-line formal object do not yet exist in finished form; community atlases and reading guides only map it. Kernel acceptance certifies that the formal statements follow from the axioms; it is not human refereeing or conceptual comprehension, and this audit reconstructs the dependency skeleton only, without verifying any of it.",
+        "where_stepanov_metaphor_breaks": "The supplied IR never mentions Stepanov, so the analogy is external to the skeleton and this answer is a judgement, not a reading of the IR. Stepanov's method lives over a finite field: it builds an auxiliary polynomial in a finite-dimensional space, forces high-order vanishing by (Hasse) differentiation, uses the Frobenius identity x^q = x, and concludes by an exact degree count. Over Z there is no Frobenius endomorphism, no derivation acting on integers, and no degree bound to count zeros against. In the IR the chain of about √x theta lifts is instead controlled by divisibility, slope and covolume conditions and by weighted lengths of Galois cohomology, and it reaches the prime sum only through finite Fourier orthogonality on a subgroup plus an exact main-term identity. The output is also weaker in shape than a finite-field point count: a one-sided bound x^(1/2+9ε) with ε-losses, valid only on late windows [Y, Y^{3/2}] along a system of scales, which needs the Landau positive-residue argument to become a zero-free half-plane. The shared feature is only structural (an auxiliary object of 'length' about √x yielding square-root cancellation), not literal polynomial differentiation."
       },
       "scores": {
         "total_score": 100,

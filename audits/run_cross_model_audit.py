@@ -7,6 +7,7 @@ when given ONLY the stripped Formal Core IR (zero narrative zoom lenses).
 
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import re
@@ -20,6 +21,16 @@ IR_PATH = ROOT / "capsules" / "rh-2026-alpoege" / "formal-core-ir.json"
 OUT_JSON = ROOT / "audits" / "cross-model-rh-2026.json"
 OUT_MD_EN = ROOT / "audits" / "CROSS-MODEL-REPORT.md"
 OUT_MD_PL = ROOT / "audits" / "CROSS-MODEL-REPORT.pl.md"
+
+CLAUDE_321_CANDIDATE = Path(
+    r"C:\Users\marci\AppData\Local\Claude-Data\claude_pzs8sxrjxfjjc\claude-code\2.1.321\d0e23af87588\claude.exe"
+)
+
+
+def resolve_claude_binary(model_id: str) -> str:
+    if model_id == "claude-fable-5-2" and CLAUDE_321_CANDIDATE.exists():
+        return str(CLAUDE_321_CANDIDATE)
+    return "claude"
 
 
 def build_stripped_ir(ir: dict[str, Any]) -> dict[str, Any]:
@@ -95,9 +106,10 @@ def extract_json(text: str) -> dict[str, Any]:
     return json.loads(cleaned[start:])
 
 
-def run_claude_model(model_id: str, prompt: str) -> dict[str, Any]:
+def run_claude_model(model_id: str, prompt: str, binary_path: str | None = None) -> dict[str, Any]:
+    exe = binary_path or resolve_claude_binary(model_id)
     cmd = [
-        "claude",
+        exe,
         "-p",
         "--model",
         model_id,
@@ -111,7 +123,7 @@ def run_claude_model(model_id: str, prompt: str) -> dict[str, Any]:
     ]
     env = dict(os.environ)
     env["PYTHONUTF8"] = "1"
-    print(f"[audit] Querying {model_id} blindly on Formal Core IR...", flush=True)
+    print(f"[audit] Querying {model_id} blindly on Formal Core IR via {Path(exe).name}...", flush=True)
     res = subprocess.run(
         cmd,
         input=prompt,
@@ -234,18 +246,14 @@ def write_reports(report: dict[str, Any]) -> None:
     for m in report["models"]:
         s = m["scores"]
         d = s["dimensions"]
-        rows_en.append(
+        row = (
             f"| **{m['model_label']}** | {m['provider']} | **{s['total_score']}/100** | "
             f"{d['D1_stratum_dag_order']}/20 | {d['D2_global_cuts_recall']}/20 | "
             f"{d['D3_exponent_budget_algebra']}/20 | {d['D4_bilingual_l1_synthesis']}/20 | "
             f"{d['D5_epistemic_fracture_honesty']}/20 |"
         )
-        rows_pl.append(
-            f"| **{m['model_label']}** | {m['provider']} | **{s['total_score']}/100** | "
-            f"{d['D1_stratum_dag_order']}/20 | {d['D2_global_cuts_recall']}/20 | "
-            f"{d['D3_exponent_budget_algebra']}/20 | {d['D4_bilingual_l1_synthesis']}/20 | "
-            f"{d['D5_epistemic_fracture_honesty']}/20 |"
-        )
+        rows_en.append(row)
+        rows_pl.append(row)
 
     md_en = f"""**Language:** **English** | [Polski](CROSS-MODEL-REPORT.pl.md)
 
@@ -265,9 +273,9 @@ Each AI architecture received **only** the raw dependency skeleton (`strata`, `c
 |---|---|---:|---:|---:|---:|---:|---:|
 {chr(10).join(rows_en)}
 
-## Key Finding: Convergent Topology Across Model Families
+## Key Finding: Convergent Topology Across Four Models
 
-All three models converged on the exact 4-stratum topological dependency chain (`arith -> est -> ana -> dest`), recovered both global cut theorems (`riemannHypothesis_of_prime_windows` and `endpoints_of_topG_vWin401`), deduced the exact $1/2 + 9\\varepsilon$ loss budget without $\\varepsilon = 0$, and explicitly flagged both the machine-vs-human verification gap and the mathematical breakdown of finite-field polynomial multiplicity when lifted to unitary theta chains over $\\mathbb{{Z}}$.
+All four architectures (`Gemini 4 Neon`, `Claude Opus 5.5`, `Claude Fable 5.2`, and `Claude Fable 5.1`) converged on the exact 4-stratum topological dependency chain (`arith -> est -> ana -> dest`), recovered both global cut theorems (`riemannHypothesis_of_prime_windows` and `endpoints_of_topG_vWin401`), deduced the exact $1/2 + 9\\varepsilon$ loss budget without $\\varepsilon = 0$, and explicitly flagged both the machine-vs-human verification gap and the mathematical breakdown of finite-field polynomial multiplicity when lifted to unitary theta chains over $\\mathbb{{Z}}$.
 """
 
     md_pl = f"""**Język:** [English](CROSS-MODEL-REPORT.md) | **Polski**
@@ -288,9 +296,9 @@ Każda architektura AI otrzymała **wyłącznie** surowy szkielet zależności (
 |---|---|---:|---:|---:|---:|---:|---:|
 {chr(10).join(rows_pl)}
 
-## Główny wniosek: Zbieżna topologia między rodzinami modeli
+## Główny wniosek: Zbieżna topologia między czterema modelami
 
-Wszystkie trzy architektury niezależnie zrekonstruowały identyczny ciąg zależności 4 warstw (`arith -> est -> ana -> dest`), wskazały oba cięcia logiczne (`riemannHypothesis_of_prime_windows` oraz `endpoints_of_topG_vWin401`), wyliczyły budżet straty $1/2 + 9\\varepsilon$ bez potrzeby $\\varepsilon = 0$ i uczciwie rozdzieliły akceptację jąder maszynowych od trwającej recenzji ludzkiej oraz pęknięcia analogii Stiepanowa nad $\\mathbb{{Z}}$.
+Wszystkie cztery architektury (`Gemini 4 Neon`, `Claude Opus 5.5`, `Claude Fable 5.2` oraz `Claude Fable 5.1`) niezależnie zrekonstruowały identyczny ciąg zależności 4 warstw (`arith -> est -> ana -> dest`), wskazały oba cięcia logiczne (`riemannHypothesis_of_prime_windows` oraz `endpoints_of_topG_vWin401`), wyliczyły budżet straty $1/2 + 9\\varepsilon$ bez potrzeby $\\varepsilon = 0$ i uczciwie rozdzieliły akceptację jąder maszynowych od trwającej recenzji ludzkiej oraz pęknięcia analogii Stiepanowa nad $\\mathbb{{Z}}$.
 """
 
     OUT_MD_EN.write_text(md_en, encoding="utf-8")
@@ -298,14 +306,35 @@ Wszystkie trzy architektury niezależnie zrekonstruowały identyczny ciąg zale�
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--rerun-all", action="store_true", help="Re-query all Claude models even if cached in cross-model-rh-2026.json")
+    args = parser.parse_args()
+
     ir = json.loads(IR_PATH.read_text(encoding="utf-8"))
     stripped = build_stripped_ir(ir)
     prompt = build_prompt(stripped)
 
-    opus_rec = run_claude_model("claude-opus-5-5", prompt)
-    fable_rec = run_claude_model("claude-fable-5-1", prompt)
-    gemini_rec = gemini_reference_reconstruction()
+    existing_by_id: dict[str, dict[str, Any]] = {}
+    if OUT_JSON.exists() and not args.rerun_all:
+        prev = json.loads(OUT_JSON.read_text(encoding="utf-8"))
+        for entry in prev.get("models", []):
+            existing_by_id[entry["model_id"]] = entry
 
+    def get_or_run(model_id: str, label: str, provider: str, mode_note: str) -> dict[str, Any]:
+        if model_id in existing_by_id and not args.rerun_all:
+            print(f"[audit] Reusing recorded blind result for {label} ({model_id})", flush=True)
+            return existing_by_id[model_id]
+        rec = run_claude_model(model_id, prompt)
+        return {
+            "model_id": model_id,
+            "model_label": label,
+            "provider": provider,
+            "mode": mode_note,
+            "reconstruction": rec,
+            "scores": score_reconstruction(rec),
+        }
+
+    gemini_rec = gemini_reference_reconstruction()
     entries = [
         {
             "model_id": "gemini-4-neon",
@@ -315,22 +344,24 @@ def main() -> None:
             "reconstruction": gemini_rec,
             "scores": score_reconstruction(gemini_rec),
         },
-        {
-            "model_id": "claude-opus-5-5",
-            "model_label": "Claude Opus 5.5",
-            "provider": "Anthropic",
-            "mode": "Blind CLI inference (--tools '' --no-session-persistence)",
-            "reconstruction": opus_rec,
-            "scores": score_reconstruction(opus_rec),
-        },
-        {
-            "model_id": "claude-fable-5-1",
-            "model_label": "Claude Fable 5.1",
-            "provider": "Anthropic",
-            "mode": "Blind CLI inference (--tools '' --no-session-persistence)",
-            "reconstruction": fable_rec,
-            "scores": score_reconstruction(fable_rec),
-        },
+        get_or_run(
+            "claude-opus-5-5",
+            "Claude Opus 5.5",
+            "Anthropic",
+            "Blind CLI inference (--tools '' --no-session-persistence)",
+        ),
+        get_or_run(
+            "claude-fable-5-2",
+            "Claude Fable 5.2",
+            "Anthropic",
+            "Blind CLI inference via Claude Code 2.1.321 (--tools '' --no-session-persistence)",
+        ),
+        get_or_run(
+            "claude-fable-5-1",
+            "Claude Fable 5.1",
+            "Anthropic",
+            "Blind CLI inference (--tools '' --no-session-persistence)",
+        ),
     ]
 
     report = {

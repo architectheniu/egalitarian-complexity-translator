@@ -42,7 +42,7 @@ The same 8-Law logic is mirrored in TypeScript inside `web/src/utils/capsuleVali
 
 ## 3. Cross-Model Silicon Egalitarianism Audit (`audits/`)
 
-`audits/run_cross_model_audit.py` strips ALL human narrative lenses from `formal-core-ir.json` and challenges independent AI models (`Gemini 4 Neon`, `Claude Opus 5.5`, `Claude Fable 5.1`) with `--tools ""` to reconstruct:
+`audits/run_cross_model_audit.py` strips ALL human narrative lenses from `formal-core-ir.json` and challenges independent AI models (`Gemini 4 Neon`, `Claude Opus 5.5`, `Claude Fable 5.2`, `Claude Fable 5.1`) with `--tools ""` to reconstruct:
 - 4-stratum DAG ordering (`arith -> est -> ana -> dest`)
 - Both global cuts (`cut-zeta`, `cut-dirichlet`)
 - Exact loss exponent algebra ($e_D=2, e_L=0 \implies \frac{1}{2}+9\varepsilon \le \theta$)

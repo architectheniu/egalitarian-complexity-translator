@@ -42,7 +42,7 @@ Dokładnie ta sama logika 8 Praw działa w TypeScript w `web/src/utils/capsuleVa
 
 ## 3. Audyt Krzyżowy Egalitaryzmu Krzemu (`audits/`)
 
-`audits/run_cross_model_audit.py` usuwa WSZYSTKIE ludzkie opisy z `formal-core-ir.json` i wystawia niezależne architektury AI (`Gemini 4 Neon`, `Claude Opus 5.5`, `Claude Fable 5.1`) z zablokowanymi narzędziami (`--tools ""`) na ślepy test rekonstrukcji:
+`audits/run_cross_model_audit.py` usuwa WSZYSTKIE ludzkie opisy z `formal-core-ir.json` i wystawia niezależne architektury AI (`Gemini 4 Neon`, `Claude Opus 5.5`, `Claude Fable 5.2`, `Claude Fable 5.1`) z zablokowanymi narzędziami (`--tools ""`) na ślepy test rekonstrukcji:
 - Kolejności 4 warstw DAG (`arith -> est -> ana -> dest`)
 - Obu globalnych cięć (`cut-zeta`, `cut-dirichlet`)
 - Algebry budżetu strat wykładników ($e_D=2, e_L=0 \implies \frac{1}{2}+9\varepsilon \le \theta$)

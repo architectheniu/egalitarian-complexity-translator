@@ -106,7 +106,7 @@ export const CrossModelModal: React.FC<CrossModelModalProps> = ({
 
         {/* Cross-Model Scorecard */}
         {auditReport && (
-          <div className="mt-5 grid grid-cols-1 gap-3 md:grid-cols-3">
+          <div className="mt-5 grid grid-cols-1 gap-3 md:grid-cols-2">
             {auditReport.models.map((m) => (
               <div key={m.model_id} className="rounded-xl border border-hairline bg-obsidian/80 p-4">
                 <div className="flex items-center justify-between gap-2">

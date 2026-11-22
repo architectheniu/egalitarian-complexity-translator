@@ -175,12 +175,12 @@ export const ProofTopologyMap: React.FC<ProofTopologyMapProps> = ({
             );
           })}
 
-          {/* SVG Curved Interface Edges */}
+          {/* SVG Curved Interface Edges (paths layer) */}
           <svg
             width={canvasW}
             height={canvasH}
             viewBox={`0 0 ${canvasW} ${canvasH}`}
-            className="pointer-events-none absolute inset-0"
+            className="pointer-events-none absolute inset-0 z-0"
           >
             <defs>
               <marker id="arrow-muted" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
@@ -199,13 +199,21 @@ export const ProofTopologyMap: React.FC<ProofTopologyMapProps> = ({
               const p2 = getNodePos(iface.to, idx);
 
               const sameCol = Math.abs(p1.x - p2.x) < 20;
+              const isLongSameCol = sameCol && Math.abs(p2.y - p1.y) > rowPitch * 1.4;
               let startX = p1.x + cardW;
               let startY = p1.y + cardH / 2;
               let endX = p2.x - 4;
               let endY = p2.y + cardH / 2;
               let pathD = "";
 
-              if (sameCol) {
+              if (isLongSameCol) {
+                startX = p1.x + cardW;
+                startY = p1.y + cardH * 0.55;
+                endX = p2.x + cardW + 4;
+                endY = p2.y + cardH * 0.45;
+                const arcX = p1.x + cardW + 30;
+                pathD = `M ${startX} ${startY} C ${arcX} ${startY}, ${arcX} ${endY}, ${endX} ${endY}`;
+              } else if (sameCol) {
                 startX = p1.x + cardW / 2;
                 startY = p1.y + cardH;
                 endX = p2.x + cardW / 2;
@@ -223,9 +231,6 @@ export const ProofTopologyMap: React.FC<ProofTopologyMapProps> = ({
 
               const stroke = isIncoming ? "#eab308" : isOutgoing ? "#34d399" : "#334155";
               const marker = isIncoming ? "url(#arrow-up)" : isOutgoing ? "url(#arrow-down)" : "url(#arrow-muted)";
-              const edgeLabel = lenses.interfaces?.[iface.id]?.[lang]?.[level] ?? iface.label_raw;
-              const midX = (startX + endX) / 2;
-              const midY = (startY + endY) / 2;
 
               return (
                 <g key={iface.id} opacity={selectedType === "component" && !isRelated ? 0.35 : 0.95}>
@@ -237,28 +242,6 @@ export const ProofTopologyMap: React.FC<ProofTopologyMapProps> = ({
                     className={isRelated ? "edge-flow" : ""}
                     markerEnd={marker}
                   />
-                  {isRelated && (
-                    <g transform={`translate(${midX}, ${midY})`}>
-                      <rect
-                        x={-64}
-                        y={-10}
-                        width={128}
-                        height={18}
-                        rx={4}
-                        fill="#0b1114"
-                        stroke={stroke}
-                        strokeWidth={0.9}
-                      />
-                      <text
-                        x={0}
-                        y={2}
-                        textAnchor="middle"
-                        className="fill-slate-100 font-mono text-[9.5px]"
-                      >
-                        {edgeLabel.length > 23 ? `${edgeLabel.slice(0, 21)}…` : edgeLabel}
-                      </text>
-                    </g>
-                  )}
                 </g>
               );
             })}
@@ -316,6 +299,58 @@ export const ProofTopologyMap: React.FC<ProofTopologyMapProps> = ({
               </button>
             );
           })}
+
+          {/* Top-layer SVG Edge Labels (never clipped by cards) */}
+          <svg
+            width={canvasW}
+            height={canvasH}
+            viewBox={`0 0 ${canvasW} ${canvasH}`}
+            className="pointer-events-none absolute inset-0 z-30"
+          >
+            {ir.interfaces.map((iface, idx) => {
+              const isIncoming = selectedType === "component" && iface.to === selectedId;
+              const isOutgoing = selectedType === "component" && iface.from === selectedId;
+              if (!isIncoming && !isOutgoing) return null;
+
+              const p1 = getNodePos(iface.from, idx);
+              const p2 = getNodePos(iface.to, idx);
+              const sameCol = Math.abs(p1.x - p2.x) < 20;
+              const isLongSameCol = sameCol && Math.abs(p2.y - p1.y) > rowPitch * 1.4;
+
+              let labelX = (p1.x + cardW + p2.x) / 2;
+              let labelY = (p1.y + p2.y) / 2 + cardH / 2;
+              if (isLongSameCol) {
+                labelX = p1.x + cardW + 24;
+                labelY = (p1.y + p2.y) / 2 + cardH / 2;
+              } else if (sameCol) {
+                labelX = p1.x + cardW / 2;
+                labelY = (p1.y + cardH + p2.y) / 2;
+              }
+
+              const stroke = isIncoming ? "#eab308" : "#34d399";
+              const edgeLabel = lenses.interfaces?.[iface.id]?.[lang]?.[level] ?? iface.label_raw;
+              const clipped = edgeLabel.length > 23 ? `${edgeLabel.slice(0, 21)}…` : edgeLabel;
+
+              return (
+                <g key={`lbl-${iface.id}`} transform={`translate(${labelX}, ${labelY})`}>
+                  <rect
+                    x={-68}
+                    y={-10}
+                    width={136}
+                    height={19}
+                    rx={4}
+                    fill="#0b1114"
+                    fillOpacity={0.96}
+                    stroke={stroke}
+                    strokeWidth={1}
+                  />
+                  <text x={0} y={2.5} textAnchor="middle" className="fill-slate-100 font-mono text-[9.5px]">
+                    {clipped}
+                  </text>
+                </g>
+              );
+            })}
+          </svg>
         </div>
       </div>
     </div>

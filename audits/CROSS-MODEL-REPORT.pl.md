@@ -2,7 +2,7 @@
 
 # Audyt Krzyżowy Egalitaryzmu Krzemu (`rh-2026-alpoege`)
 
-**Data wykonania:** `2026-11-22T13:43:48.348742+00:00`  
+**Data wykonania:** `2026-11-22T13:49:21.319132+00:00`  
 **Artefakt wejściowy:** [`capsules/rh-2026-alpoege/formal-core-ir.json`](../capsules/rh-2026-alpoege/formal-core-ir.json) (oczyszczony ze WSZYSTKICH opisowych soczewek)  
 **Dane maszynowe:** [`audits/cross-model-rh-2026.json`](./cross-model-rh-2026.json)
 
@@ -16,8 +16,9 @@ Każda architektura AI otrzymała **wyłącznie** surowy szkielet zależności (
 |---|---|---:|---:|---:|---:|---:|---:|
 | **Gemini 4 Neon** | Google DeepMind | **100/100** | 20/20 | 20/20 | 20/20 | 20/20 | 20/20 |
 | **Claude Opus 5.5** | Anthropic | **100/100** | 20/20 | 20/20 | 20/20 | 20/20 | 20/20 |
+| **Claude Fable 5.2** | Anthropic | **100/100** | 20/20 | 20/20 | 20/20 | 20/20 | 20/20 |
 | **Claude Fable 5.1** | Anthropic | **100/100** | 20/20 | 20/20 | 20/20 | 20/20 | 20/20 |
 
-## Główny wniosek: Zbieżna topologia między rodzinami modeli
+## Główny wniosek: Zbieżna topologia między czterema modelami
 
-Wszystkie trzy architektury niezależnie zrekonstruowały identyczny ciąg zależności 4 warstw (`arith -> est -> ana -> dest`), wskazały oba cięcia logiczne (`riemannHypothesis_of_prime_windows` oraz `endpoints_of_topG_vWin401`), wyliczyły budżet straty $1/2 + 9\varepsilon$ bez potrzeby $\varepsilon = 0$ i uczciwie rozdzieliły akceptację jąder maszynowych od trwającej recenzji ludzkiej oraz pęknięcia analogii Stiepanowa nad $\mathbb{Z}$.
+Wszystkie cztery architektury (`Gemini 4 Neon`, `Claude Opus 5.5`, `Claude Fable 5.2` oraz `Claude Fable 5.1`) niezależnie zrekonstruowały identyczny ciąg zależności 4 warstw (`arith -> est -> ana -> dest`), wskazały oba cięcia logiczne (`riemannHypothesis_of_prime_windows` oraz `endpoints_of_topG_vWin401`), wyliczyły budżet straty $1/2 + 9\varepsilon$ bez potrzeby $\varepsilon = 0$ i uczciwie rozdzieliły akceptację jąder maszynowych od trwającej recenzji ludzkiej oraz pęknięcia analogii Stiepanowa nad $\mathbb{Z}$.
