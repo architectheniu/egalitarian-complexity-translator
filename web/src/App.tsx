@@ -208,7 +208,7 @@ export const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-obsidian text-slate-100">
       {/* Top Navigation & Global Controls */}
-      <header className="sticky top-0 z-30 border-b border-hairline bg-obsidian/90 backdrop-blur-md">
+      <header className="sticky top-0 z-40 border-b border-hairline bg-obsidian/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1600px] flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
           <div>
             <div className="flex items-center gap-2.5">

@@ -149,7 +149,7 @@ export const ProofTopologyMap: React.FC<ProofTopologyMapProps> = ({
 
       {/* Scrollable 4-Stratum DAG Canvas */}
       <div className="overflow-x-auto rounded-xl border border-hairline bg-[#090f13] p-3 shadow-xl">
-        <div className="relative" style={{ width: `${canvasW}px`, height: `${canvasH}px` }}>
+        <div className="relative isolate" style={{ width: `${canvasW}px`, height: `${canvasH}px` }}>
           {/* Stratum Header Bands */}
           {sortedStrata.map((s) => {
             const colX = 14 + s.order * (colWidth + colGap);
