@@ -51,9 +51,11 @@ The same 8-Law logic is mirrored in TypeScript inside `web/src/utils/capsuleVali
 
 ---
 
-## 4. Audiovisual Semantic Microscope (`web/`)
+## 4. Two-Tier Audiovisual Frontend (`web/`)
 
 Built with Vite + React + TypeScript + Tailwind CSS (no external audio assets or runtime backend):
-- **Borwein Accelerated Zeta Evaluator (`src/math/zeta.ts`)**: Computes $|\zeta(\sigma + it)|$ across $t \in [10, 45]$ using 38-term float64-safe Borwein recurrence ($\sim 10^{-7}$ accuracy at nontrivial zeros).
-- **Sieve of Eratosthenes Prime Window (`src/math/zeta.ts`)**: Evaluates actual $\psi(y) - y$ fluctuations across $[Y, Y^{3/2}]$ against $C y^\theta$ and visualizes off-line rogue zero contradictions.
-- **Pure Web Audio Synthesis (`src/audio/soundEngine.ts`)**: Generates harmonic zoom chords (`L0`–`L4`), stratum focus tones, crystalline zero chimes vs. off-line beating dissonance in *Zeta Symphony*, ceiling-breach warnings, and optional `SpeechSynthesis` narration (`pl-PL` / `en-US`) for *The Architect's Path* auto-tour.
+- **Tier 1 — Perceptual Theater (`src/components/theater/` + `src/audio/theaterAudio.ts`)**: Default zero-jargon 6-scene interactive audiovisual stage (*Waves*, *Mirror*, *One-Way Detector*, *Stone vs Clay / Sphere Chain*, *1-on-1 Duel with Auto-Zoom*, *Honesty Limits & Calibration Report*) with dedicated Web Audio tactile synthesis (`playWaveBalanceTone`, `playMirrorEcho`, `playDetectorFlip`, `playClayPress`, `playStoneCrack`, `playTrapLock`).
+- **Tier 2 — Researcher Microscope (`src/components/ProofTopologyMap.tsx`, `src/components/labs/`)**:
+  - **Borwein Accelerated Zeta Evaluator (`src/math/zeta.ts`)**: Computes $|\zeta(\sigma + it)|$ across $t \in [10, 45]$ using 38-term float64-safe Borwein recurrence ($\sim 10^{-7}$ accuracy at nontrivial zeros).
+  - **Sieve of Eratosthenes Prime Window (`src/math/zeta.ts`)**: Evaluates actual $\psi(y) - y$ fluctuations across $[Y, Y^{3/2}]$ against $C y^\theta$ and visualizes off-line rogue zero contradictions.
+  - **Pure Web Audio Synthesis (`src/audio/soundEngine.ts`)**: Shared Web Audio context and optional `SpeechSynthesis` narration (`pl-PL` / `en-US`).

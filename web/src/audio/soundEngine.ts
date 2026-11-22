@@ -48,6 +48,13 @@ class SoundEngine {
     return this.volume;
   }
 
+  public getActiveOutput(): { ctx: AudioContext; master: GainNode } | null {
+    if (!this.enabled) return null;
+    const ctx = this.ensureContext();
+    if (!ctx || !this.master) return null;
+    return { ctx, master: this.master };
+  }
+
   private playTone(
     freq: number,
     durationSec: number,

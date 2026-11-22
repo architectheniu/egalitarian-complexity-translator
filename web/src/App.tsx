@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Cpu, ExternalLink, FlaskConical, Globe, Map as MapIcon, ShieldCheck, Volume2, VolumeX } from "lucide-react";
+import { Cpu, ExternalLink, FlaskConical, Globe, Map as MapIcon, Microscope, ShieldCheck, Sparkles, Volume2, VolumeX } from "lucide-react";
 import { ComplexityCapsule, CrossModelAuditReport, Language, ZOOM_LEVELS, ZoomLevel } from "./types/ect";
 import { UI_STRINGS } from "./i18n/ui";
 import { soundEngine } from "./audio/soundEngine";
@@ -13,6 +13,7 @@ import { ChoreographyLab } from "./components/labs/ChoreographyLab";
 import { ThetaChainLab } from "./components/labs/ThetaChainLab";
 import { CrossModelModal } from "./components/CrossModelModal";
 import { EpistemicLedgerView } from "./components/EpistemicLedgerView";
+import { PerceptualTheater } from "./components/theater/PerceptualTheater";
 
 function detectDefaultLang(): Language {
   if (typeof navigator !== "undefined" && navigator.language?.toLowerCase().startsWith("pl")) {
@@ -23,6 +24,7 @@ function detectDefaultLang(): Language {
 
 export const App: React.FC = () => {
   const [lang, setLang] = useState<Language>(detectDefaultLang);
+  const [appMode, setAppMode] = useState<"theater" | "microscope">("theater");
   const [level, setLevel] = useState<ZoomLevel>("L1");
   const [activeTab, setActiveTab] = useState<"map" | "labs" | "ledger">("map");
   const [focusedLab, setFocusedLab] = useState<"critical" | "window" | "choreography" | "theta">("critical");
@@ -220,8 +222,36 @@ export const App: React.FC = () => {
             <p className="text-[11px] text-slate-400">{t.brandSubtitle}</p>
           </div>
 
-          {/* Right Toolbar */}
+          {/* Mode Switch + Right Toolbar */}
           <div className="flex flex-wrap items-center gap-2">
+            {/* Primary Tier Switcher: Teatr Poznawczy vs Mikroskop Badacza */}
+            <div className="inline-flex rounded-lg border border-hairline bg-panel p-0.5">
+              <button
+                type="button"
+                onClick={() => setAppMode("theater")}
+                className={`inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition ${
+                  appMode === "theater"
+                    ? "bg-dest/20 text-emerald-200"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                <Sparkles className="h-3.5 w-3.5" />
+                <span>{lang === "pl" ? "Teatr Poznawczy" : "Perceptual Theater"}</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setAppMode("microscope")}
+                className={`inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-semibold transition ${
+                  appMode === "microscope"
+                    ? "bg-ana/20 text-teal-200"
+                    : "text-slate-400 hover:text-white"
+                }`}
+              >
+                <Microscope className="h-3.5 w-3.5" />
+                <span>{lang === "pl" ? "Mikroskop Badacza (L0–L4)" : "Researcher Microscope (L0–L4)"}</span>
+              </button>
+            </div>
+
             <div className="inline-flex items-center gap-1.5 rounded-lg border border-hairline bg-panel px-1.5 py-0.5">
               <button
                 type="button"
@@ -253,14 +283,16 @@ export const App: React.FC = () => {
               )}
             </div>
 
-            <button
-              type="button"
-              onClick={() => setModalOpen(true)}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-amber-400/40 bg-amber-500/10 px-3 py-1.5 text-xs font-semibold text-amber-200 hover:bg-amber-500/20"
-            >
-              <Cpu className="h-3.5 w-3.5" />
-              <span>{t.crossModelBtn}</span>
-            </button>
+            {appMode === "microscope" && (
+              <button
+                type="button"
+                onClick={() => setModalOpen(true)}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-amber-400/40 bg-amber-500/10 px-3 py-1.5 text-xs font-semibold text-amber-200 hover:bg-amber-500/20"
+              >
+                <Cpu className="h-3.5 w-3.5" />
+                <span>{t.crossModelBtn}</span>
+              </button>
+            )}
 
             {/* PL | EN Language Switch */}
             <div className="inline-flex rounded-lg border border-hairline bg-panel p-0.5">
@@ -294,7 +326,22 @@ export const App: React.FC = () => {
 
       {/* Main Content */}
       <main className="mx-auto max-w-[1600px] space-y-4 px-4 py-5 sm:px-6">
-        {/* Capsule Banner + Navigation Tabs */}
+        {appMode === "theater" ? (
+          <PerceptualTheater
+            lang={lang}
+            audioEnabled={audioEnabled}
+            onEnableAudio={() => {
+              setAudioEnabled(true);
+              soundEngine.setEnabled(true);
+            }}
+            onOpenMicroscope={() => {
+              setAppMode("microscope");
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          />
+        ) : (
+          <>
+            {/* Capsule Banner + Navigation Tabs */}
         <div className="flex flex-col justify-between gap-4 rounded-xl border border-hairline bg-panel/70 p-4 lg:flex-row lg:items-center">
           <div>
             <div className="flex flex-wrap items-center gap-2">
@@ -459,6 +506,8 @@ export const App: React.FC = () => {
         )}
 
         {activeTab === "ledger" && <EpistemicLedgerView capsule={capsule} lang={lang} />}
+          </>
+        )}
       </main>
 
       <CrossModelModal

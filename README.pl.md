@@ -34,9 +34,20 @@ flowchart LR
 
 ---
 
-## Jak wygląda ludzki interfejs (Mikroskop Audiowizualny)
+## Jak wygląda ludzki interfejs (v2: Dwa poziomy percepcji)
 
-Ludzie najsilniej chwytają strukturę, gdy relacje przestrzenne, ruch przyczynowo-skutkowy, dźwięk i bezpośrednia manipulacja wzmacniają się nawzajem zamiast ściany jednowymiarowego tekstu:
+Ludzie najsilniej chwytają strukturę, gdy ruch, obraz, dźwięk i bezpośredni gest fizyczny współpracują ze sobą zamiast ściany matematycznego żargonu na pierwszym ekranie:
+
+### Poziom 1 (Ekran startowy): Teatr Poznawczy
+Zero żargonu matematycznego i zero greckich liter. Sześć przestronnych scen audiowizualnych opartych na jednej spójnej metaforze fizycznej (*Ukryte Fale* kontra *Fale-Potwory*):
+1. **Ukryte fale**: Przesuń falę w prawo i zobacz/usłysz, jak spokojny puls liczb pierwszych zamienia się w rosnący ryk sprzężenia.
+2. **Zwierciadło**: Kliknij dowolne miejsce po lewej stronie i obserwuj lustrzanego bliźniaka zapalającego się po prawej.
+3. **Detektor jednokierunkowy**: Przełącz układ na samo dodawanie głośności i zobacz, jak dwie wyciszone fale rozrywają złoty sufit.
+4. **Kamień zamiast plasteliny — Łańcuch na Kuli**: Wciśnij pieczątkę w miękką plastelinę i kruchy kamień, a potem sprawdź laserem kulę z kulkami (maks. 2 trafienia na prostej linii — nigdy 3).
+5. **Gra 1 na 1 z Naturą (`1× → 10 000×`)**: Spróbuj schować falę jak najbliżej zielonej linii — Dowód za każdym razem wsuwa dach w połowę Twojej luki.
+6. **Granice opowieści + Raport Intuicji**: Uczciwa lista uproszczeń każdej sceny i przycisk eksportu Twojej oceny („Kliknęło / Nadal mgła”).
+
+### Poziom 2 (Pod maską): Mikroskop Badacza (`L0`–`L4`)
 
 - **Interaktywna mapa 4 warstw dowodu**: Zobacz przepływ całej architektury od *Zaplecza Arytmetycznego* → *Estymacji* → *Silnika Analitycznego* → *Celu (5 twierdzeń)*, z animowanymi impulsami wzdłuż interfejsów oraz dwoma globalnymi cięciami logicznymi (`cut-zeta`, `cut-dirichlet`).
 - **Suwak Przybliżenia Semantycznego (`L0`–`L4`) + przełącznik `PL | EN`**: Płynne przejście od metafory dla dziecka (`L0`), przez intuicję strukturalną Architekta (`L1`), blok inżynierski (`L2`) i warsztat matematyka (`L3`), aż po surowe deklaracje Lean (`L4`).

@@ -51,9 +51,11 @@ Dokładnie ta sama logika 8 Praw działa w TypeScript w `web/src/utils/capsuleVa
 
 ---
 
-## 4. Audiowizualny Mikroskop Semantyczny (`web/`)
+## 4. Dwuwarstwowy Interfejs Audiowizualny (`web/`)
 
 Aplikacja zbudowana w Vite + React + TypeScript + Tailwind CSS (bez zewnętrznych plików audio i bez backendu):
-- **Akcelerowany ewaluator funkcji dzeta Borweina (`src/math/zeta.ts`)**: Liczy $|\zeta(\sigma + it)|$ dla $t \in [10, 45]$ bezpieczną numerycznie rekurencją 38-wyrazową (dokładność $\sim 10^{-7}$ na zerach nietrywialnych).
-- **Okno liczb pierwszych z sita Eratostenesa (`src/math/zeta.ts`)**: Wylicza prawdziwe oscylacje $\psi(y) - y$ na oknie $[Y, Y^{3/2}]$ względem sufitu $C y^\theta$ i wizualizuje sprzeczność od fałszywego zera $\beta > 0{,}5$.
-- **Czysta synteza Web Audio API (`src/audio/soundEngine.ts`)**: Generuje akordy harmoniczne dla poziomów zoomu (`L0`–`L4`), tony ogniskowania warstw, krystaliczne dzwony zer kontra dysonans poza prostą krytyczną w *Symfonii Zety*, ostrzeżenia przebicia sufitu oraz opcjonalnego lektora `SpeechSynthesis` (`pl-PL` / `en-US`) w trybie Auto-Przewodnika *Ścieżki Architekta*.
+- **Poziom 1 — Teatr Poznawczy (`src/components/theater/` + `src/audio/theaterAudio.ts`)**: Domyślne 6-scenowe doświadczenie bez żargonu matematycznego (*Fale*, *Zwierciadło*, *Detektor jednokierunkowy*, *Kamień i Kula*, *Gra 1 na 1 z auto-zoomem*, *Granice uczciwości i Raport Intuicji*) sprzężone z dedykowaną syntezą Web Audio (`playWaveBalanceTone`, `playMirrorEcho`, `playDetectorFlip`, `playClayPress`, `playStoneCrack`, `playTrapLock`).
+- **Poziom 2 — Mikroskop Badacza (`src/components/ProofTopologyMap.tsx`, `src/components/labs/`)**:
+  - **Akcelerowany ewaluator funkcji dzeta Borweina (`src/math/zeta.ts`)**: Liczy $|\zeta(\sigma + it)|$ dla $t \in [10, 45]$ bezpieczną numerycznie rekurencją 38-wyrazową (dokładność $\sim 10^{-7}$ na zerach nietrywialnych).
+  - **Okno liczb pierwszych z sita Eratostenesa (`src/math/zeta.ts`)**: Wylicza prawdziwe oscylacje $\psi(y) - y$ na oknie $[Y, Y^{3/2}]$ względem sufitu $C y^\theta$ i wizualizuje sprzeczność od fałszywego zera $\beta > 0{,}5$.
+  - **Czysta synteza Web Audio API (`src/audio/soundEngine.ts`)**: Wspólny kontekst audio oraz opcjonalny lektor `SpeechSynthesis` (`pl-PL` / `en-US`).

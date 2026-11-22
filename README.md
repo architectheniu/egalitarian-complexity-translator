@@ -34,9 +34,20 @@ flowchart LR
 
 ---
 
-## What the Human Interface Looks Like (Audiovisual Microscope)
+## What the Human Interface Looks Like (v2: Two-Tier Audiovisual Interface)
 
-Humans think best when structural relationships, cause-and-effect motion, sound, and interaction reinforce each other rather than fighting through walls of linear prose:
+Humans think best when structural relationships, cause-and-effect motion, sound, and direct physical gestures reinforce each other rather than confronting a wall of math symbols on frame one:
+
+### Tier 1 (Default Entry): Perceptual Theater (`Teatr Poznawczy`)
+Zero math jargon and zero Greek letters. Six spacious, touchable audiovisual scenes built around one unified physical metaphor (*Hidden Waves* vs *Runaway Waves*):
+1. **Hidden Waves**: Drag a wave off balance and watch/hear the prime heartbeat escalate into runaway feedback.
+2. **The Mirror**: Click anywhere on the left to watch a symmetric twin spawn automatically on the right.
+3. **One-Way Detector**: Flip the additive detector and watch two cancelling waves shatter the golden ceiling.
+4. **Stone vs Clay — The Sphere Chain**: Stamp soft clay vs brittle stone, then aim a laser across a bead-ringed sphere (max 2 hits, never 3).
+5. **Duel with Nature (`1× → 10,000×`)**: Try to hide a wave anywhere right of center — the Proof slides a half-gap roof after your move every time.
+6. **Honesty Limits + Perceptual Report**: Explicit summary of where every metaphor simplifies truth, plus 1-click `"Clicked / Still Foggy"` feedback export.
+
+### Tier 2 (Under the Hood): Researcher Microscope (`Mikroskop Badacza`, `L0`–`L4`)
 
 - **Interactive 4-Stratum Topology Canvas**: Watch the entire proof architecture flow from *Arithmetic Supply* → *The Estimate* → *The Analytic Engine* → *The Destination*, with animated dependency pulses and the two global cuts (`cut-zeta`, `cut-dirichlet`).
 - **Continuous Semantic Zoom Slider (`L0`–`L4`) + `PL | EN` Toggle**: Slide seamlessly between story metaphor (`L0`), structural intuition (`L1`), systems engineering (`L2`), mathematical research (`L3`), and exact Lean declarations (`L4`).
